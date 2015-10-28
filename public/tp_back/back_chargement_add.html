@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Ajouter un chargement | Shared Carrier Plateform</title>
+
+    <!-- Bootstrap core CSS -->
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="fonts/css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/animate.min.css" rel="stylesheet">
+
+    <!-- Custom styling plus plugins -->
+    <link href="css/custom.css" rel="stylesheet">
+    <link href="css/icheck/flat/green.css" rel="stylesheet">
+    <!-- ion_range -->
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/ion.rangeSlider.css" />
+    <link rel="stylesheet" href="css/ion.rangeSlider.skinFlat.css" />
+
+    <!-- colorpicker -->
+    <link href="css/colorpicker/bootstrap-colorpicker.min.css" rel="stylesheet">
+    
+    <script src="js/jquery.min.js"></script>
+
+    <!--[if lt IE 9]>
+        <script src="../assets/js/ie8-responsive-file-warning.js"></script>
+        <![endif]-->
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+</head>
+
+
+<body class="nav-md">
+
+    <div class="container body">
+
+
+        <div class="main_container">
+
+            <div class="col-md-3 left_col">
+                <div class="left_col scroll-view">
+
+                    <div class="navbar nav_title" style="border: 0;">
+                        <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>SCP</span></a>
+                    </div>
+                    <div class="clearfix"></div>
+
+
+                    <!-- menu prile quick info -->
+                    <div class="profile">
+                        <div class="profile_pic">
+                            <img src="images/img.jpg" alt="..." class="img-circle profile_img">
+                        </div>
+                        <div class="profile_info">
+                            <span>Bienvenue,</span>
+                            <h2>Mohammed Bouzidi</h2>
+                        </div>
+                    </div>
+                    <!-- /menu prile quick info -->
+
+                    <br />
+
+                    <!-- sidebar menu -->
+                    <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+
+                        <div class="menu_section">
+                            <h3>Favoris</h3>
+                            <ul class="nav side-menu">
+                                <li><a><i class="fa fa-laptop"></i> Ajouter une demande de chargement <span class="label label-success pull-right">New</span></a>
+                                </li>
+                                <li><a><i class="fa fa-laptop"></i> Mes Demandes de chargement en cours</a>
+                                </li>
+                                <li><a><i class="fa fa-laptop"></i> Demande de chargement en cours</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="menu_section">
+                            <h3>Autres fonctions</h3>
+                            <ul class="nav side-menu">
+                                <li><a><i class="fa fa-bug"></i> Statistiques <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu" style="display: none">
+                                        <li><a href="e_commerce.html">Statistiques</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li><a><i class="fa fa-bug"></i> Paramètres <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu" style="display: none">
+                                        <li><a href="projects.html">Archives</a>
+                                        </li>
+                                        <li><a href="project_detail.html">Paramètres du compte</a>
+                                        </li>
+                                        <li><a href="contacts.html">Paramètres société</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+                    <!-- /sidebar menu -->
+
+                    <!-- /menu footer buttons -->
+                    <div class="sidebar-footer hidden-small">
+                        <a data-toggle="tooltip" data-placement="top" title="Paramètres du compte">
+                            <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+                        </a>
+                        <a data-toggle="tooltip" data-placement="top" title="Paramètres société">
+                            <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+                        </a>
+                        <a data-toggle="tooltip" data-placement="top" title="Aide">
+                            <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+                        </a>
+                        <a data-toggle="tooltip" data-placement="top" title="Déconnexion">
+                            <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+                        </a>
+                    </div>
+                    <!-- /menu footer buttons -->
+                </div>
+            </div>
+
+            <!-- top navigation -->
+            <div class="top_nav">
+
+                <div class="nav_menu">
+                    <nav class="" role="navigation">
+                        <div class="nav toggle">
+                            <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+                        </div>
+
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="">
+                                <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                    <img src="images/img.jpg" alt="">Mohammed Bousidi
+                                    <span class=" fa fa-angle-down"></span>
+                                </a>
+                                <ul class="dropdown-menu dropdown-usermenu animated fadeInDown pull-right">
+                                    <li><a href="javascript:;">  Paramètres du compte</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:;">
+                                            <span class="badge bg-red pull-right">50%</span>
+                                            <span>Paramètres société</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:;">Aide</a>
+                                    </li>
+                                    <li><a href="login.html"><i class="fa fa-sign-out pull-right"></i> Déconnexion</a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <li role="presentation" class="dropdown">
+                                <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
+                                    <i class="fa fa-envelope-o"></i>
+                                    <span class="badge bg-green">2</span>
+                                </a>
+                                <ul id="menu1" class="dropdown-menu list-unstyled msg_list animated fadeInDown" role="menu">
+                                    <li>
+                                        <a>
+                                            <span class="image">
+                                        <img src="images/img.jpg" alt="Image du profile" />
+                                    </span>
+                                            <span>
+                                        <span>Mohammed Bouzidi</span>
+                                            <span class="time">3 min environ</span>
+                                            </span>
+                                            <span class="message">
+                                        Vous avez reçu dune nouvelle demande de transport 
+                                    </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a>
+                                            <span class="image">
+                                        <img src="images/img.jpg" alt="Image du profile" />
+                                    </span>
+                                            <span>
+                                        <span>Mohammed Bouzidi</span>
+                                            <span class="time">3 min environ</span>
+                                            </span>
+                                            <span class="message">
+                                        Vous avez reçu dune nouvelle demande de transport 
+                                    </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <div class="text-center">
+                                            <a>
+                                                <strong>Voir toutes les alertes</strong>
+                                                <i class="fa fa-angle-right"></i>
+                                            </a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+
+                        </ul>
+                    </nav>
+                </div>
+
+            </div>
+            <!-- /top navigation -->
+
+            <!-- page content -->
+            <div class="right_col" role="main">
+
+                <div class="">
+                    <div class="page-title">
+                        <div class="title_left">
+                            <h3>
+                    Ajouter un chargement
+                </h3>
+                        </div>
+
+                        <div class="title_right">
+                            <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Rechercher ...">
+                                    <span class="input-group-btn">
+                            <button class="btn btn-default" type="button">Go!</button>
+                        </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+
+
+
+                    <div class="row">
+
+                        <!-- form input mask -->
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="x_panel">
+                                <div class="x_title">
+                                    <h2>Formulaire chargement</h2>
+                                    <ul class="nav navbar-right panel_toolbox">
+                                        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                        </li>
+                                    </ul>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="x_content">
+                                    <br />
+                                    
+                                    <!-- Smart Wizard -->
+                                    <p>Remplissez toutes les étapes de ce formulaire pour enregistrer un nouveau chargement.</p>
+                                    <div id="wizard" class="form_wizard wizard_horizontal">
+                                        <ul class="wizard_steps">
+                                            <li>
+                                                <a href="#step-1">
+                                                    <span class="step_no">1</span>
+                                                    <span class="step_descr">
+                                            Etape 1<br />
+                                            <small>Départ</small>
+                                        </span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#step-2">
+                                                    <span class="step_no">2</span>
+                                                    <span class="step_descr">
+                                            Etape 2<br />
+                                            <small>Arrivée</small>
+                                        </span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#step-3">
+                                                    <span class="step_no">3</span>
+                                                    <span class="step_descr">
+                                            Etape 3<br />
+                                            <small>Colis</small>
+                                        </span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#step-4">
+                                                    <span class="step_no">4</span>
+                                                    <span class="step_descr">
+                                            Etape 4<br />
+                                            <small>Paiement</small>
+                                        </span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                        <div id="step-1">
+                                            <form class="form-horizontal form-label-left">
+
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="rue">Rue <span class="required">*</span>
+                                                    </label>
+                                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                                        <input type="text" id="rue" required="required" class="form-control col-md-7 col-xs-12">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="ville">Ville <span class="required">*</span>
+                                                    </label>
+                                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                                        <input type="text" id="ville" name="ville" required="required" class="form-control col-md-7 col-xs-12">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="pays" class="control-label col-md-3 col-sm-3 col-xs-12">Pays</label>
+                                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                                        <input id="pays" class="form-control col-md-7 col-xs-12" type="text" name="pays">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Date de départ <span class="required">*</span>
+                                                    </label>
+                                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                                        <input id="dateDepart" class="date-picker form-control col-md-7 col-xs-12" required="required" type="text">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="heureDepart" class="control-label col-md-3 col-sm-3 col-xs-12">Heure de départ</label>
+                                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                                        <input id="heureDepart" class="form-control col-md-7 col-xs-12" type="text" name="heureDepart">
+                                                    </div>
+                                                </div>
+
+                                            </form>
+
+                                        </div>
+                                        <div id="step-2">
+                                            <form class="form-horizontal form-label-left">
+
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="rue">Rue <span class="required">*</span>
+                                                    </label>
+                                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                                        <input type="text" id="rue" required="required" class="form-control col-md-7 col-xs-12">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="ville">Ville <span class="required">*</span>
+                                                    </label>
+                                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                                        <input type="text" id="ville" name="ville" required="required" class="form-control col-md-7 col-xs-12">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="pays" class="control-label col-md-3 col-sm-3 col-xs-12">Pays</label>
+                                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                                        <input id="pays" class="form-control col-md-7 col-xs-12" type="text" name="pays">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Date limite de livraison <span class="required">*</span>
+                                                    </label>
+                                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                                        <input id="dateDepart" class="date-picker form-control col-md-7 col-xs-12" required="required" type="text">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="heureDepart" class="control-label col-md-3 col-sm-3 col-xs-12">Heure limite de livraison (heure locale)</label>
+                                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                                        <input id="heureDepart" class="form-control col-md-7 col-xs-12" type="text" name="heureDepart">
+                                                    </div>
+                                                </div>
+
+                                            </form>
+                                        </div>
+                                        <div id="step-3">
+                                            <form class="form-horizontal form-label-left">
+
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="rue">Frais de transit <span class="required">*</span>
+                                                    </label>
+                                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                                        <input type="text" id="rue" required="required" class="form-control col-md-7 col-xs-12">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="ville">Distance <span class="required">*</span>
+                                                    </label>
+                                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                                        <input type="text" id="ville" name="ville" required="required" class="form-control col-md-7 col-xs-12">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="pays" class="control-label col-md-3 col-sm-3 col-xs-12">Type de trajet</label>
+                                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                                        <input id="pays" class="form-control col-md-7 col-xs-12" type="text" name="pays">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Nature de la marchandise <span class="required">*</span>
+                                                    </label>
+                                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                                        <input id="dateDepart" class="date-picker form-control col-md-7 col-xs-12" required="required" type="text">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="heureDepart" class="control-label col-md-3 col-sm-3 col-xs-12">Type d'assurance requise</label>
+                                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                                        <input id="heureDepart" class="form-control col-md-7 col-xs-12" type="text" name="heureDepart">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="heureDepart" class="control-label col-md-3 col-sm-3 col-xs-12">Poids</label>
+                                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                                        <input id="heureDepart" class="form-control col-md-7 col-xs-12" type="text" name="heureDepart">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="heureDepart" class="control-label col-md-3 col-sm-3 col-xs-12">Volume</label>
+                                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                                        <input id="heureDepart" class="form-control col-md-7 col-xs-12" type="text" name="heureDepart">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="heureDepart" class="control-label col-md-3 col-sm-3 col-xs-12">Ce chargement contient t'il des articles dangereux ?</label>
+                                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                                        <input id="heureDepart" class="form-control col-md-7 col-xs-12" type="text" name="heureDepart">
+                                                    </div>
+                                                </div>
+                                                
+                                                <span class="section">Liste de colisage</span>
+                                                
+                                                <div class="form-group">
+                                                    <label for="heureDepart" class="control-label col-md-3 col-sm-3 col-xs-12">Emballage</label>
+                                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                                        <input id="heureDepart" class="form-control col-md-7 col-xs-12" type="text" name="heureDepart">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="heureDepart" class="control-label col-md-3 col-sm-3 col-xs-12">Nombre d'unités</label>
+                                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                                        <input id="heureDepart" class="form-control col-md-7 col-xs-12" type="text" name="heureDepart">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="heureDepart" class="control-label col-md-3 col-sm-3 col-xs-12">Empilable ?</label>
+                                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                                        <input id="heureDepart" class="form-control col-md-7 col-xs-12" type="text" name="heureDepart">
+                                                    </div>
+                                                </div>
+                                                <div class="ln_solid"></div>
+
+                                                <div class="form-group">
+                                                    <div class="col-md-9 col-md-offset-3">
+                                                        <button type="submit" class="btn btn-success">Ajouter un autre article</button>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-3 col-sm-3 col-xs-3">Liste de colisage</label>
+                                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                                        <p class="form-control-static">
+                                                            <table class="table">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>#</th>
+                                                                        <th>Emballage</th>
+                                                                        <th>Nombre d'unités</th>
+                                                                        <th>Empilable ?</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <th scope="row">1</th>
+                                                                        <td>Mark</td>
+                                                                        <td>1200</td>
+                                                                        <td>OUI</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th scope="row">2</th>
+                                                                        <td>Jacob</td>
+                                                                        <td>1230</td>
+                                                                        <td>NON</td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </p>
+                                                    </div>
+                                                </div>
+
+                                            </form>
+                                        </div>
+                                        <div id="step-4">
+                                            <form class="form-horizontal form-label-left">
+
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="rue">Moyen de paiement <span class="required">*</span>
+                                                    </label>
+                                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                                        <input type="text" id="rue" required="required" class="form-control col-md-7 col-xs-12">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="ville">Délai de paiement <span class="required">*</span>
+                                                    </label>
+                                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                                        <input type="text" id="ville" name="ville" required="required" class="form-control col-md-7 col-xs-12">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="pays" class="control-label col-md-3 col-sm-3 col-xs-12">Devise</label>
+                                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                                        <input id="pays" class="form-control col-md-7 col-xs-12" type="text" name="pays">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Type de prix <span class="required">*</span>
+                                                    </label>
+                                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                                        <input id="dateDepart" class="date-picker form-control col-md-7 col-xs-12" required="required" type="text">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="heureDepart" class="control-label col-md-3 col-sm-3 col-xs-12">Informations complémentaires</label>
+                                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                                        <textarea id="textarea" required="required" name="textarea" class="form-control col-md-7 col-xs-12"></textarea>
+                                                    </div>
+                                                </div>
+
+                                            </form>
+                                        </div>
+
+                                    </div>
+                                    <!-- End SmartWizard Content -->
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /form input mask -->
+                        
+                    </div><!-- /row -->
+
+
+
+                </div>
+
+                <!-- footer content -->
+                <footer>
+                    <div class="">
+                        <p class="pull-right">Réseau de transporteurs. |
+                            <span class="lead"> <i class="fa fa-paw"></i> Shared Carrier Plateform</span>
+                        </p>
+                    </div>
+                    <div class="clearfix"></div>
+                </footer>
+                <!-- /footer content -->
+
+            </div>
+            <!-- /page content -->
+        </div>
+
+    </div>
+
+    <div id="custom_notifications" class="custom-notifications dsp_none">
+        <ul class="list-unstyled notifications clearfix" data-tabbed_notifications="notif-group">
+        </ul>
+        <div class="clearfix"></div>
+        <div id="notif-group" class="tabbed_notifications"></div>
+    </div>
+
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- chart js -->
+    <script src="js/chartjs/chart.min.js"></script>
+    <!-- bootstrap progress js -->
+    <script src="js/progressbar/bootstrap-progressbar.min.js"></script>
+    <script src="js/nicescroll/jquery.nicescroll.min.js"></script>
+    <!-- icheck -->
+    <script src="js/icheck/icheck.min.js"></script>
+    <script src="js/custom.js"></script>
+    <!-- daterangepicker -->
+    <script type="text/javascript" src="js/moment.min2.js"></script>
+    <script type="text/javascript" src="js/datepicker/daterangepicker.js"></script>
+    <!-- input mask -->
+    <script src="js/input_mask/jquery.inputmask.js"></script>
+    <!-- knob -->
+    <script src="js/knob/jquery.knob.min.js"></script>
+    <!-- range slider -->
+    <script src="js/ion_range/ion.rangeSlider.min.js"></script>
+    <!-- color picker -->
+    <script src="js/colorpicker/bootstrap-colorpicker.js"></script>
+    <script src="js/colorpicker/docs.js"></script>
+
+    <!-- image cropping -->
+    <script src="js/cropping/cropper.min.js"></script>
+    <script src="js/cropping/main2.js"></script>
+
+    <!-- form wizard -->
+    <script type="text/javascript" src="js/wizard/jquery.smartWizard.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // Smart Wizard 	
+            $('#wizard').smartWizard();
+
+            function onFinishCallback() {
+                $('#wizard').smartWizard('showMessage', 'Finish Clicked');
+                //alert('Finish Clicked');
+            }
+        });
+
+    </script>
+</body>
+
+</html>
