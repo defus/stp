@@ -4,4 +4,4 @@ Homestead.yaml
 Homestead.json
 .env
 .env.heroku
-.htaccess
+/public/.htaccess
