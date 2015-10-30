@@ -15,7 +15,7 @@ class ChargementController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.chargement.list');
     }
 
     /**
@@ -25,7 +25,7 @@ class ChargementController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.chargement.create');
     }
 
     /**
@@ -47,7 +47,12 @@ class ChargementController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('admin.chargement.view');
+    }
+    
+    public function repondre($id)
+    {
+        return view('admin.chargement.repondre');
     }
 
     /**

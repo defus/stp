@@ -20,4 +20,5 @@ $router->group([
 ], function () {
     resource('admin/chargement', 'ChargementController');
     get('admin/chargement/upload', 'ChargementController@upload');
+    get('admin/chargement/{id}/repondre', 'ChargementController@repondre');
 });
