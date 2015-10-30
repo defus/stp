@@ -18,7 +18,12 @@ $router->group([
     'namespace' => 'Admin',
     'middleware' => 'auth',
 ], function () {
+    resource('admin/help', 'HelpController');
+    
     resource('admin/chargement', 'ChargementController');
     get('admin/chargement/upload', 'ChargementController@upload');
     get('admin/chargement/{id}/repondre', 'ChargementController@repondre');
+    
+    get('admin/user/profile', 'UserController@profile');
+    get('admin/user/societe', 'UserController@societe');
 });

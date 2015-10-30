@@ -100,9 +100,11 @@
                             <ul class="nav side-menu">
                                 <li><a><i class="fa fa-bug"></i> Paramètres <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu" style="display: none">
-                                        <li><a href="{{url('/admin/profile')}}">Paramètres du compte</a>
+                                        <li><a href="{{url('/admin/user/profile')}}">Paramètres du compte</a>
                                         </li>
-                                        <li><a href="{{url('/admin/societe')}}">Paramètres société</a>
+                                        <li><a href="{{url('/admin/user/societe')}}">Paramètres société</a>
+                                        </li>
+                                        <li><a href="{{url('/admin/help')}}">Aide</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -114,10 +116,10 @@
 
                     <!-- /menu footer buttons -->
                     <div class="sidebar-footer hidden-small">
-                        <a data-toggle="tooltip" data-placement="top" title="Paramètres du compte" href="{{url('/admin/profile')}}">
+                        <a data-toggle="tooltip" data-placement="top" title="Paramètres du compte" href="{{url('/admin/user/profile')}}">
                             <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
                         </a>
-                        <a data-toggle="tooltip" data-placement="top" title="Paramètres société" href="{{url('/admin/societe')}}">
+                        <a data-toggle="tooltip" data-placement="top" title="Paramètres société" href="{{url('/admin/user/societe')}}">
                             <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
                         </a>
                         <a data-toggle="tooltip" data-placement="top" title="Aide" href="{{url('/admin/help')}}">
@@ -147,10 +149,10 @@
                                     <span class=" fa fa-angle-down"></span>
                                 </a>
                                 <ul class="dropdown-menu dropdown-usermenu animated fadeInDown pull-right">
-                                    <li><a href="{{url('/admin/profile')}}">  Paramètres du compte</a>
+                                    <li><a href="{{url('/admin/user/profile')}}">  Paramètres du compte</a>
                                     </li>
                                     <li>
-                                        <a href="{{url('/admin/societe')}}">
+                                        <a href="{{url('/admin/user/societe')}}">
                                             <span class="badge bg-red pull-right">50%</span>
                                             <span>Paramètres société</span>
                                         </a>
