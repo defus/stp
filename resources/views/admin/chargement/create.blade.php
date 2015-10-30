@@ -2,6 +2,23 @@
 
 @section('title', 'Ajouter un nouveau chargement')
 
+@section('script')
+<!-- form wizard -->
+<script type="text/javascript" src="{{url('tp_back')}}/js/wizard/jquery.smartWizard.js"></script>
+<script type="text/javascript">
+	$(document).ready(function () {
+		// Smart Wizard 	
+		$('#wizard').smartWizard();
+
+		function onFinishCallback() {
+			$('#wizard').smartWizard('showMessage', 'Finish Clicked');
+			//alert('Finish Clicked');
+		}
+	});
+
+</script>
+@endsection
+
 @section('content')
 <div class="row">
 

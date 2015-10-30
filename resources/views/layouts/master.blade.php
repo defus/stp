@@ -295,6 +295,7 @@
     <script src="{{url('tp_back')}}/js/cropping/cropper.min.js"></script>
     <script src="{{url('tp_back')}}/js/cropping/main2.js"></script>
 
+    @yield('script')
 </body>
 
 </html>
