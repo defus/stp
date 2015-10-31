@@ -10,7 +10,7 @@
 		@if (count($errors) > 0)
 		<div class="alert alert-danger">
 			<strong>Oup's' !</strong>
-			Votre login ou mot de passe n'est pas correct.<br><br>
+			Erreur de connexion.<br><br>
 			<ul>
 			@foreach ($errors->all() as $error)
 				<li>{{ $error }}</li>
