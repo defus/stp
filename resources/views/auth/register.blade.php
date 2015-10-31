@@ -21,12 +21,12 @@
 		<form method="POST" action="{{url('/auth/register')}}">
 			{!! csrf_field() !!}
 			<input type="hidden" name="_token" value="{{ csrf_token() }}">
-			<h1>Créer votre compte</h1>
+			<h1>Créez votre compte</h1>
 			<div>
 				<input type="text" class="form-control" placeholder="Votre nom" name="name" value="{{ old('name') }}" required="" />
 			</div>
 			<div>
-				<input type="text" class="form-control" placeholder="Nom de société" name="societe" value="{{ old('societe') }}" required="" />
+				<input type="text" class="form-control" placeholder="Nom de votre société" name="societe" value="{{ old('societe') }}" required="" />
 			</div>
 			<div>
 				<input type="email" class="form-control" placeholder="Email" name="email" value="{{ old('email') }}" required="" />
@@ -38,17 +38,17 @@
 				<input type="password" class="form-control" placeholder="Confirmation du mot de passe" name="password_confirmation" required="" />
 			</div>
 			<div>
-				<input type="text" class="form-control" placeholder="N° register de commerce" name="rc" value="{{ old('rc') }}" required="" />
+				<input type="text" class="form-control" placeholder="Numero register de commerce" name="rc" value="{{ old('rc') }}" required="" />
 			</div>
 			<div>
-				<input type="text" class="form-control" placeholder="Téléphone" name="tel" rvalue="{{ old('tel') }}" equired="" />
+				<input type="text" class="form-control" placeholder="Téléphone" name="tel" value="{{ old('tel') }}" required="" />
 			</div>
 			<div>
-				Transporteur : <input type="radio" class="flat" name="gender" id="genderM" value="M" checked="" required /> 
-				Donneur d'ordre' : <input type="radio" class="flat" name="gender" id="genderF" value="F" />
+				Transporteur : <input type="radio" class="flat" name="gender" id="genderM" value="M" {{old('gender') == 'M' ? 'checked=""' : ''}}  required="" /> 
+				Donneur d'ordre' : <input type="radio" class="flat" name="gender" id="genderF" value="F" {{old('gender') == 'F' ? 'checked=""' : ''}} required="" />
 			</div>
 			<div>
-				<br/><button type="submit" class="btn btn-success">S'inscrire</button>
+				<br/><button type="submit" class="btn btn-success" name="Enregistrer">S'inscrire</button>
 			</div>
 			<div class="clearfix"></div>
 			<div class="separator">
@@ -58,7 +58,7 @@
 				<div class="clearfix"></div>
 				<br />
 				<div>
-					<h1><i class="fa fa-paw" style="font-size: 26px;"></i> Shared Carrier Plateform</h1>
+					<a href="{{url('/')}}"><h1><i class="fa fa-truck" style="font-size: 26px;"></i> Shared Carrier Plateform</h1></a>
 					<p>©2015 Tous droits reservés. Shared Carrier Plateform. Conditions d'utilisation</p>
 				</div>
 			</div>

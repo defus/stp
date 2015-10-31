@@ -54,7 +54,7 @@
                 <div class="left_col scroll-view">
 
                     <div class="navbar nav_title" style="border: 0;">
-                        <a href="{{url('/')}}" class="site_title"><i class="fa fa-paw"></i> <span>SCP</span></a>
+                        <a href="{{url('/')}}" class="site_title"><i class="fa fa-truck"></i> <span>SCP</span></a>
                     </div>
                     <div class="clearfix"></div>
 
@@ -248,7 +248,7 @@
                 <footer>
                     <div class="">
                         <p class="pull-right">Réseau de transporteurs. |
-                            <span class="lead"> <i class="fa fa-paw"></i> Shared Carrier Plateform</span>
+                            <span class="lead"> <i class="fa fa-truck"></i> Shared Carrier Plateform</span>
                         </p>
                     </div>
                     <div class="clearfix"></div>

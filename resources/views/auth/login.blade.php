@@ -38,12 +38,12 @@
 			<div class="clearfix"></div>
 			<div class="separator">
 				<p class="change_link">Nouvel utilisateur ?
-					<a href="{{url('/auth/register')}}" class="to_register"> Créer un compte </a>
+					<a href="{{url('/auth/register')}}" class="to_register"> Créez un compte </a>
 				</p>
 				<div class="clearfix"></div>
 				<br />
 				<div>
-					<h1><i class="fa fa-paw" style="font-size: 26px;"></i> Shared Carrier Plateform</h1>
+					<a href="{{url('/')}}"><h1><i class="fa fa-truck" style="font-size: 26px;"></i> Shared Carrier Plateform</h1></a>
 					<p>©2015 Tous droits reservés. Shared Carrier Plateform. Conditions d'utilisation</p>
 				</div>
 			</div>

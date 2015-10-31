@@ -36,14 +36,14 @@
           <div class="caption">
             <h1 class="animated fadeInLeftBig">Bienvenue à <span>Shared Carrier Plateform</span></h1>
             <p class="animated fadeInRightBig">Transportez moins cher, plus rapidement, n'importe où</p>
-            <a data-scroll class="btn btn-start animated fadeInUpBig" href="{{url('/auth/register')}}">Commencez dès maintenant. C'est gratuit !</a>
+            <a class="btn btn-start animated fadeInUpBig" href="{{url('/auth/register')}}">Créez un compte, C'est gratuit !</a>
           </div>
         </div>
         <div class="item" style="background-image: url({{url('tp_front')}}/images/slider/camions.jpg)">
           <div class="caption">
             <h1 class="animated fadeInLeftBig">Dites hello à <span>Shared Carrier Plateform</span></h1>
             <p class="animated fadeInRightBig">Marché où vous recevez des offres pour vos chargements de la part d’un grand nombre de transporteurs évalués</p>
-            <a data-scroll class="btn btn-start animated fadeInUpBig" href="#services">Commencez dès maintenant. C'est gratuit !</a>
+            <a class="btn btn-start animated fadeInUpBig" href="{{url('/auth/register')}}">Créez un compte, C'est gratuit !</a>
           </div>
         </div>
       </div>
@@ -62,8 +62,8 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="index.html">
-            <h1><img class="img-responsive" src="{{url('tp_front')}}/images/logo.png" alt="logo"></h1>
+          <a class="navbar-brand" href="{{url('/')}}">
+            <h1 style="color:white;"><i class="fa fa-truck"></i> STP</h1>
           </a>                    
         </div>
         <div class="collapse navbar-collapse">
@@ -717,7 +717,7 @@
     <div class="footer-top wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
       <div class="container text-center">
         <div class="footer-logo">
-          <a href="index.html"><img class="img-responsive" src="{{url('tp_front')}}/images/logo.png" alt=""></a>
+          <a href="{{url('/')}}"><h1 style="color:white;"><i class="fa fa-truck"></i> Shared Carrier Plateform</h1></a>
         </div>
         <div class="social-icons">
           <ul>
@@ -735,10 +735,10 @@
       <div class="container">
         <div class="row">
           <div class="col-sm-6">
-            <p>&copy; 2015 Oxygen Theme.</p>
+            <p>&copy; 2015 STP.</p>
           </div>
           <div class="col-sm-6">
-            <p class="pull-right">Designed by <a href="http://www.themeum.com/">Themeum</a></p>
+            <p class="pull-right">Conçu par <a href="#">STP</a></p>
           </div>
         </div>
       </div>

@@ -1,0 +1,24 @@
+<?php
+
+use Illuminate\Foundation\Testing\WithoutMiddleware;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
+
+class UserTest extends TestCase
+{
+    use DatabaseTransactions;
+
+    /**
+     * A basic test example.
+     *
+     * @return void
+     */
+    public function testUpdateProfileOk()
+    {
+         $this->visit('/admin/user/profile')
+            ->type('Landry', 'name')
+            ->type('defolandry@yahoo.fr', 'email')
+            ->press("Enregistrer")
+            ->seePageIs('/');
+    }
+}
