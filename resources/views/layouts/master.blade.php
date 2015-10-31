@@ -283,6 +283,8 @@
     <script type="text/javascript" src="{{url('tp_back')}}/js/datepicker/daterangepicker.js"></script>
     <!-- input mask -->
     <script src="{{url('tp_back')}}/js/input_mask/jquery.inputmask.js"></script>
+    <!-- form validation -->
+    <script type="text/javascript" src="{{url('tp_back')}}/js/parsley/parsley.min.js"></script>
     <!-- knob -->
     <script src="{{url('tp_back')}}/js/knob/jquery.knob.min.js"></script>
     <!-- range slider -->

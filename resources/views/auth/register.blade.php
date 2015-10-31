@@ -2,6 +2,35 @@
 
 @section('title', 'Enregistrer')
 
+@section('script')
+<!-- form validation -->
+<script type="text/javascript">
+	$(document).ready(function () {
+		$.listen('parsley:field:validate', function () {
+			validateFront();
+		});
+		$('#registerForm .btn').on('click', function () {
+			$('#registerForm').parsley().validate();
+			validateFront();
+		});
+		var validateFront = function () {
+			if (true === $('#registerForm').parsley().isValid()) {
+				$('.bs-callout-info').removeClass('hidden');
+				$('.bs-callout-warning').addClass('hidden');
+			} else {
+				$('.bs-callout-info').addClass('hidden');
+				$('.bs-callout-warning').removeClass('hidden');
+			}
+		};
+	});
+
+	try {
+		hljs.initHighlightingOnLoad();
+	} catch (err) {}
+</script>
+<!-- /form validation -->
+@endsection
+
 @section('content')
 <div class="animate form">
 	<section class="login_content">
@@ -18,30 +47,30 @@
 		</div>
 		@endif
 		
-		<form method="POST" action="{{url('/auth/register')}}">
+		<form method="POST" action="{{url('/auth/register')}}" data-parsley-validate id="registerForm">
 			{!! csrf_field() !!}
 			<input type="hidden" name="_token" value="{{ csrf_token() }}">
 			<h1>Créez votre compte</h1>
 			<div>
-				<input type="text" class="form-control" placeholder="Votre nom" name="name" value="{{ old('name') }}" required="" />
+				<input type="text" class="form-control" placeholder="Votre nom" name="name" value="{{ old('name') }}" required="" data-parsley-trigger="change" data-parsley-maxlength="255"/>
 			</div>
 			<div>
-				<input type="text" class="form-control" placeholder="Nom de votre société" name="societe" value="{{ old('societe') }}" required="" />
+				<input type="text" class="form-control" placeholder="Nom de votre société" name="societe" value="{{ old('societe') }}" required="" data-parsley-maxlength="255"/>
 			</div>
 			<div>
-				<input type="email" class="form-control" placeholder="Email" name="email" value="{{ old('email') }}" required="" />
+				<input type="email" class="form-control" placeholder="Email" name="email" value="{{ old('email') }}" required="" data-parsley-trigger="change" data-parsley-maxlength="255"/>
 			</div>
 			<div>
-				<input type="password" class="form-control" placeholder="Mot de passe" name="password" required="" />
+				<input type="password" class="form-control" placeholder="Mot de passe" id="password" name="password" required="" minlength="6"/>
 			</div>
 			<div>
-				<input type="password" class="form-control" placeholder="Confirmation du mot de passe" name="password_confirmation" required="" />
+				<input type="password" class="form-control" placeholder="Confirmation du mot de passe" name="password_confirmation" required="" minlength="6" data-parsley-equalto="#password"/>
 			</div>
 			<div>
-				<input type="text" class="form-control" placeholder="Numero register de commerce" name="rc" value="{{ old('rc') }}" required="" />
+				<input type="text" class="form-control" placeholder="Numero register de commerce" name="rc" value="{{ old('rc') }}" required="" data-parsley-maxlength="50"/>
 			</div>
 			<div>
-				<input type="text" class="form-control" placeholder="Téléphone" name="tel" value="{{ old('tel') }}" required="" />
+				<input type="text" class="form-control" placeholder="Téléphone" name="tel" value="{{ old('tel') }}" required="" data-parsley-maxlength="50"/>
 			</div>
 			<div>
 				Transporteur : <input type="radio" class="flat" name="gender" id="genderM" value="M" {{old('gender') == 'M' ? 'checked=""' : ''}}  required="" /> 

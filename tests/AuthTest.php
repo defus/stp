@@ -35,4 +35,18 @@ class AuthTest extends TestCase
             'gender' => 'M'
             ]);
     }
+    
+    public function testRegisterSocieteNok(){
+        $this->visit('/auth/register')
+            ->type('Landry DEFO', 'name')
+            ->type('123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789AA123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789AA123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789AA', 'societe')
+            ->type('123456', 'password')
+            ->type('123456', 'password_confirmation')
+            ->type('rc_1', 'rc')
+            ->type('00212876564', 'tel')
+            ->type('M', 'gender')
+            ->type('defolandry@yahoo.fr', 'email')
+            ->press("Enregistrer")
+            ->seePageIs('/auth/register');
+    }
 }

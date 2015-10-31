@@ -48,6 +48,13 @@
     
     <script src="{{url('tp_back')}}/js/bootstrap.min.js"></script>
     
+    <!-- form validation -->
+    <script type="text/javascript" src="{{url('tp_back')}}/js/parsley/parsley.min.js"></script>
+    <script type="text/javascript" src="{{url('tp_back')}}/js/parsley/i18n/fr.js"></script>
+    <script type="text/javascript">
+        window.Parsley.setLocale('fr');
+    </script>
+    
     <!-- icheck -->
     <script src="{{url('tp_back')}}/js/icheck/icheck.min.js"></script>
     
@@ -63,7 +70,8 @@
         }
         /** ******  /iswitch  *********************** **/
     </script>
-        
+    
+    @yield('script')    
 </body>
 
 </html>
