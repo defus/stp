@@ -2,6 +2,34 @@
 
 @section('title', 'Connexion')
 
+@section('script')
+<!-- form validation -->
+<script type="text/javascript">
+	$(document).ready(function () {
+		$.listen('parsley:field:validate', function () {
+			validateFront();
+		});
+		$('#loginForm .btn').on('click', function () {
+			$('#loginForm').parsley().validate();
+			validateFront();
+		});
+		var validateFront = function () {
+			if (true === $('#loginForm').parsley().isValid()) {
+				$('.bs-callout-info').removeClass('hidden');
+				$('.bs-callout-warning').addClass('hidden');
+			} else {
+				$('.bs-callout-info').addClass('hidden');
+				$('.bs-callout-warning').removeClass('hidden');
+			}
+		};
+	});
+
+	try {
+		hljs.initHighlightingOnLoad();
+	} catch (err) {}
+</script>
+<!-- /form validation -->
+@endsection
 
 @section('content')
 <div class="animate form">
@@ -19,7 +47,7 @@
 		</div>
 		@endif
 		
-		<form method="post" action="{{url('/auth/login')}}">
+		<form method="post" action="{{url('/auth/login')}}" data-parsley-validate id="loginForm">
 				{!! csrf_field() !!}
 			<h1>Connexion</h1>
 			<div>
@@ -32,7 +60,7 @@
 				<input type="checkbox" name="remember" value="{{ old('remember') }}"> Se souvenir de moi</input>
 			</div>
 			<div>
-				<br/><button type="submit" class="btn btn-default submit">Connexion</button>
+				<br/><button type="submit" class="btn btn-default submit" name="Connexion">Connexion</button>
 				<a class="reset_pass" href="#">Mot de passe oublié ?</a>
 			</div>
 			<div class="clearfix"></div>

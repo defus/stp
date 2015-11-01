@@ -12,7 +12,7 @@ class UserTableSeeder extends Seeder
     public function run()
     {
         DB::table('users')->insert([
-            'name' => 'Compte de test',
+            'name' => "Mohammed Bernoussi, utilisateur de test qui permet de valider les fonctionnailité de l'application",
             'email' => 'test@test.com',
             'password' => bcrypt('testtest'),
             'societe' => 'LIMC',

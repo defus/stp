@@ -66,7 +66,7 @@
                         </div>
                         <div class="profile_info">
                             <span>Bienvenue,</span>
-                            <h2>Mohammed Bouzidi</h2>
+                            <h2>{{auth()->user()->name}}</h2>
                         </div>
                     </div>
                     <!-- /menu prile quick info -->
@@ -117,10 +117,10 @@
                     <!-- /menu footer buttons -->
                     <div class="sidebar-footer hidden-small">
                         <a data-toggle="tooltip" data-placement="top" title="Paramètres du compte" href="{{url('/admin/user/profile')}}">
-                            <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+                            <span class="fa fa-user" aria-hidden="true"></span>
                         </a>
                         <a data-toggle="tooltip" data-placement="top" title="Paramètres société" href="{{url('/admin/user/societe')}}">
-                            <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+                            <span class="fa fa-institution" aria-hidden="true"></span>
                         </a>
                         <a data-toggle="tooltip" data-placement="top" title="Aide" href="{{url('/admin/help')}}">
                             <span class="fa fa-question" aria-hidden="true"></span>
@@ -145,7 +145,7 @@
                         <ul class="nav navbar-nav navbar-right">
                             <li class="">
                                 <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                    <img src="{{url('tp_back')}}/images/img.jpg" alt="">Mohammed Bousidi
+                                    <img src="{{url('tp_back')}}/images/img.jpg" alt="">{{auth()->user()->name}}
                                     <span class=" fa fa-angle-down"></span>
                                 </a>
                                 <ul class="dropdown-menu dropdown-usermenu animated fadeInDown pull-right">
@@ -177,7 +177,7 @@
                                         <img src="{{url('tp_back')}}/images/img.jpg" alt="Image du profile" />
                                     </span>
                                             <span>
-                                        <span>Mohammed Bouzidi</span>
+                                        <span>{{auth()->user()->name}}</span>
                                             <span class="time">3 min environ</span>
                                             </span>
                                             <span class="message">
@@ -191,7 +191,7 @@
                                         <img src="{{url('tp_back')}}/images/img.jpg" alt="Image du profile" />
                                     </span>
                                             <span>
-                                        <span>Mohammed Bouzidi</span>
+                                        <span>{{auth()->user()->name}}</span>
                                             <span class="time">3 min environ</span>
                                             </span>
                                             <span class="message">

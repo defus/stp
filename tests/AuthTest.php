@@ -6,13 +6,9 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class AuthTest extends TestCase
 {
+    use DatabaseMigrations;
     use DatabaseTransactions;
     
-    /**
-     * A basic test example.
-     *
-     * @return void
-     */
     public function testRegisterOk()
     {
         $this->visit('/auth/register')
@@ -34,6 +30,16 @@ class AuthTest extends TestCase
             'tel' => '00212876564',
             'gender' => 'M'
             ]);
+    }
+    
+    public function testLoginOk()
+    {
+        $this->seed();
+        $this->visit('/auth/login')
+            ->type('testtest', 'password')
+            ->type('test@test.com', 'email')
+            ->press("Connexion")
+            ->seePageIs('/admin/chargement');
     }
     
     public function testRegisterSocieteNok(){
