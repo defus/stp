@@ -3,10 +3,11 @@
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use App\DatabaseMigrationsRefresh;
 
 class AuthTest extends TestCase
 {
-    use DatabaseMigrations;
+    use DatabaseMigrationsRefresh;
     use DatabaseTransactions;
     
     public function testRegisterOk()
@@ -34,7 +35,6 @@ class AuthTest extends TestCase
     
     public function testLoginOk()
     {
-        $this->seed();
         $this->visit('/auth/login')
             ->type('testtest', 'password')
             ->type('test@test.com', 'email')

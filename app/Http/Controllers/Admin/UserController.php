@@ -8,6 +8,8 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UserPasswordUpdateRequest;
 use App\Http\Requests\UserEmailUpdateRequest;
+use App\Http\Requests\UpdateProfileRequest;
+use App\Http\Requests\DesableProfileRequest;
 use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
@@ -121,5 +123,31 @@ class UserController extends Controller
         
         return redirect('/admin/user/profile')
             ->withSuccess("Mise-à-jour de l'email de l'utilisateur effectué avec succèss !");
+    }
+    
+    protected function updateProfile(UpdateProfileRequest $request)
+    {
+        $user = $request->user();
+        
+        $user->name = $request->get('name');
+        $user->tel = $request->get('tel');
+        $user->save();
+        
+        return redirect('/admin/user/profile')
+            ->withSuccess("Mise-à-jour des coordonnées effectuée avec succès !");
+    }
+    
+    
+    protected function desableProfile(DesableProfileRequest $request)
+    {
+        $user = $request->user();
+        
+        $user->statut = '0';
+        $user->save();
+        
+        Auth::logout();
+        
+        return redirect('/auth/login')
+            ->withSuccess("Votre compte a bien été désactivé. Si vous souhaitez le réactiver, veuillez nous contacter !");
     }
 }

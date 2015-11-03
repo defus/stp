@@ -36,6 +36,20 @@
 				$('.bs-callout-warning').removeClass('hidden');
 			}
 		};
+		
+		$('#updateProfileForm .btn').on('click', function () {
+			$('#updateProfileForm').parsley().validate();
+			validateFront();
+		});
+		var validateFront = function () {
+			if (true === $('#updateProfileForm').parsley().isValid()) {
+				$('.bs-callout-info').removeClass('hidden');
+				$('.bs-callout-warning').addClass('hidden');
+			} else {
+				$('.bs-callout-info').addClass('hidden');
+				$('.bs-callout-warning').removeClass('hidden');
+			}
+		};
 	});
 
 	try {
@@ -169,19 +183,20 @@
 					</div>
 					<div class="x_content">
 						<br />
-						<form class="form-horizontal form-label-left">
-
+						<form class="form-horizontal form-label-left" method="post" action="{{url('/admin/user/profile-update')}}" data-parsley-validate id="updateProfileForm">
+							{!! csrf_field() !!}
+							
 							<div class="form-group">
 								<label class="control-label col-md-3 col-sm-3 col-xs-3">Nom</label>
 								<div class="col-md-9 col-sm-9 col-xs-9">
-									<input type="text" class="form-control">
+									<input type="text" class="form-control" name="name" required="" data-parsley-maxlength="255">
 									<span class="fa fa-user form-control-feedback right" aria-hidden="true"></span>
 								</div>
 							</div>
 							<div class="form-group">
 								<label class="control-label col-md-3 col-sm-3 col-xs-3">Téléphone</label>
 								<div class="col-md-9 col-sm-9 col-xs-9">
-									<input type="text" class="form-control">
+									<input type="text" class="form-control" name="tel" required="" data-parsley-maxlength="50">
 									<span class="fa fa-user form-control-feedback right" aria-hidden="true"></span>
 								</div>
 							</div>
@@ -189,7 +204,7 @@
 
 							<div class="form-group">
 								<div class="col-md-9 col-md-offset-3">
-									<button type="submit" class="btn btn-primary">Enregistrer</button>
+									<button type="submit" class="btn btn-primary" name="UpdateProfile">Enregistrer</button>
 								</div>
 							</div>
 
@@ -211,10 +226,12 @@
 					</div>
 					<div class="x_content">
 						<br />
-						<form class="form-horizontal form-label-left">
+						<form class="form-horizontal form-label-left" method="post" action="{{url('/admin/user/profile-desable')}}">
+							{!! csrf_field() !!}
+							
 							<div class="form-group">
 								<div class="col-md-9 col-md-offset-3">
-									<button type="submit" class="btn btn-primary">Désactiver votre compte</button>
+									<button type="submit" class="btn btn-primary" name="DesableProfile">Désactiver votre compte</button>
 								</div>
 							</div>
 

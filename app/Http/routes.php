@@ -28,4 +28,6 @@ $router->group([
     get('admin/user/societe', 'UserController@societe');
     post('admin/user/reset-password', 'UserController@resetPassword');
     post('admin/user/reset-email', 'UserController@resetEmail');
+    post('admin/user/profile-update', 'UserController@updateProfile');
+    post('admin/user/profile-desable', 'UserController@desableProfile');
 });

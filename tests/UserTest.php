@@ -3,10 +3,11 @@
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use App\DatabaseMigrationsRefresh;
 
 class UserTest extends TestCase
 {
-    use DatabaseMigrations;
+    use DatabaseMigrationsRefresh;
     use DatabaseTransactions;
 
     /**
@@ -63,5 +64,40 @@ class UserTest extends TestCase
             ->see("Mise-à-jour de l'email de l'utilisateur effectué avec succèss !");
             
         $this->seeInDatabase('users', ['email' => 'defolandry@yahoo.fr']);
+    }
+    
+    public function testChangeProfileOk()
+    {
+        $user = factory(App\User::class)->create();
+        
+        $this->actingAs($user)
+            ->visit('/admin/user/profile')
+            ->type('Landry DEFO KUATE', 'name')
+            ->type('00212345678', 'tel')
+            ->press("UpdateProfile")
+            ->seePageIs('/admin/user/profile')
+            ->see("Mise-à-jour des coordonnées effectuée avec succès !");
+        
+        $this->seeInDatabase("users", ['email' => $user->email, 'name' => 'Landry DEFO KUATE', 'tel' => '00212345678']);
+    }
+    
+    public function testDesactiverProfileOk()
+    {
+        $user = factory(App\User::class)->create();
+        
+        $this->actingAs($user)
+            ->visit('/admin/user/profile')
+            ->press("DesableProfile")
+            ->seePageIs('/auth/login')
+            ->see("Votre compte a bien été désactivé. Si vous souhaitez le réactiver, veuillez nous contacter !");
+        
+        $this->seeInDatabase("users", ['email' => $user->email, 'statut' => '0']);
+        
+        $this->visit('/auth/login')
+            ->type('testtest', 'password')
+            ->type('test@test.com', 'email')
+            ->press("Connexion");
+            //->seePageIs('/auth/login')
+            //->see("Impossble de se connecter car vous avez désactivé votre compte. Veuillez nous contacter pour activer votre compte à nouveau !");
     }
 }
