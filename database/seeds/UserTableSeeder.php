@@ -18,7 +18,12 @@ class UserTableSeeder extends Seeder
             'societe' => 'LIMC',
             'rc' => '23980',
             'tel' => '00212876564',
-            'gender' => 'F'
+            'gender' => 'F',
+            'rue' => 'kitoko',
+            'ville' => 'Rabat',
+            'pays' => 'Maroc',
+            'a_propos' => 'Maz',
+            'logo' => 'logo.png',
         ]);
     }
 }

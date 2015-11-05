@@ -9,6 +9,11 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'societe' => str_random(100),
         'rc' => str_random(50),
         'tel' => str_random(10),
-        'gender' => 'F'
+        'gender' => 'F',
+        'rue' => '',
+        'ville' => '',
+        'pays' => '',
+        'a_propos' => '',
+        'logo' => 'nologo.png',
     ];
 });

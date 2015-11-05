@@ -71,6 +71,11 @@ class AuthController extends Controller
             'rc' => $data['rc'],
             'tel' => $data['tel'],
             'gender' => $data['gender'],
+            'rue' => '',
+            'ville' => '',
+            'pays' => '',
+            'a_propos' => '',
+            'logo' => 'nologo.png',
         ]);
     }
 }

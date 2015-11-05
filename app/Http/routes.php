@@ -30,4 +30,5 @@ $router->group([
     post('admin/user/reset-email', 'UserController@resetEmail');
     post('admin/user/profile-update', 'UserController@updateProfile');
     post('admin/user/profile-desable', 'UserController@desableProfile');
+    post('admin/user/societe-update', 'UserController@updateSociete');
 });

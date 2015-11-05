@@ -97,21 +97,21 @@
 				<form class="form-horizontal form-label-left" method="post" action="{{url('/admin/user/reset-password')}}" data-parsley-validate id="resetPasswordForm">
 					{!! csrf_field() !!}
 					<div class="form-group">
-						<label class="control-label col-md-3 col-sm-3 col-xs-3">Ancien mot de passe</label>
+						<label class="control-label col-md-3 col-sm-3 col-xs-3">Ancien mot de passe <span class="required">*</span></label>
 						<div class="col-md-9 col-sm-9 col-xs-9">
 							<input type="password" class="form-control" name="password_old" required="" minlength="6" data-parsley-trigger="change" >
 							<span class="fa fa-lock form-control-feedback right" aria-hidden="true"></span>
 						</div>
 					</div>
 					<div class="form-group">
-						<label class="control-label col-md-3 col-sm-3 col-xs-3">Nouveau mot de passe</label>
+						<label class="control-label col-md-3 col-sm-3 col-xs-3">Nouveau mot de passe <span class="required">*</span></label>
 						<div class="col-md-9 col-sm-9 col-xs-9">
 							<input type="password" class="form-control" name="password" id="password" required="" minlength="6" data-parsley-trigger="change" >
 							<span class="fa fa-lock form-control-feedback right" aria-hidden="true"></span>
 						</div>
 					</div>
 					<div class="form-group">
-						<label class="control-label col-md-3 col-sm-3 col-xs-3">Confirmer votre mot de passe</label>
+						<label class="control-label col-md-3 col-sm-3 col-xs-3">Confirmer votre mot de passe <span class="required">*</span></label>
 						<div class="col-md-9 col-sm-9 col-xs-9">
 							<input type="password" class="form-control" name="password_confirmation" required="" minlength="6" data-parsley-equalto="#password" data-parsley-trigger="change" >
 							<span class="fa fa-lock form-control-feedback right" aria-hidden="true"></span>
@@ -148,9 +148,9 @@
 					{!! csrf_field() !!}
 
 					<div class="form-group">
-						<label class="control-label col-md-3 col-sm-3 col-xs-3">Email</label>
+						<label class="control-label col-md-3 col-sm-3 col-xs-3">Email <span class="required">*</span></label>
 						<div class="col-md-9 col-sm-9 col-xs-9">
-							<input type="email" class="form-control" name="email" required="" data-parsley-maxlength="255">
+							<input type="email" class="form-control" name="email" required="" data-parsley-maxlength="255" data-parsley-trigger="change">
 							<span class="fa fa-at form-control-feedback right" aria-hidden="true"></span>
 						</div>
 					</div>
@@ -187,17 +187,17 @@
 							{!! csrf_field() !!}
 							
 							<div class="form-group">
-								<label class="control-label col-md-3 col-sm-3 col-xs-3">Nom</label>
+								<label class="control-label col-md-3 col-sm-3 col-xs-3">Nom <span class="required">*</span></label>
 								<div class="col-md-9 col-sm-9 col-xs-9">
 									<input type="text" class="form-control" name="name" required="" data-parsley-maxlength="255">
 									<span class="fa fa-user form-control-feedback right" aria-hidden="true"></span>
 								</div>
 							</div>
 							<div class="form-group">
-								<label class="control-label col-md-3 col-sm-3 col-xs-3">Téléphone</label>
+								<label class="control-label col-md-3 col-sm-3 col-xs-3">Téléphone <span class="required">*</span></label>
 								<div class="col-md-9 col-sm-9 col-xs-9">
 									<input type="text" class="form-control" name="tel" required="" data-parsley-maxlength="50">
-									<span class="fa fa-user form-control-feedback right" aria-hidden="true"></span>
+									<span class="fa fa-phone form-control-feedback right" aria-hidden="true"></span>
 								</div>
 							</div>
 							<div class="ln_solid"></div>

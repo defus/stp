@@ -100,4 +100,36 @@ class UserTest extends TestCase
             //->seePageIs('/auth/login')
             //->see("Impossble de se connecter car vous avez désactivé votre compte. Veuillez nous contacter pour activer votre compte à nouveau !");
     }
+    
+    public function testUpdateSociete()
+    {
+        $user = factory(App\User::class)->create();
+        
+        $file_moved_path = public_path() .'/users/' . $user->id . '/logo.png';
+        if (File::exists($file_moved_path)){
+            File::delete($file_moved_path);
+        }
+        
+        $this->actingAs($user)
+            ->visit('/admin/user/societe')
+            ->type('odo', 'societe')
+            ->type('123456', 'rc')
+            ->attach(base_path('tests/') . '/logo.png', 'logo')
+            ->type('rue', 'rue')
+            ->type('ville', 'ville')
+            ->type('pays', 'pays')
+            ->type('A propos', 'a_propos')
+            ->press('UpdateSociete')
+            ->seePageIs('/admin/user/societe')
+            ->see("Mise-à-jour des informations de la société effectuées avec succès !");
+        
+        $this->seeInDatabase("users", ['email' => $user->email, 'societe' => "odo", 'rc' => '123456', 'logo' => $user->id . '/logo.png',
+            'rue' => 'rue', 'ville' => 'ville', 'pays' => 'pays', 'a_propos' => "A propos"]);
+        
+        if (!File::exists($file_moved_path)){
+            $this->fail("Le fichier doit exister !");
+        }else{
+            File::delete($file_moved_path);
+        }
+    }
 }

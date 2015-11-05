@@ -10,6 +10,7 @@ use App\Http\Requests\UserPasswordUpdateRequest;
 use App\Http\Requests\UserEmailUpdateRequest;
 use App\Http\Requests\UpdateProfileRequest;
 use App\Http\Requests\DesableProfileRequest;
+use App\Http\Requests\UpdateSocieteRequest;
 use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
@@ -149,5 +150,25 @@ class UserController extends Controller
         
         return redirect('/auth/login')
             ->withSuccess("Votre compte a bien été désactivé. Si vous souhaitez le réactiver, veuillez nous contacter !");
+    }
+    
+    protected function updateSociete(UpdateSocieteRequest $request){
+        $user = $request->user();
+        
+        $imageName = 'logo.' . $request->file('logo')->getClientOriginalExtension();
+        $request->file('logo')->move(public_path() . '/users/' . $user->id, $imageName);
+        
+        $user->societe = $request->get('societe');
+        $user->rc = $request->get('rc');
+        $user->rue = $request->get('rue');
+        $user->ville = $request->get('ville');
+        $user->pays = $request->get('pays');
+        $user->a_propos = $request->get('a_propos');
+        $user->logo = $user->id . '/' . $imageName;
+        
+        $user->save();
+        
+        return redirect('/admin/user/societe')
+            ->withSuccess("Mise-à-jour des informations de la société effectuées avec succès !");
     }
 }
