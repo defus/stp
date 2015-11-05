@@ -52,9 +52,10 @@
 		};
 	});
 
-	try {
-		hljs.initHighlightingOnLoad();
-	} catch (err) {}
+		try {
+			hljs.initHighlightingOnLoad();
+		} catch (err) {}
+	
 </script>
 <!-- /form validation -->
 @endsection

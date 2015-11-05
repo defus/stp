@@ -23,7 +23,7 @@ class UserTableSeeder extends Seeder
             'ville' => 'Rabat',
             'pays' => 'Maroc',
             'a_propos' => 'Maz',
-            'logo' => 'logo.png',
+            'logo' => 'nologo.jpg',
         ]);
     }
 }

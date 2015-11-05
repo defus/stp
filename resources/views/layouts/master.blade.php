@@ -62,7 +62,7 @@
                     <!-- menu prile quick info -->
                     <div class="profile">
                         <div class="profile_pic">
-                            <img src="{{url('tp_back')}}/images/img.jpg" alt="..." class="img-circle profile_img">
+                            <img src="{{url('/users/' . auth()->user()->logo)}}" alt="..." class="img-circle profile_img">
                         </div>
                         <div class="profile_info">
                             <span>Bienvenue,</span>
@@ -145,7 +145,7 @@
                         <ul class="nav navbar-nav navbar-right">
                             <li class="">
                                 <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                    <img src="{{url('tp_back')}}/images/img.jpg" alt="">{{auth()->user()->name}}
+                                    <img src="{{url('/users/' . auth()->user()->logo)}}" alt="">{{auth()->user()->name}}
                                     <span class=" fa fa-angle-down"></span>
                                 </a>
                                 <ul class="dropdown-menu dropdown-usermenu animated fadeInDown pull-right">
@@ -174,7 +174,7 @@
                                     <li>
                                         <a>
                                             <span class="image">
-                                        <img src="{{url('tp_back')}}/images/img.jpg" alt="Image du profile" />
+                                        <img src="{{url('/users/' . auth()->user()->logo)}}" alt="Image du profile" />
                                     </span>
                                             <span>
                                         <span>{{auth()->user()->name}}</span>
@@ -188,7 +188,7 @@
                                     <li>
                                         <a>
                                             <span class="image">
-                                        <img src="{{url('tp_back')}}/images/img.jpg" alt="Image du profile" />
+                                        <img src="{{url('/users/' . auth()->user()->logo)}}" alt="Image du profile" />
                                     </span>
                                             <span>
                                         <span>{{auth()->user()->name}}</span>

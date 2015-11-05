@@ -36,4 +36,11 @@ class User extends Model implements AuthenticatableContract,
      * @var array
      */
     protected $hidden = ['password', 'remember_token'];
+    
+    public function getLogoAttribute($value){
+        if($value === NULL){
+            return "nologo.jpg";
+        }
+        return $value;
+    }
 }

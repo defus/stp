@@ -14,6 +14,6 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'ville' => '',
         'pays' => '',
         'a_propos' => '',
-        'logo' => 'nologo.png',
+        'logo' => 'nologo.jpg',
     ];
 });

@@ -75,7 +75,7 @@ class AuthController extends Controller
             'ville' => '',
             'pays' => '',
             'a_propos' => '',
-            'logo' => 'nologo.png',
+            'logo' => 'nologo.jpg',
         ]);
     }
 }
