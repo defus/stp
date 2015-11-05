@@ -91,12 +91,40 @@ class UserController extends Controller
         //
     }
     
-    public function profile(){
-        return view('admin.user.profile');
+    protected $fields = [
+        'name' => '',
+        'tel' => '',
+        'email' => '',
+        'societe' => '',
+        'rc' => '',
+        'rue' => '',
+        'ville' => '',
+        'pays' => '',
+        'a_propos' => '',
+        'logo' => 'nologo.jpg',
+        
+    ];
+    
+    public function profile(Request $request){
+        $user = $request->user();
+        
+        $data = [];
+        foreach (array_keys($this->fields) as $field) {
+            $data[$field] = old($field, $user->$field);
+        }
+        
+        return view('admin.user.profile', $data);
     }
     
-    public function societe(){
-        return view('admin.user.societe');
+    public function societe(Request $request){
+        $user = $request->user();
+        
+        $data = [];
+        foreach (array_keys($this->fields) as $field) {
+            $data[$field] = old($field, $user->$field);
+        }
+        
+        return view('admin.user.societe', $data);
     }
     
     protected function resetPassword(UserPasswordUpdateRequest $request)

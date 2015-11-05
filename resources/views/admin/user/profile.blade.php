@@ -151,7 +151,7 @@
 					<div class="form-group">
 						<label class="control-label col-md-3 col-sm-3 col-xs-3">Email <span class="required">*</span></label>
 						<div class="col-md-9 col-sm-9 col-xs-9">
-							<input type="email" class="form-control" name="email" required="" data-parsley-maxlength="255" data-parsley-trigger="change">
+							<input type="email" class="form-control" name="email" value="{{$email}}" required="" data-parsley-maxlength="255" data-parsley-trigger="change">
 							<span class="fa fa-at form-control-feedback right" aria-hidden="true"></span>
 						</div>
 					</div>
@@ -190,14 +190,14 @@
 							<div class="form-group">
 								<label class="control-label col-md-3 col-sm-3 col-xs-3">Nom <span class="required">*</span></label>
 								<div class="col-md-9 col-sm-9 col-xs-9">
-									<input type="text" class="form-control" name="name" required="" data-parsley-maxlength="255">
+									<input type="text" class="form-control" name="name" value="{{$name}}" required="" data-parsley-maxlength="255">
 									<span class="fa fa-user form-control-feedback right" aria-hidden="true"></span>
 								</div>
 							</div>
 							<div class="form-group">
 								<label class="control-label col-md-3 col-sm-3 col-xs-3">Téléphone <span class="required">*</span></label>
 								<div class="col-md-9 col-sm-9 col-xs-9">
-									<input type="text" class="form-control" name="tel" required="" data-parsley-maxlength="50">
+									<input type="text" class="form-control" name="tel" value="{{$tel}}" required="" data-parsley-maxlength="50">
 									<span class="fa fa-phone form-control-feedback right" aria-hidden="true"></span>
 								</div>
 							</div>

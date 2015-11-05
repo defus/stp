@@ -74,20 +74,21 @@
 					<div class="form-group">
 						<label class="control-label col-md-3 col-sm-3 col-xs-3">Nom de la société (raison sociale) <span class="required">*</span></label>
 						<div class="col-md-6 col-sm-6 col-xs-12">
-							<input type="text" class="form-control" name="societe" required="" data-parsley-maxlength="255"  data-parsley-trigger="change">
+							<input type="text" class="form-control" name="societe" value="{{$societe}}" required="" data-parsley-maxlength="255"  data-parsley-trigger="change">
 							<span class="fa fa-user form-control-feedback right" aria-hidden="true"></span>
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="control-label col-md-3 col-sm-3 col-xs-3">Numero du registre de commerce <span class="required">*</span></label>
 						<div class="col-md-6 col-sm-6 col-xs-12">
-							<input type="text" class="form-control" name="rc" required="" data-parsley-maxlength="50"  data-parsley-trigger="change">
+							<input type="text" class="form-control" name="rc" value="{{$rc}}" required="" data-parsley-maxlength="50"  data-parsley-trigger="change">
 							<span class="fa fa-user form-control-feedback right" aria-hidden="true"></span>
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="control-label col-md-3 col-sm-3 col-xs-3">Importer un logo <span class="required">*</span></label>
 						<input type="file" name="logo" required=""  data-parsley-trigger="change">
+						<img src="{{url('/users/' . $logo)}}" alt="" class="img-circle profile_img" style="width:56px;height:56px;/>
 					</div>
 					<div class="ln_solid"></div>
 					
@@ -96,21 +97,21 @@
 					<div class="form-group">
 						<label class="control-label col-md-3 col-sm-3 col-xs-3">Rue <span class="required">*</span></label>
 						<div class="col-md-6 col-sm-6 col-xs-12">
-							<input type="text" class="form-control" name="rue" required="" data-parsley-maxlength="255" data-parsley-trigger="change">
+							<input type="text" class="form-control" name="rue" value="{{$rue}}" required="" data-parsley-maxlength="255" data-parsley-trigger="change">
 							<span class="fa fa-user form-control-feedback right" aria-hidden="true"></span>
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="control-label col-md-3 col-sm-3 col-xs-3">Ville <span class="required">*</span></label>
 						<div class="col-md-6 col-sm-6 col-xs-12">
-							<input type="text" class="form-control" name="ville" required="" data-parsley-maxlength="255" data-parsley-trigger="change">
+							<input type="text" class="form-control" name="ville" value="{{$ville}}" required="" data-parsley-maxlength="255" data-parsley-trigger="change">
 							<span class="fa fa-user form-control-feedback right" aria-hidden="true"></span>
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="control-label col-md-3 col-sm-3 col-xs-3">Pays <span class="required">*</span></label>
 						<div class="col-md-6 col-sm-6 col-xs-12">
-							<input type="text" class="form-control" name="pays" required="" data-parsley-maxlength="255" data-parsley-trigger="change">
+							<input type="text" class="form-control" name="pays" value="{{$pays}}" required="" data-parsley-maxlength="255" data-parsley-trigger="change">
 							<span class="fa fa-user form-control-feedback right" aria-hidden="true"></span>
 						</div>
 					</div>
@@ -121,7 +122,7 @@
 					<div class="form-group">
 						<label class="control-label col-md-3 col-sm-3 col-xs-3">A propos <span class="required">*</span></label>
 						<div class="col-md-6 col-sm-6 col-xs-12">
-							<textarea id="a_propos" required="required" name="a_propos" class="form-control col-md-7 col-xs-12" data-parsley-maxlength="1000" data-parsley-trigger="change"></textarea>
+							<textarea id="a_propos" required="required" name="a_propos" class="form-control col-md-7 col-xs-12" data-parsley-maxlength="1000" data-parsley-trigger="change">{{$a_propos}}</textarea>
 						</div>
 					</div>
 					<div class="ln_solid"></div>
