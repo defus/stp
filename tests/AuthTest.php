@@ -19,7 +19,7 @@ class AuthTest extends TestCase
             ->type('123456', 'password_confirmation')
             ->type('rc_1', 'rc')
             ->type('00212876564', 'tel')
-            ->type('M', 'gender')
+            ->type('T', 'c_type')
             ->type('defolandry@yahoo.fr', 'email')
             ->press("Enregistrer")
             ->seePageIs('/admin/chargement');
@@ -29,7 +29,7 @@ class AuthTest extends TestCase
             'societe' => 'LIMC',
             'rc' => 'rc_1',
             'tel' => '00212876564',
-            'gender' => 'M'
+            'c_type' => 'T'
             ]);
     }
     
@@ -50,7 +50,7 @@ class AuthTest extends TestCase
             ->type('123456', 'password_confirmation')
             ->type('rc_1', 'rc')
             ->type('00212876564', 'tel')
-            ->type('M', 'gender')
+            ->type('T', 'c_type')
             ->type('defolandry@yahoo.fr', 'email')
             ->press("Enregistrer")
             ->seePageIs('/auth/register');

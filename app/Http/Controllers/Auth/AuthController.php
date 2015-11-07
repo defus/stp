@@ -51,7 +51,7 @@ class AuthController extends Controller
             'societe' => 'required|max:255',
             'rc' => 'required|max:50',
             'tel' => 'required|max:50',
-            'gender' => 'required|max:1',
+            'c_type' => 'required|max:1',
         ]);
     }
 
@@ -70,7 +70,7 @@ class AuthController extends Controller
             'societe' => $data['societe'],
             'rc' => $data['rc'],
             'tel' => $data['tel'],
-            'gender' => $data['gender'],
+            'c_type' => $data['c_type'],
             'rue' => '',
             'ville' => '',
             'pays' => '',

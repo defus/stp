@@ -73,8 +73,8 @@
 				<input type="text" class="form-control" placeholder="Téléphone" name="tel" value="{{ old('tel') }}" required="" data-parsley-maxlength="50"/>
 			</div>
 			<div>
-				Transporteur : <input type="radio" class="flat" name="gender" id="genderM" value="M" {{old('gender') == 'M' ? 'checked=""' : ''}}  required="" /> 
-				Donneur d'ordre' : <input type="radio" class="flat" name="gender" id="genderF" value="F" {{old('gender') == 'F' ? 'checked=""' : ''}} required="" />
+				Transporteur : <input type="radio" class="flat" name="c_type" id="c_typeM" value="T" {{old('c_type') == 'T' ? 'checked=""' : ''}}  required="" /> 
+				Donneur d'ordre' : <input type="radio" class="flat" name="c_type" id="c_typeF" value="O" {{old('c_type') == 'O' ? 'checked=""' : ''}} required="" />
 			</div>
 			<div>
 				<br/><button type="submit" class="btn btn-success" name="Enregistrer">S'inscrire</button>

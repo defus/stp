@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Chargement;
 
 class ChargementController extends Controller
 {
@@ -13,9 +14,25 @@ class ChargementController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('admin.chargement.list');
+        $user = $request->user();
+        $titre = "";
+        
+        if($user->c_type === 'O'){
+            $chargements = Chargement::where('statut', 'O')->where('owner_id', $user->id)->get();
+            $titre = "Mes demandes de chargements";
+        }else if($user->c_type === 'T'){
+            $chargements = Chargement::where('statut', 'O')->get();
+            $titre = "Demandes de chargements émises par les donneurs d'ordre";
+        }else{
+            return redirect('/admin/user/societe')
+                ->withErrors("Impossible d'afficher les chargements. Vous n'êtes pas un utilisateur de type transporteur ou donneur d'ordre. Veuillez nous contacter");
+        }
+        
+        return view('admin.chargement.list')
+            ->with('chargements', $chargements)
+            ->with('titre', $titre);
     }
 
     /**

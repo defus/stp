@@ -7,9 +7,9 @@
          convertNoticesToExceptions="true"
          convertWarningsToExceptions="true"
          processIsolation="false"
-         stopOnFailure="false">
+         stopOnFailure="true">
     <testsuites>
-        <testsuite name="Application Test Suite">
+        <testsuite name="Suite de test de l'application'">
             <directory>./tests/</directory>
         </testsuite>
     </testsuites>

@@ -9,7 +9,7 @@
 	<div class="col-md-12 col-sm-12 col-xs-12">
 		<div class="x_panel">
 			<div class="x_title">
-				<h2>Demandes de chargements</h2>
+				<h2>{{$titre}}</h2>
 				<ul class="nav navbar-right panel_toolbox">
 					<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
 					</li>
@@ -26,19 +26,30 @@
 					<thead>
 						<tr>
 							<th style="width: 1%">#</th>
-							<th style="width: 20%">Société</th>
+							@if(auth()->user()->c_type === 'T')
+								<th style="width: 20%">Société</th>
+							@endif
 							<th style="width: 20%">Départ</th>
 							<th style="width: 20%">Arrivée</th>
 							<th style="width: 30%">Colis</th>
-							<th style="width: 10%">Nombre de réponses</th>
-							<th>Status</th>
+							@if(auth()->user()->c_type === 'O')
+								<th style="width: 10%">Nombre de réponses</th>
+								<th>Status</th>
+							@endif
 							<th style="width: 10%">#Actions</th>
 						</tr>
 					</thead>
 					<tbody>
+						@foreach($chargements as $chargement)
 						<tr>
-							<td>1</td>
-							<td>Tartanpion</td>
+							<td>{{$chargement->id}}</td>
+							@if(auth()->user()->c_type === 'T')
+							<td>
+								{{$chargement->owner->societe}}
+								<br/>
+								<img src="{{url('/users/' . $chargement->owner->logo)}}" alt="Logo de la société" style="width:56px;height:56px;"/>
+							</td>
+							@endif
 							<td>
 								<a>Rue, ville, pays</a>
 								<br />
@@ -54,66 +65,25 @@
 								<br />
 								<small>Type de trajet, nature de marchandise, volume</small>
 							</td>
+							@if(auth()->user()->c_type === 'O')
 							<td>10</td>
 							<td>
-								<button type="button" class="btn btn-success btn-xs">Archivé</button>
+								@if($chargement->statut === 'O')
+									<button type="button" class="btn btn-warning btn-xs">En cours</button>
+								@elseif($chargement->statut === 'A')
+									<button type="button" class="btn btn-success btn-xs">Archivé</button>
+								@endif
 							</td>
+							@endif
 							<td>
-								<a href="{{url('/admin/chargement/1')}}" class="btn btn-primary btn-xs"><i class="fa fa-search"></i> Consulter les réponses </a>
+								@if(auth()->user()->c_type === 'O')
+									<a href="{{url('/admin/chargement/' . $chargement->id)}}" class="btn btn-primary btn-xs"><i class="fa fa-search"></i> Consulter les réponses </a>
+								@elseif(auth()->user()->c_type === 'T')
+									<a href="{{url('/admin/chargement/2/repondre')}}" class="btn btn-primary btn-xs"><i class="fa fa-search"></i> Répondre </a>
+								@endif
 							</td>
 						</tr>
-						<tr>
-							<td>2</td>
-							<td>Tartanpion 2</td>
-							<td>
-								<a>Rue, ville, pays</a>
-								<br />
-								<small>date et heure de départ</small>
-							</td>
-							<td>
-								<a>Rue, ville, pays</a>
-								<br />
-								<small>date et heure limite de livraison</small>
-							</td>
-							<td>
-								<a>Frais de transit, Distance</a>
-								<br />
-								<small>Type de trajet, nature de marchandise, volume</small>
-							</td>
-							<td>10</td>
-							<td>
-								<button type="button" class="btn btn-warning btn-xs">En cours</button>
-							</td>
-							<td>
-								<a href="{{url('/admin/chargement/2/repondre')}}" class="btn btn-primary btn-xs"><i class="fa fa-search"></i> Répondre </a>
-							</td>
-						</tr>
-						<tr>
-							<td>3</td>
-							<td>Tartanpion 3</td>
-							<td>
-								<a>Rue, ville, pays</a>
-								<br />
-								<small>date et heure de départ</small>
-							</td>
-							<td>
-								<a>Rue, ville, pays</a>
-								<br />
-								<small>date et heure limite de livraison</small>
-							</td>
-							<td>
-								<a>Frais de transit, Distance</a>
-								<br />
-								<small>Type de trajet, nature de marchandise, volume</small>
-							</td>
-							<td>10</td>
-							<td>
-								<button type="button" class="btn btn-warning btn-xs">En cours</button>
-							</td>
-							<td>
-								<a href="{{url('/admin/chargement/3/repondre')}}" class="btn btn-primary btn-xs"><i class="fa fa-search"></i> Répondre </a>
-							</td>
-						</tr>
+						@endforeach
 					</tbody>
 				</table>
 				<!-- end project list -->

@@ -14,7 +14,13 @@ class CreateChargementsTable extends Migration
     {
         Schema::create('chargements', function (Blueprint $table) {
             $table->increments('id');
-            $table->timestamps();
+            $table->string('statut', 1);
+            $table->integer('owner_id')->unsigned()->index();
+            $table->nullableTimestamps();
+            
+            $table->foreign('owner_id')
+                ->references('id')
+                ->on('users');
         });
     }
 
