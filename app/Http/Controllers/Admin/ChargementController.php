@@ -19,10 +19,10 @@ class ChargementController extends Controller
         $user = $request->user();
         $titre = "";
         
-        if($user->c_type === 'O'){
+        if($user->isDonneurOrdre()){
             $chargements = Chargement::where('statut', 'O')->where('owner_id', $user->id)->get();
             $titre = "Mes demandes de chargements";
-        }else if($user->c_type === 'T'){
+        }else if($user->isTransporteur()){
             $chargements = Chargement::where('statut', 'O')->get();
             $titre = "Demandes de chargements émises par les donneurs d'ordre";
         }else{

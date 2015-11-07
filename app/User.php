@@ -16,6 +16,10 @@ class User extends Model implements AuthenticatableContract,
 {
     use Authenticatable, Authorizable, CanResetPassword;
 
+    const TRANSPORTEUR = "transporteur";
+    const DONNEUR_ORDRE = "donneur_ordre";
+    const ADMIN = "admin";
+    
     /**
      * The database table used by the model.
      *
@@ -42,5 +46,26 @@ class User extends Model implements AuthenticatableContract,
             return "nologo.jpg";
         }
         return $value;
+    }
+    
+    public function getType(){
+        if($this->isTransporteur()){
+            return 'Transporteur';
+        }else if($this->isDonneurOrdre()){
+            return "Donneur d'ordre";
+        }
+        return '';
+    }
+    
+    public function isDonneurOrdre(){
+        return $this->c_type === 'O';
+    }
+    
+    public function isTransporteur(){
+        return $this->c_type === 'T';
+    }
+    
+    public function isAdmin(){
+        return false;
     }
 }

@@ -26,16 +26,16 @@
 					<thead>
 						<tr>
 							<th style="width: 1%">#</th>
-							@if(auth()->user()->c_type === 'T')
+							@can(App\User::TRANSPORTEUR)
 								<th style="width: 20%">Société</th>
-							@endif
+							@endcan
 							<th style="width: 20%">Départ</th>
 							<th style="width: 20%">Arrivée</th>
 							<th style="width: 30%">Colis</th>
-							@if(auth()->user()->c_type === 'O')
+							@can(App\User::DONNEUR_ORDRE)
 								<th style="width: 10%">Nombre de réponses</th>
 								<th>Status</th>
-							@endif
+							@endcan
 							<th style="width: 10%">#Actions</th>
 						</tr>
 					</thead>
@@ -43,13 +43,13 @@
 						@foreach($chargements as $chargement)
 						<tr>
 							<td>{{$chargement->id}}</td>
-							@if(auth()->user()->c_type === 'T')
+							@can(App\User::TRANSPORTEUR)
 							<td>
 								{{$chargement->owner->societe}}
 								<br/>
 								<img src="{{url('/users/' . $chargement->owner->logo)}}" alt="Logo de la société" style="width:56px;height:56px;"/>
 							</td>
-							@endif
+							@endcan
 							<td>
 								<a>Rue, ville, pays</a>
 								<br />
@@ -65,7 +65,7 @@
 								<br />
 								<small>Type de trajet, nature de marchandise, volume</small>
 							</td>
-							@if(auth()->user()->c_type === 'O')
+							@can(App\User::DONNEUR_ORDRE)
 							<td>10</td>
 							<td>
 								@if($chargement->statut === 'O')
@@ -74,13 +74,14 @@
 									<button type="button" class="btn btn-success btn-xs">Archivé</button>
 								@endif
 							</td>
-							@endif
+							@endcan
 							<td>
-								@if(auth()->user()->c_type === 'O')
+								@can(App\User::DONNEUR_ORDRE)
 									<a href="{{url('/admin/chargement/' . $chargement->id)}}" class="btn btn-primary btn-xs"><i class="fa fa-search"></i> Consulter les réponses </a>
-								@elseif(auth()->user()->c_type === 'T')
+								@endcan
+								@can(App\User::TRANSPORTEUR)
 									<a href="{{url('/admin/chargement/2/repondre')}}" class="btn btn-primary btn-xs"><i class="fa fa-search"></i> Répondre </a>
-								@endif
+								@endcan
 							</td>
 						</tr>
 						@endforeach

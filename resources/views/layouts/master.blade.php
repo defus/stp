@@ -67,6 +67,7 @@
                         <div class="profile_info">
                             <span>Bienvenue,</span>
                             <h2>{{auth()->user()->name}}</h2>
+                            <h3>{{auth()->user()->getType()}}</h3>
                         </div>
                     </div>
                     <!-- /menu prile quick info -->
@@ -81,16 +82,26 @@
                             <ul class="nav side-menu">
                                 <li><a><i class="fa fa-truck"></i> Demandes de chargement</a>
                                     <ul class="nav child_menu" style="display: none">
+                                        @can(App\User::DONNEUR_ORDRE)
                                         <li><a href="{{url('/admin/chargement/create')}}"> Ajouter une demande de chargement <span class="label label-success pull-right">Nouveau</span></a>
                                         </li>
+                                        @endcan
+                                        @can(App\User::DONNEUR_ORDRE)
                                         <li><a href="{{url('/admin/chargement')}}"> Mes Demandes de chargement en cours</a>
                                         </li>
+                                        @endcan
+                                        @can(App\User::TRANSPORTEUR)
                                         <li><a href="{{url('/admin/chargement')}}"> Demande de chargement en cours</a>
                                         </li>
+                                        @endcan
+                                        @can(App\User::DONNEUR_ORDRE)
                                         <li><a href="{{url('/admin/chargement')}}"> Demandes de chargement archivées</a>
                                         </li>
+                                        @endcan
+                                        @can(App\User::ADMIN)
                                         <li><a href="{{url('/admin/chargement')}}"> Statistiques</a>
                                         </li>
+                                        @endcan
                                     </ul>
                                 </li>
                             </ul>

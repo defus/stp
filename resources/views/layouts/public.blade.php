@@ -35,15 +35,19 @@
         <div class="item active" style="background-image: url({{url('tp_front')}}/images/slider/transport-routier.jpg)">
           <div class="caption">
             <h1 class="animated fadeInLeftBig">Bienvenue à <span>Shared Carrier Plateform</span></h1>
-            <p class="animated fadeInRightBig">Transportez moins cher, plus rapidement, n'importe où</p>
             <a class="btn btn-start animated fadeInUpBig" href="{{url('/auth/register')}}">Créez un compte, C'est gratuit !</a>
+            <a class="btn btn-start animated fadeInUpBig" href="{{url('/auth/login')}}">Connexion</a>
+            <br/><br/>
+            <p class="animated fadeInRightBig">Transportez moins cher, plus rapidement, n'importe où</p>
           </div>
         </div>
         <div class="item" style="background-image: url({{url('tp_front')}}/images/slider/camions.jpg)">
           <div class="caption">
             <h1 class="animated fadeInLeftBig">Dites hello à <span>Shared Carrier Plateform</span></h1>
-            <p class="animated fadeInRightBig">Marché où vous recevez des offres pour vos chargements de la part d’un grand nombre de transporteurs évalués</p>
             <a class="btn btn-start animated fadeInUpBig" href="{{url('/auth/register')}}">Créez un compte, C'est gratuit !</a>
+            <a class="btn btn-start animated fadeInUpBig" href="{{url('/auth/login')}}">Connexion</a>
+            <br/><br/>
+            <p class="animated fadeInRightBig">Marché où vous recevez des offres pour vos chargements de la part d’un grand nombre de transporteurs évalués</p>
           </div>
         </div>
       </div>
