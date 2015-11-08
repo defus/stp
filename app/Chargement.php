@@ -12,4 +12,8 @@ class Chargement extends Model
         return $this->hasOne('App\User', 'id', 'owner_id');
     }
     
+    public function colis(){
+        return $this->hasMany('App\ChargementColis', 'chargement_id', 'id');
+    }
+    
 }

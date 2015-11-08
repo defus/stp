@@ -27,11 +27,12 @@
 						<tr>
 							<th style="width: 1%">#</th>
 							@can(App\User::TRANSPORTEUR)
-								<th style="width: 20%">Société</th>
+								<th style="width: 10%">Société</th>
 							@endcan
-							<th style="width: 20%">Départ</th>
-							<th style="width: 20%">Arrivée</th>
-							<th style="width: 30%">Colis</th>
+							<th style="width: 10%">Départ</th>
+							<th style="width: 10%">Arrivée</th>
+							<th style="width: 20%">Autres informations</th>
+							<th style="width: 20%">Colisage</th>
 							@can(App\User::DONNEUR_ORDRE)
 								<th style="width: 10%">Nombre de réponses</th>
 								<th>Status</th>
@@ -51,19 +52,35 @@
 							</td>
 							@endcan
 							<td>
-								<a>Rue, ville, pays</a>
+								<a><b>{{$chargement->depart_rue}}
+									<br/>{{$chargement->depart_ville}}
+									<br/>{{$chargement->depart_pays}}
+								</b></a>
 								<br />
-								<small>date et heure de départ</small>
+								<small>Heure de départ : {{$chargement->depart_date}}</small>
 							</td>
 							<td>
-								<a>Rue, ville, pays</a>
+								<a><b>{{$chargement->arrivee_rue}}
+									<br/>{{$chargement->arrivee_ville}}
+									<br/>{{$chargement->arrivee_pays}}
+								</b></a>
 								<br />
-								<small>date et heure limite de livraison</small>
+								<small>Heure limite d'arrivée : {{$chargement->arrivee_date_limite}}</small>
 							</td>
 							<td>
-								<a>Frais de transit, Distance</a>
+								<a><b>Distance :</b> {{$chargement->distance}} Km 
+									<br/><b>Poids :</b> {{$chargement->poids}} Kg 
+									<br/><b>Volume :</b> {{$chargement->volume}} m3 </a>
 								<br />
-								<small>Type de trajet, nature de marchandise, volume</small>
+								<small><b>Frais de transit :</b> {{$chargement->frais_transit . ' ' . $chargement->devise}}
+									<br/><b>Type de trajet :</b> {{$chargement->type_trajet}}
+									<br/><b>Nature de la marchandise :</b> {{$chargement->nature_marchandise}} 
+									<br/><b>Type d'assurance :</b> {{$chargement->type_assurance}}</small>
+							</td>
+							<td>
+								@foreach($chargement->colis as $colis)
+									<a>{{$colis->nombre_unite}} x {{$colis->emballage}} ({{($colis->empilable === 'O') ? 'Empilable' : 'Non empilable' }})</a><br/>
+								@endforeach
 							</td>
 							@can(App\User::DONNEUR_ORDRE)
 							<td>10</td>
