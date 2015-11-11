@@ -49,6 +49,7 @@
 		
 		<form method="POST" action="{{url('/auth/register')}}" data-parsley-validate id="registerForm">
 			{!! csrf_field() !!}
+			
 			<input type="hidden" name="_token" value="{{ csrf_token() }}">
 			<h1>Créez votre compte</h1>
 			<div>

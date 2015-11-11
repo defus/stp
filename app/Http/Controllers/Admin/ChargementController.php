@@ -6,9 +6,38 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Chargement;
+use App\Http\Requests\CreateChargementRequest ;
+use Carbon\Carbon;
 
 class ChargementController extends Controller
 {
+    protected $fields = [
+        'statut' => 'O',
+        'depart_rue' => '',
+        'depart_ville' => '',
+        'depart_pays' => '',
+        //'depart_date' => '',
+        //'depart_heure' => '',
+        'arrivee_rue' => '',
+        'arrivee_ville' => '',
+        'arrivee_pays' => '',
+        //'arrivee_date_limite' => '',
+        //'arrivee_heure_limite' => '',
+        'frais_transit' => '',
+        'distance' => '',
+        'type_trajet' => '',
+        'nature_marchandise' => '',
+        'type_assurance' => '',
+        'poids' => '',
+        'volume' => '',
+        'produit_dangereux' => '',
+        'mode_paiement' => '',
+        'delai_paiement' => '',
+        'devise' => '',
+        'type_prix' => '',
+        'prix_fixe' => '',
+        'info_complementaire'=> ''];
+    
     /**
      * Display a listing of the resource.
      *
@@ -51,9 +80,22 @@ class ChargementController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateChargementRequest $request)
     {
-        //
+        $chargement = new Chargement();
+        
+        foreach (array_keys($this->fields) as $field) {
+            $chargement->$field = $request->get($field);
+        }
+        
+        $chargement->owner_id = $request->user()->id;
+        $chargement->statut = 'O';
+        $chargement->depart_date = Carbon::createFromFormat('d/m/Y H:i:s', $request->get('depart_date') . ' ' . $request->get('depart_heure'));
+        $chargement->arrivee_date_limite = Carbon::createFromFormat('d/m/Y H:i:s', $request->get('arrivee_date_limite') . ' ' . $request->get('arrivee_heure_limite'));
+        
+        $chargement->save();
+        
+        return response()->json(['id' => $chargement->id, 'created' => true]);
     }
 
     /**

@@ -52,9 +52,9 @@
 		};
 	});
 
-		try {
-			hljs.initHighlightingOnLoad();
-		} catch (err) {}
+	try {
+		hljs.initHighlightingOnLoad();
+	} catch (err) {}
 	
 </script>
 <!-- /form validation -->
@@ -97,6 +97,7 @@
 				<br />
 				<form class="form-horizontal form-label-left" method="post" action="{{url('/admin/user/reset-password')}}" data-parsley-validate id="resetPasswordForm">
 					{!! csrf_field() !!}
+					
 					<div class="form-group">
 						<label class="control-label col-md-3 col-sm-3 col-xs-3">Ancien mot de passe <span class="required">*</span></label>
 						<div class="col-md-9 col-sm-9 col-xs-9">

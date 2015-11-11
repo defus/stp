@@ -28,6 +28,9 @@
     <!-- colorpicker -->
     <link href="{{url('tp_back')}}/css/colorpicker/bootstrap-colorpicker.min.css" rel="stylesheet">
     
+    <!-- sweetalert -->
+    @yield('style')
+    
     <script src="{{url('tp_back')}}/js/jquery.min.js"></script>
 
     <!--[if lt IE 9]>
@@ -54,7 +57,7 @@
                 <div class="left_col scroll-view">
 
                     <div class="navbar nav_title" style="border: 0;">
-                        <a href="{{url('/')}}" class="site_title"><i class="fa fa-truck"></i> <span>SCP</span></a>
+                        <a href="{{url('/')}}" class="site_title"><span>SCP</span></a>
                     </div>
                     <div class="clearfix"></div>
 

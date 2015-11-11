@@ -2,31 +2,127 @@
 
 @section('title', 'Ajouter un nouveau chargement')
 
+@section('style')
+<link rel="stylesheet" type="text/css" href="{{url('tp_back')}}/js/sweetalert/dist/sweetalert.css">
+@endsection
+
 @section('script')
+<!-- sweetalert -->
+<script type="text/javascript"  src="{{url('tp_back')}}/js/sweetalert/dist/sweetalert.min.js"></script> 
+<!-- input mask -->
+    <script src="{{url('tp_back')}}/js/input_mask/jquery.inputmask.js"></script>
 <!-- form wizard -->
 <script type="text/javascript" src="{{url('tp_back')}}/js/wizard/jquery.smartWizard.js"></script>
 <script type="text/javascript">
 	$(document).ready(function () {
+		//input mask
+		$("#depart_date").inputmask();
+		$("#depart_heure").inputmask();
+		$("#arrivee_date_limite").inputmask();
+		$("#arrivee_heure_limite").inputmask();
+		
 		// Smart Wizard 	
-		$('#wizard').smartWizard();
+		$('#wizard').smartWizard({enableAllSteps:false, cycleSteps:false, labelNext:'Suivant', labelPrevious:'Précédent', labelFinish:'Terminer', onLeaveStep: leaveAStepCallback, onFinish: onFinishCallback, });
 
-		function onFinishCallback() {
-			$('#wizard').smartWizard('showMessage', 'Finish Clicked');
-			//alert('Finish Clicked');
+		function leaveAStepCallback(obj, context){
+			if(context.fromStep == 1 && context.toStep == 2){
+				$('#createChargementFormStep1').parsley().validate();
+				return validateFront($('#createChargementFormStep1'));
+			}
+			else if(context.fromStep == 2 && context.toStep == 3){
+				$('#createChargementFormStep2').parsley().validate();
+				return validateFront($('#createChargementFormStep2'));
+			}
+			else if(context.fromStep == 3 && context.toStep == 4){
+				$('#createChargementFormStep2').parsley().validate();
+				return validateFront($('#createChargementFormStep3'));
+			} 
+			return true;
 		}
+	
+		function onFinishCallback(objs, context){
+			$('#createChargementFormStep4').parsley().validate();
+			if(validateFront($('#createChargementFormStep4'))){
+				var f_step1_data = $('#createChargementFormStep1').serialize();
+				var f_step2_data = $('#createChargementFormStep2').serialize();
+				var f_step3_data = $('#createChargementFormStep3').serialize();
+				var f_step4_data = $('#createChargementFormStep4').serialize();
+				
+				swal({   title: "Ajouter une demande de chargement",   text: "Créer la demande de chargement ?",   type: "info",   showCancelButton: true,   closeOnConfirm: false,   showLoaderOnConfirm: true, cancelButtonText : "Annuler", confirmButtonText : "Créer la demande"}, 
+					function(){   
+						$.ajax({
+							url : '{{url('/admin/chargement')}}',
+							dataType : 'json',
+							type : 'post',
+							data : f_step1_data + '&' + f_step2_data + '&' + f_step3_data + '&' + f_step4_data ,
+							success : function(data) {
+								swal({title: "Ajouter une demande de chargement",   text: "Création effectuée avec succès !",   type: "success"},function(){ 
+									window.location = "{{url('/admin/chargement')}}/" + data.id;
+								}); 
+							},
+							error : function(xhr, statut, postError) {
+								var errorMessage = "";
+								if(xhr.status == 422) {
+									$.each(xhr.responseJSON, function(index, item){
+										errorMessage = errorMessage + item + "<br/>";
+									});
+								}
+								swal({title: "Ajouter une demande de chargement", text : "Erreur lors de la création du chargement !<br/><br/>" + errorMessage, type : "error", showLoaderOnConfirm:false, showConfirmButton:true, html:true}); 
+							}
+						}); 
+					});
+				
+			}
+		}
+		
+		var validateFront = function (form) {
+			if (true === form.parsley().isValid()) {
+				$('.bs-callout-info').removeClass('hidden');
+				$('.bs-callout-warning').addClass('hidden');
+				return true;
+			} else {
+				$('.bs-callout-info').addClass('hidden');
+				$('.bs-callout-warning').removeClass('hidden');
+				return false;
+			}
+		};
+		
 	});
+	
+	try {
+		hljs.initHighlightingOnLoad();
+	} catch (err) {}
+
 
 </script>
 @endsection
 
 @section('content')
 <div class="row">
-
+	@if (Session::has('errors'))
+	<div class="alert alert-danger alert-dismissible fade in" role="alert">
+		<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
+		</button>
+		<ul>
+		@foreach (Session::get('errors')->all() as $error)
+			<li>{{$error}}</li>
+		@endforeach
+		</ul>
+	</div>
+	@endif
+	@if (Session::has('success'))
+	<div class="alert alert-success alert-dismissible fade in" role="alert">
+		<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
+		</button>
+		{{Session::get('success')}}
+	</div>
+	@endif
+	
 	<!-- form input mask -->
 	<div class="col-md-12 col-sm-12 col-xs-12">
 		<div class="x_panel">
 			<div class="x_title">
-				<h2>Formulaire chargement</h2>
+				<h2>Formulaire de demande de chargement</h2>
 				<ul class="nav navbar-right panel_toolbox">
 					<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
 					</li>
@@ -63,7 +159,7 @@
 								<span class="step_no">3</span>
 								<span class="step_descr">
 						Etape 3<br />
-						<small>Colis</small>
+						<small>Détails et colisage</small>
 					</span>
 							</a>
 						</li>
@@ -78,39 +174,40 @@
 						</li>
 					</ul>
 					<div id="step-1">
-						<form class="form-horizontal form-label-left">
+						<form class="form-horizontal form-label-left" data-parsley-validate id="createChargementFormStep1">
+							{!! csrf_field() !!}
 
 							<div class="form-group">
-								<label class="control-label col-md-3 col-sm-3 col-xs-12" for="rue">Rue <span class="required">*</span>
+								<label class="control-label col-md-3 col-sm-3 col-xs-12" for="depart_rue">Rue <span class="required">*</span>
 								</label>
 								<div class="col-md-6 col-sm-6 col-xs-12">
-									<input type="text" id="rue" required="required" class="form-control col-md-7 col-xs-12">
+									<input type="text" name="depart_rue" value="{{old('depart_rue')}}" required="required" class="form-control col-md-7 col-xs-12" data-parsley-maxlength="255" data-parsley-trigger="change">
 								</div>
 							</div>
 							<div class="form-group">
-								<label class="control-label col-md-3 col-sm-3 col-xs-12" for="ville">Ville <span class="required">*</span>
+								<label class="control-label col-md-3 col-sm-3 col-xs-12" for="depart_ville">Ville <span class="required">*</span>
 								</label>
 								<div class="col-md-6 col-sm-6 col-xs-12">
-									<input type="text" id="ville" name="ville" required="required" class="form-control col-md-7 col-xs-12">
+									<input type="text" name="depart_ville" value="{{old('depart_ville')}}" required="required" class="form-control col-md-7 col-xs-12" data-parsley-maxlength="255" data-parsley-trigger="change">
 								</div>
 							</div>
 							<div class="form-group">
-								<label for="pays" class="control-label col-md-3 col-sm-3 col-xs-12">Pays</label>
+								<label for="depart_pays" class="control-label col-md-3 col-sm-3 col-xs-12">Pays <span class="required">*</span></label>
 								<div class="col-md-6 col-sm-6 col-xs-12">
-									<input id="pays" class="form-control col-md-7 col-xs-12" type="text" name="pays">
+									<input class="form-control col-md-7 col-xs-12" type="text" name="depart_pays" value="{{old('depart_pays')}}" required="required" data-parsley-maxlength="255" data-parsley-trigger="change">
 								</div>
 							</div>
 							<div class="form-group">
 								<label class="control-label col-md-3 col-sm-3 col-xs-12">Date de départ <span class="required">*</span>
 								</label>
 								<div class="col-md-6 col-sm-6 col-xs-12">
-									<input id="dateDepart" class="date-picker form-control col-md-7 col-xs-12" required="required" type="text">
+									<input class="date-picker form-control col-md-7 col-xs-12" required="required" type="text" id="depart_date" name="depart_date" value="{{old('depart_date')}}" data-inputmask="'mask': '99/99/9999'" data-parsley-pattern="(((0[1-9]|[12]\d|3[01])\/(0[13578]|1[02])\/((19|[2-9]\d)\d{2}))|((0[1-9]|[12]\d|30)\/(0[13456789]|1[012])\/((19|[2-9]\d)\d{2}))|((0[1-9]|1\d|2[0-8])\/02\/((19|[2-9]\d)\d{2}))|(29\/02\/((1[6-9]|[2-9]\d)(0[48]|[2468][048]|[13579][26])|((16|[2468][048]|[3579][26])00))))" data-parsley-trigger="change">
 								</div>
 							</div>
 							<div class="form-group">
-								<label for="heureDepart" class="control-label col-md-3 col-sm-3 col-xs-12">Heure de départ <span class="required">*</span></label>
+								<label for="depart_heure" class="control-label col-md-3 col-sm-3 col-xs-12">Heure de départ <span class="required">*</span></label>
 								<div class="col-md-6 col-sm-6 col-xs-12">
-									<input id="heureDepart" class="form-control col-md-7 col-xs-12" required="required" type="text" name="heureDepart">
+									<input class="form-control col-md-7 col-xs-12" required="required" type="text" id="depart_heure" name="depart_heure" value="{{old('depart_heure')}}" data-inputmask="'mask': '99:99:99'"  data-parsley-pattern="([01]?[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]" data-parsley-trigger="change">
 								</div>
 							</div>
 
@@ -118,124 +215,139 @@
 
 					</div>
 					<div id="step-2">
-						<form class="form-horizontal form-label-left">
+						<form class="form-horizontal form-label-left" data-parsley-validate id="createChargementFormStep2">
+							
 
 							<div class="form-group">
-								<label class="control-label col-md-3 col-sm-3 col-xs-12" for="rue">Rue <span class="required">*</span>
+								<label class="control-label col-md-3 col-sm-3 col-xs-12" for="arrivee_rue">Rue <span class="required">*</span>
 								</label>
 								<div class="col-md-6 col-sm-6 col-xs-12">
-									<input type="text" id="rue" required="required" class="form-control col-md-7 col-xs-12">
+									<input type="text" required="required" class="form-control col-md-7 col-xs-12"  name="arrivee_rue" value="{{old('arrivee_rue')}}" data-parsley-maxlength="255" data-parsley-trigger="change">
 								</div>
 							</div>
 							<div class="form-group">
-								<label class="control-label col-md-3 col-sm-3 col-xs-12" for="ville">Ville <span class="required">*</span>
+								<label class="control-label col-md-3 col-sm-3 col-xs-12" for="arrivee_ville">Ville <span class="required">*</span>
 								</label>
 								<div class="col-md-6 col-sm-6 col-xs-12">
-									<input type="text" id="ville" name="ville" required="required" class="form-control col-md-7 col-xs-12">
+									<input type="text" required="required" class="form-control col-md-7 col-xs-12" name="arrivee_ville" value="{{old('arrivee_ville')}}" data-parsley-maxlength="255" data-parsley-trigger="change">
 								</div>
 							</div>
 							<div class="form-group">
-								<label for="pays" class="control-label col-md-3 col-sm-3 col-xs-12">Pays</label>
+								<label for="arrivee_pays" class="control-label col-md-3 col-sm-3 col-xs-12">Pays <span class="required">*</span></label>
 								<div class="col-md-6 col-sm-6 col-xs-12">
-									<input id="pays" class="form-control col-md-7 col-xs-12" type="text" name="pays">
+									<input class="form-control col-md-7 col-xs-12" type="text" required="required" name="arrivee_pays" value="{{old('arrivee_pays')}}" data-parsley-maxlength="255" data-parsley-trigger="change">
 								</div>
 							</div>
 							<div class="form-group">
-								<label class="control-label col-md-3 col-sm-3 col-xs-12">Date limite de livraison <span class="required">*</span>
+								<label for="arrivee_date_limite" class="control-label col-md-3 col-sm-3 col-xs-12">Date limite de livraison <span class="required">*</span>
 								</label>
 								<div class="col-md-6 col-sm-6 col-xs-12">
-									<input id="dateDepart" class="date-picker form-control col-md-7 col-xs-12" required="required" type="text">
+									<input class="date-picker form-control col-md-7 col-xs-12" required="required" type="text" id="arrivee_date_limite" name="arrivee_date_limite" value="{{old('arrivee_date_limite')}}" data-inputmask="'mask': '99/99/9999'" data-parsley-pattern="(((0[1-9]|[12]\d|3[01])\/(0[13578]|1[02])\/((19|[2-9]\d)\d{2}))|((0[1-9]|[12]\d|30)\/(0[13456789]|1[012])\/((19|[2-9]\d)\d{2}))|((0[1-9]|1\d|2[0-8])\/02\/((19|[2-9]\d)\d{2}))|(29\/02\/((1[6-9]|[2-9]\d)(0[48]|[2468][048]|[13579][26])|((16|[2468][048]|[3579][26])00))))" data-parsley-trigger="change">
 								</div>
 							</div>
 							<div class="form-group">
-								<label for="heureDepart" class="control-label col-md-3 col-sm-3 col-xs-12">Heure limite de livraison (heure locale)</label>
+								<label for="arrivee_heure_limite" class="control-label col-md-3 col-sm-3 col-xs-12">Heure limite de livraison (heure locale) <span class="required">*</span></label>
 								<div class="col-md-6 col-sm-6 col-xs-12">
-									<input id="heureDepart" class="form-control col-md-7 col-xs-12" type="text" name="heureDepart">
+									<input class="form-control col-md-7 col-xs-12" type="text" required="required" id="arrivee_heure_limite" name="arrivee_heure_limite" value="{{old('arrivee_heure_limite')}}" data-inputmask="'mask': '99:99:99'"  data-parsley-pattern="([01]?[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]" data-parsley-trigger="change">
 								</div>
 							</div>
 
 						</form>
 					</div>
 					<div id="step-3">
-						<form class="form-horizontal form-label-left">
+						<form class="form-horizontal form-label-left" data-parsley-validate id="createChargementFormStep3">
+							
 
 							<div class="form-group">
 								<label class="control-label col-md-3 col-sm-3 col-xs-12" for="rue">Frais de transit <span class="required">*</span>
 								</label>
 								<div class="col-md-6 col-sm-6 col-xs-12">
-									<input type="text" id="rue" required="required" class="form-control col-md-7 col-xs-12">
+									<select class="form-control col-md-7 col-xs-12" name="frais_transit" data-parsley-maxlength="50" data-parsley-trigger="change">
+										<option value="Aucun" selected="selected">Aucun</option>
+										<option value="A notre charge">A notre charge</option>
+										<option value="A la charge du transporteur">A la charge du transporteur</option>
+									</select>
 								</div>
 							</div>
 							<div class="form-group">
 								<label class="control-label col-md-3 col-sm-3 col-xs-12" for="ville">Distance <span class="required">*</span>
 								</label>
 								<div class="col-md-6 col-sm-6 col-xs-12">
-									<input type="text" id="ville" name="ville" required="required" class="form-control col-md-7 col-xs-12">
+									<input type="text" required="required" class="form-control col-md-7 col-xs-12" name="distance" value="{{old('distance')}}" data-parsley-type="integer" data-parsley-trigger="change">
 								</div>
 							</div>
 							<div class="form-group">
-								<label for="pays" class="control-label col-md-3 col-sm-3 col-xs-12">Type de trajet</label>
+								<label for="pays" class="control-label col-md-3 col-sm-3 col-xs-12">Type de trajet <span class="required">*</span></label>
 								<div class="col-md-6 col-sm-6 col-xs-12">
-									<input id="pays" class="form-control col-md-7 col-xs-12" type="text" name="pays">
+									<select class="form-control col-md-7 col-xs-12" name="type_trajet" data-parsley-maxlength="50" data-parsley-trigger="change">
+										<option value="Aller simple" selected="selected">Aller simple</option>
+										<option value="Allez/retour">Allez/retour</option>
+									</select>
 								</div>
 							</div>
 							<div class="form-group">
 								<label class="control-label col-md-3 col-sm-3 col-xs-12">Nature de la marchandise <span class="required">*</span>
 								</label>
 								<div class="col-md-6 col-sm-6 col-xs-12">
-									<input id="dateDepart" class="date-picker form-control col-md-7 col-xs-12" required="required" type="text">
+									<input class="form-control col-md-7 col-xs-12" required="required" type="text"  name="nature_marchandise" value="{{old('nature_marchandise')}}" data-parsley-maxlength="255" data-parsley-trigger="change">
 								</div>
 							</div>
 							<div class="form-group">
-								<label for="heureDepart" class="control-label col-md-3 col-sm-3 col-xs-12">Type d'assurance requise</label>
+								<label for="type_assurance" class="control-label col-md-3 col-sm-3 col-xs-12">Type d'assurance requise <span class="required">*</span></label>
 								<div class="col-md-6 col-sm-6 col-xs-12">
-									<input id="heureDepart" class="form-control col-md-7 col-xs-12" type="text" name="heureDepart">
+									<select class="form-control col-md-7 col-xs-12" name="type_assurance" data-parsley-maxlength="50" data-parsley-trigger="change">
+										<option value="Aucune" selected="selected">Aucune</option>
+										<option value="Marchandise">Marchandise</option>
+									</select>
 								</div>
 							</div>
 							<div class="form-group">
-								<label for="heureDepart" class="control-label col-md-3 col-sm-3 col-xs-12">Poids</label>
+								<label for="heureDepartpoids" class="control-label col-md-3 col-sm-3 col-xs-12">Poids <span class="required">*</span></label>
 								<div class="col-md-6 col-sm-6 col-xs-12">
-									<input id="heureDepart" class="form-control col-md-7 col-xs-12" type="text" name="heureDepart">
+									<input class="form-control col-md-7 col-xs-12" type="text"  name="poids" value="{{old('poids')}}" data-parsley-type="number" data-parsley-trigger="change">
 								</div>
 							</div>
 							<div class="form-group">
-								<label for="heureDepart" class="control-label col-md-3 col-sm-3 col-xs-12">Volume</label>
+								<label for="volume" class="control-label col-md-3 col-sm-3 col-xs-12">Volume <span class="required">*</span></label>
 								<div class="col-md-6 col-sm-6 col-xs-12">
-									<input id="heureDepart" class="form-control col-md-7 col-xs-12" type="text" name="heureDepart">
+									<input class="form-control col-md-7 col-xs-12" type="text"  name="volume" value="{{old('volume')}}" data-parsley-type="number" data-parsley-trigger="change">
 								</div>
 							</div>
 							<div class="form-group">
-								<label for="heureDepart" class="control-label col-md-3 col-sm-3 col-xs-12">Ce chargement contient t'il des articles dangereux ?</label>
+								<label for="produit_dangereux" class="control-label col-md-3 col-sm-3 col-xs-12">Ce chargement contient t'il des articles dangereux ? <span class="required">*</span></label>
 								<div class="col-md-6 col-sm-6 col-xs-12">
-									<input id="heureDepart" class="form-control col-md-7 col-xs-12" type="text" name="heureDepart">
+									<select class="form-control col-md-7 col-xs-12" name="produit_dangereux" data-parsley-maxlength="1" data-parsley-trigger="change">
+										<option value="N" selected="selected">NON</option>
+										<option value="O">OUI</option>
+									</select>
 								</div>
 							</div>
 							
 							<span class="section">Liste de colisage</span>
 							
 							<div class="form-group">
-								<label for="heureDepart" class="control-label col-md-3 col-sm-3 col-xs-12">Emballage</label>
+								<label for="heureDepart" class="control-label col-md-3 col-sm-3 col-xs-12">Emballage <span class="required">*</span></label>
 								<div class="col-md-6 col-sm-6 col-xs-12">
-									<input id="heureDepart" class="form-control col-md-7 col-xs-12" type="text" name="heureDepart">
+									<input class="form-control col-md-7 col-xs-12" type="text" >
 								</div>
 							</div>
 							<div class="form-group">
-								<label for="heureDepart" class="control-label col-md-3 col-sm-3 col-xs-12">Nombre d'unités</label>
+								<label for="heureDepart" class="control-label col-md-3 col-sm-3 col-xs-12">Nombre d'unités <span class="required">*</span></label>
 								<div class="col-md-6 col-sm-6 col-xs-12">
-									<input id="heureDepart" class="form-control col-md-7 col-xs-12" type="text" name="heureDepart">
+									<input class="form-control col-md-7 col-xs-12" type="text" >
 								</div>
 							</div>
 							<div class="form-group">
-								<label for="heureDepart" class="control-label col-md-3 col-sm-3 col-xs-12">Empilable ?</label>
+								<label for="heureDepart" class="control-label col-md-3 col-sm-3 col-xs-12">Empilable ? <span class="required">*</span></label>
 								<div class="col-md-6 col-sm-6 col-xs-12">
-									<input id="heureDepart" class="form-control col-md-7 col-xs-12" type="text" name="heureDepart">
+									<input class="form-control col-md-7 col-xs-12" type="text" >
 								</div>
 							</div>
 							<div class="ln_solid"></div>
 
 							<div class="form-group">
 								<div class="col-md-9 col-md-offset-3">
-									<button type="submit" class="btn btn-success">Ajouter un autre article</button>
+									<button class="btn btn-success">Ajouter un autre article</button>
 								</div>
 							</div>
 							
@@ -274,39 +386,66 @@
 						</form>
 					</div>
 					<div id="step-4">
-						<form class="form-horizontal form-label-left">
-
+						<form class="form-horizontal form-label-left" data-parsley-validate id="createChargementFormStep4">
 							<div class="form-group">
-								<label class="control-label col-md-3 col-sm-3 col-xs-12" for="rue">Moyen de paiement <span class="required">*</span>
+								<label class="control-label col-md-3 col-sm-3 col-xs-12" for="mode_paiement">Moyen de paiement <span class="required">*</span>
 								</label>
 								<div class="col-md-6 col-sm-6 col-xs-12">
-									<input type="text" id="rue" required="required" class="form-control col-md-7 col-xs-12">
+									<select class="form-control col-md-7 col-xs-12" name="mode_paiement" data-parsley-maxlength="50" data-parsley-trigger="change">
+										<option value="Virement bancaire" selected="selected">Virement bancaire</option>
+										<option value="Espèce">Espèce</option>
+										<option value="Lettre de change">Lettre de change</option>
+										<option value="Chèque">Chèque</option>
+									</select>
 								</div>
 							</div>
 							<div class="form-group">
-								<label class="control-label col-md-3 col-sm-3 col-xs-12" for="ville">Délai de paiement <span class="required">*</span>
+								<label class="control-label col-md-3 col-sm-3 col-xs-12" for="delai_paiement">Délai de paiement <span class="required">*</span>
 								</label>
 								<div class="col-md-6 col-sm-6 col-xs-12">
-									<input type="text" id="ville" name="ville" required="required" class="form-control col-md-7 col-xs-12">
+									<select class="form-control col-md-7 col-xs-12" name="delai_paiement" data-parsley-maxlength="50" data-parsley-trigger="change">
+										<option value="A la commande" selected="selected">A la commande</option>
+										<option value="Au départ">Au départ</option>
+										<option value="A la livraison">A la livraison</option>
+										<option value="Fin de mois">Fin de mois</option>
+										<option value="30 jours fin de mois">30 jours fin de mois</option>
+										<option value="60 jours fin de mois">60 jours fin de mois</option>
+										<option value="90 jours fin de mois">90 jours fin de mois</option>
+									</select>
 								</div>
 							</div>
 							<div class="form-group">
-								<label for="pays" class="control-label col-md-3 col-sm-3 col-xs-12">Devise</label>
+								<label for="devise" class="control-label col-md-3 col-sm-3 col-xs-12">Devise <span class="required">*</span></label>
 								<div class="col-md-6 col-sm-6 col-xs-12">
-									<input id="pays" class="form-control col-md-7 col-xs-12" type="text" name="pays">
+									<select class="form-control col-md-7 col-xs-12" name="devise" data-parsley-maxlength="50" data-parsley-trigger="change">
+										<option value="Dh" selected="selected">Dh</option>
+										<option value="Euro">Euro</option>
+										<option value="$">$</option>
+										<option value="£">£</option>
+									</select>
 								</div>
 							</div>
 							<div class="form-group">
-								<label class="control-label col-md-3 col-sm-3 col-xs-12">Type de prix <span class="required">*</span>
+								<label class="control-label col-md-3 col-sm-3 col-xs-12" for="type_prix">Type de prix <span class="required">*</span>
 								</label>
 								<div class="col-md-6 col-sm-6 col-xs-12">
-									<input id="dateDepart" class="date-picker form-control col-md-7 col-xs-12" required="required" type="text">
+									<select class="form-control col-md-7 col-xs-12" name="type_prix" data-parsley-maxlength="50" data-parsley-trigger="change">
+										<option value="Fixe" selected="selected">Fixe</option>
+										<option value="Enchères">Enchères</option>
+									</select>
 								</div>
 							</div>
 							<div class="form-group">
-								<label for="heureDepart" class="control-label col-md-3 col-sm-3 col-xs-12">Informations complémentaires</label>
+								<label class="control-label col-md-3 col-sm-3 col-xs-12" for="prix_fixe">Prix fixe <span class="required">*</span>
+								</label>
 								<div class="col-md-6 col-sm-6 col-xs-12">
-									<textarea id="textarea" required="required" name="textarea" class="form-control col-md-7 col-xs-12"></textarea>
+									<input class="date-picker form-control col-md-7 col-xs-12" required="required" type="text" name="prix_fixe" value="{{old('prix_fixe')}}" data-parsley-type="number" data-parsley-trigger="change">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="info_complementaire" class="control-label col-md-3 col-sm-3 col-xs-12">Informations complémentaires <span class="required">*</span></label>
+								<div class="col-md-6 col-sm-6 col-xs-12">
+									<textarea required="required" class="form-control col-md-7 col-xs-12"  name="info_complementaire" value="{{old('info_complementaire')}}" data-parsley-maxlength="1000" data-parsley-trigger="change"></textarea>
 								</div>
 							</div>
 
