@@ -20,9 +20,11 @@ $router->group([
 ], function () {
     resource('admin/help', 'HelpController');
     
+    get('admin/chargement/archive', 'ChargementController@archive');
     resource('admin/chargement', 'ChargementController');
     get('admin/chargement/upload', 'ChargementController@upload');
     get('admin/chargement/{id}/repondre', 'ChargementController@repondre');
+    get('admin/chargement/{id}/archive', 'ChargementController@doArchive');
     post('admin/chargement/{id}/repondre', 'ChargementController@doRepondre');
     
     get('admin/user/profile', 'UserController@profile');

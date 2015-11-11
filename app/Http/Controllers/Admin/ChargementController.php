@@ -152,6 +152,25 @@ class ChargementController extends Controller
         return redirect('/admin/chargement')
             ->withSuccess("Votre réponse à cette demande de chargemet a été envoyée avec succès au donneur d'ordre !");
     }
+    
+    public function archive(Request $request){
+        $user = $request->user();
+        $chargements = Chargement::where('statut', 'A')->where('owner_id', $user->id)->get();
+        $titre = "Mes demandes de chargement archivées";
+        
+        return view('admin.chargement.list')
+            ->with('chargements', $chargements)
+            ->with('titre', $titre);
+    }
+    
+    public function doArchive(Request $request, $id){
+        $chargement = Chargement::find($id);
+        $chargement->statut = 'A';
+        $chargement->save();
+        
+        return redirect('/admin/chargement/' . $id)
+            ->withSuccess("Vous avez archivé votre demande de chargement avec succès !");
+    }
 
     /**
      * Show the form for editing the specified resource.

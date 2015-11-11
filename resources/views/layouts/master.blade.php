@@ -98,7 +98,7 @@
                                         </li>
                                         @endcan
                                         @can(App\User::DONNEUR_ORDRE)
-                                        <li><a href="{{url('/admin/chargement')}}"> Demandes de chargement archivées</a>
+                                        <li><a href="{{url('/admin/chargement/archive')}}"> Demandes de chargement archivées</a>
                                         </li>
                                         @endcan
                                         @can(App\User::ADMIN)

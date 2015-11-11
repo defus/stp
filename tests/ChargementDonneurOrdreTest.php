@@ -74,4 +74,16 @@ class ChargementDonneurOrdreTest extends TestCase
         $this->seeInDatabase('chargements', ['id' => 5, 'depart_date' => $depart_date->format('Y-m-d H:i:s'), 'arrivee_date_limite' => $arrivee_date->format('Y-m-d H:i:s'), 'owner_id' => $donneurOrdre->id, 'statut' => 'O']);
             
     }
+    
+    public function testArchiverChargement(){
+        $donneurOrdre = User::where('societe', 'FILER')->firstOrFail();
+        
+        $this->actingAs($donneurOrdre)
+            ->visit('/admin/chargement/2/archive')
+            ->seePageIs('/admin/chargement/2')
+            ->see("Vous avez archivé votre demande de chargement avec succès !");
+            
+        $this->seeInDatabase('chargements', ['id' => 2, 'statut' => 'A']);
+        
+    }
 }

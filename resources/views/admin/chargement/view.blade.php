@@ -4,7 +4,25 @@
 
 @section('content')
 <div class="row">
-
+	@if (Session::has('errors'))
+	<div class="alert alert-danger alert-dismissible fade in" role="alert">
+		<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
+		</button>
+		<ul>
+		@foreach (Session::get('errors')->all() as $error)
+			<li>{{$error}}</li>
+		@endforeach
+		</ul>
+	</div>
+	@endif
+	@if (Session::has('success'))
+	<div class="alert alert-success alert-dismissible fade in" role="alert">
+		<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
+		</button>
+		{{Session::get('success')}}
+	</div>
+	@endif
+	
 	<!-- form input mask -->
 	<div class="col-md-12 col-sm-12 col-xs-12">
 		<div class="x_panel">
@@ -28,11 +46,11 @@
 						</li>
 						<li>
 							<span class="name"> Réponse la plus rescente </span>
-							<span class="value text-success"> {{$reponse_rescent->created_at}} </span>
+							<span class="value text-success"> {{($reponse_rescent != NULL) ? $reponse_rescent->created_at : "N/A"}} </span>
 						</li>
 						<li class="hidden-phone">
 							<span class="name"> Réponse ayant le petit prix </span>
-							<span class="value text-success"> {{$reponse_petit_prix->offre_financiere}} </span>
+							<span class="value text-success"> {{($reponse_petit_prix != NULL) ? $reponse_petit_prix->offre_financiere : "N/A"}} </span>
 						</li>
 					</ul>
 					<br />
@@ -79,7 +97,7 @@
 						</div>
 						<div class="panel-body">
 							<div class="text-center mtop20">
-								<a href="#" class="btn btn-sm btn-primary">Archiver</a>
+								<a href="{{url('/admin/chargement/'.$chargement->id.'/archive')}}" class="btn btn-sm btn-primary">Archiver</a>
 							</div>
 							<h5>Statut</h5>
 							<ul class="list-unstyled project_files">
