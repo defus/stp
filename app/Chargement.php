@@ -16,4 +16,8 @@ class Chargement extends Model
         return $this->hasMany('App\ChargementColis', 'chargement_id', 'id');
     }
     
+    public function reponses(){
+        return $this->hasMany('App\ChargementReponse', 'chargement_id', 'id');
+    }
+    
 }

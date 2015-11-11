@@ -18,7 +18,7 @@ class UserTableSeeder extends Seeder
             'societe' => 'LIMC',
             'rc' => '23980',
             'tel' => '00212876564',
-            'c_type' => 'O',
+            'c_type' => 'T',
             'rue' => 'kitoko',
             'ville' => 'Rabat',
             'pays' => 'Maroc',

@@ -10,7 +10,7 @@
 <!-- sweetalert -->
 <script type="text/javascript"  src="{{url('tp_back')}}/js/sweetalert/dist/sweetalert.min.js"></script> 
 <!-- input mask -->
-    <script src="{{url('tp_back')}}/js/input_mask/jquery.inputmask.js"></script>
+<script src="{{url('tp_back')}}/js/input_mask/jquery.inputmask.js"></script>
 <!-- form wizard -->
 <script type="text/javascript" src="{{url('tp_back')}}/js/wizard/jquery.smartWizard.js"></script>
 <script type="text/javascript">

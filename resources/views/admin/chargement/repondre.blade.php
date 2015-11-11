@@ -2,6 +2,28 @@
 
 @section('title', 'Répondre à la demande de chargement')
 
+@section('script')
+<script type="text/javascript">
+	$(document).ready(function () {
+		$.listen('parsley:field:validate', function () {
+			validateFront();
+		});
+		$('#repondreChargementForm .btn').on('click', function () {
+			$('#repondreChargementForm').parsley().validate();
+			validateFront();
+		});
+		var validateFront = function () {
+			if (true === $('#repondreChargementForm').parsley().isValid()) {
+				$('.bs-callout-info').removeClass('hidden');
+				$('.bs-callout-warning').addClass('hidden');
+			} else {
+				$('.bs-callout-info').addClass('hidden');
+				$('.bs-callout-warning').removeClass('hidden');
+			}
+		};
+	});
+@endsection
+
 @section('content')
 <div class="row">
 
@@ -9,7 +31,7 @@
 	<div class="col-md-12 col-sm-12 col-xs-12">
 		<div class="x_panel">
 			<div class="x_title">
-				<h2>Détails de la demande de chargement</h2>
+				<h2>Répondre à la demande de chargement</h2>
 				<ul class="nav navbar-right panel_toolbox">
 					<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
 					</li>
@@ -21,8 +43,9 @@
 				
 				<div class="col-md-9 col-sm-9 col-xs-12">
 
-					<form class="form-horizontal form-label-left">
-
+					<form class="form-horizontal form-label-left" data-parsley-validate id="repondreChargementForm" method="POST" action="{{url('/admin/chargement/' . $chargement->id . '/repondre')}}">
+						{!! csrf_field() !!}
+						
 						<span class="section">Détails de la demande</span>
 						
 						<div class="row">
@@ -30,21 +53,33 @@
 								<div class="form-group">
 									<label class="control-label col-md-3 col-sm-3 col-xs-3">Départ</label>
 									<div class="col-md-6 col-sm-6 col-xs-12">
-										<p class="form-control-static">Rue, Vile, Pays<br/> Date et heure de départ</p>
+										<p class="form-control-static">Rue : {{$chargement->depart_rue}}, 
+											<br/>Vile : {{$chargement->depart_ville}}, 
+											<br/>Pays : {{$chargement->depart_pays}}
+											<br/> Date de départ : {{$chargement->depart_date}}</p>
 									</div>
 								</div>
 								
 								<div class="form-group">
 									<label class="control-label col-md-3 col-sm-3 col-xs-3">Livraison</label>
 									<div class="col-md-6 col-sm-6 col-xs-12">
-										<p class="form-control-static">Rue, Vile, Pays<br/> Date et heure limite de livraison</p>
+										<p class="form-control-static">Rue : {{$chargement->depart_rue}}, 
+											<br/>Vile : {{$chargement->depart_ville}}, Pays : {{$chargement->depart_pays}}
+											<br/> Date limite de livraison : {{$chargement->depart_date}}</p>
 									</div>
 								</div>
 								
 								<div class="form-group">
-									<label class="control-label col-md-3 col-sm-3 col-xs-3">Colis</label>
+									<label class="control-label col-md-3 col-sm-3 col-xs-3">Plus d'informations</label>
 									<div class="col-md-6 col-sm-6 col-xs-12">
-										<p class="form-control-static">Frais de transit : 1000<br/> Distance : 100 km<br/>Type de trajet : xxx<br/>Nature de la marchandise : yyy<br/>Type d'assurance : zzz<br/>Poids : 1000 Kg<br/>Volume:100 litre<br/>Ce chargement contient t'il des articles dangereux ? : Non<br/></p>
+										<p class="form-control-static">Frais de transit : {{$chargement->frais_transit}}
+											<br/> Distance : {{$chargement->distance}} km
+											<br/>Type de trajet : {{$chargement->type_trajet}}
+											<br/>Nature de la marchandise : {{$chargement->nature_marchandise}}
+											<br/>Type d'assurance : {{$chargement->type_assurance}}
+											<br/>Poids : {{$chargement->poids}} Kg
+											<br/>Volume : {{$chargement->volume}} m3
+											<br/>Ce chargement contient t'il des articles dangereux ? : {{$chargement->produit_dangereux == 'N' ? 'NON' : 'OUI'}}<br/></p>
 									</div>
 								</div>
 							
@@ -57,25 +92,19 @@
 											<table class="table">
 												<thead>
 													<tr>
-														<th>#</th>
 														<th>Emballage</th>
 														<th>Nombre d'unités</th>
 														<th>Empilable ?</th>
 													</tr>
 												</thead>
 												<tbody>
+													@foreach($chargement->colis as $colis)
 													<tr>
-														<th scope="row">1</th>
-														<td>Mark</td>
-														<td>1200</td>
-														<td>OUI</td>
+														<td>{{$colis->emballage}}</td>
+														<td>{{$colis->nombre_unite}}</td>
+														<td>{{($colis->empilable === 'O') ? 'Empilable' : 'Non empilable' }}</td>
 													</tr>
-													<tr>
-														<th scope="row">2</th>
-														<td>Jacob</td>
-														<td>1230</td>
-														<td>NON</td>
-													</tr>
+													@endforeach
 												</tbody>
 											</table>
 										</p>
@@ -89,14 +118,14 @@
 						<div class="form-group">
 							<label class="control-label col-md-3 col-sm-3 col-xs-3">Offre financière</label>
 							<div class="col-md-6 col-sm-6 col-xs-12">
-								<input type="text" class="form-control">
-								<span class="fa fa-user form-control-feedback right" aria-hidden="true"></span>
+								<input type="text" class="form-control col-md-7 col-xs-12" name="offre_financiere" value="{{$reponse_offre_financiere}}" data-parsley-type="number" data-parsley-trigger="change" required/>
+								<span class="fa fa-money form-control-feedback right" aria-hidden="true"></span>
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="control-label col-md-3 col-sm-3 col-xs-3">A propos</label>
 							<div class="col-md-6 col-sm-6 col-xs-12">
-								<textarea id="textarea" required="required" name="textarea" class="form-control col-md-7 col-xs-12"></textarea>
+								<textarea id="textarea" required="required" name="a_propos" class="form-control col-md-7 col-xs-12" data-parsley-maxlength="1000" data-parsley-trigger="change">{{$reponse_a_propos}}</textarea>
 							</div>
 						</div>
 						
@@ -104,8 +133,8 @@
 
 						<div class="form-group">
 							<div class="col-md-9 col-md-offset-3">
-								<button type="submit" class="btn btn-success">Répondre à a demande</button>
-								<button type="submit" class="btn">Refuser</button>
+								<button type="submit" class="btn btn-success" name="RepondreBouton">Répondre à a demande</button>
+								<a class="btn btn-warning" href="{{url('/admin/chargement')}}">Refuser</a>
 							</div>
 						</div>
 
@@ -119,30 +148,30 @@
 					<section class="panel">
 
 						<div class="x_title">
-							<h2>Demandeur</h2>
+							<h2>Donneur d'ordre</h2>
 							<div class="clearfix"></div>
 						</div>
 						<div class="panel-body">
 							
 							<h5>Société</h5>
 							<ul class="list-unstyled project_files">
-								<li><a href="">LOGO</a>
+								<li><a href=""><img src="{{url('/users/' . $chargement->owner->logo)}}" alt="Logo de la société" style="width:56px;height:56px;"/></a>
 								</li>
-								<li><a href=""><i class="fa fa-file-word-o"></i> Nom de la société ou réaison sociale</a>
+								<li><a href=""><i class="fa fa-file-word-o"></i> Societé : {{$chargement->owner->societe}}</a>
 								</li>
-								<li><a href=""><i class="fa fa-file-word-o"></i> Numero du régistre de commerce</a>
+								<li><a href=""><i class="fa fa-file-word-o"></i> Régistre de commerce : {{$chargement->owner->rc}}</a>
 								</li>
 							</ul>
 							<br/>
 							<h5>Adresse</h5>
 							<ul class="list-unstyled project_files">
-								<li><a href=""><i class="fa fa-file-word-o"></i> Rue, ville, pays</a>
+								<li><a href=""><i class="fa fa-file-word-o"></i> Rue : {{$chargement->owner->rue}}, <br/>Ville : {{$chargement->owner->ville}}, <br/>Pays :{{$chargement->owner->pays}}</a>
 								</li>
 							</ul>
 							<br/>
-							<h5>A propos</h5>
+							<h5>A propos de la société</h5>
 							<ul class="list-unstyled project_files">
-								<li><a href="">A Propos</a>
+								<li><a href="">{{$chargement->owner->a_propos}}</a>
 								</li>
 							</ul>
 							<br/>

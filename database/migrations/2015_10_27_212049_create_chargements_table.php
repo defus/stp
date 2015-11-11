@@ -54,10 +54,32 @@ class CreateChargementsTable extends Migration
                 $table->string('emballage'); //Palette,Cartons,Caisse, Sacs, Barils, Vrac liquide, Vrac solide, Cintre, Autre
                 $table->integer('nombre_unite');
                 $table->string('empilable', 1); //O, N
+                $table->nullableTimestamps();
                 
                 $table->foreign('chargement_id')
                     ->references('id')
                     ->on('chargements')
+                    ->onDelete('cascade');
+            });
+        }
+        
+        if (!Schema::hasTable('chargements_reponses')) {
+            Schema::create('chargements_reponses', function (Blueprint $table) {
+                $table->increments('id');
+                $table->integer('chargement_id')->unsigned()->index();
+                $table->integer('transporteur_id')->unsigned()->index();
+                $table->double('offre_financiere', 15, 2); 
+                $table->string('a_propos', 1000);
+                $table->nullableTimestamps();
+                
+                $table->foreign('chargement_id')
+                    ->references('id')
+                    ->on('chargements')
+                    ->onDelete('cascade');
+                
+                $table->foreign('transporteur_id')
+                    ->references('id')
+                    ->on('users')
                     ->onDelete('cascade');
             });
         }
@@ -70,6 +92,7 @@ class CreateChargementsTable extends Migration
      */
     public function down()
     {
+        Schema::dropIfExists('chargements_reponses');
         Schema::dropIfExists('chargements_colis');
         Schema::dropIfExists('chargements');
     }

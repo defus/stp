@@ -8,6 +8,8 @@ use App\Http\Controllers\Controller;
 use App\Chargement;
 use App\Http\Requests\CreateChargementRequest ;
 use Carbon\Carbon;
+use App\Http\Requests\RepondreChargementRequest;
+use App\ChargementReponse;
 
 class ChargementController extends Controller
 {
@@ -106,12 +108,39 @@ class ChargementController extends Controller
      */
     public function show($id)
     {
-        return view('admin.chargement.view');
+        $chargement = Chargement::findOrFail($id);
+        $owner = $chargement->owner();
+        
+        return view('admin.chargement.view')
+            ->with('owner', $owner)
+            ->with('chargement', $chargement);
     }
     
-    public function repondre($id)
+    public function repondre(Request $request, $id)
     {
-        return view('admin.chargement.repondre');
+        $chargement = Chargement::findOrFail($id);
+        $owner = $chargement->owner();
+        $reponse = $chargement->reponses()
+            ->where('transporteur_id', $request->user()->id)
+            ->where('chargement_id', $chargement->id)
+            ->first();
+        
+        return view('admin.chargement.repondre', ['reponse_offre_financiere' => ($reponse != NULL) ? $reponse->offre_financiere : "", 'reponse_a_propos' => ($reponse != NULL) ?  $reponse->a_propos : ""])
+            ->with('owner', $owner)
+            ->with('chargement', $chargement);
+    }
+    
+    public function doRepondre(RepondreChargementRequest $request, $id){
+        $reponse = new ChargementReponse();
+        $reponse->chargement_id = $id;
+        $reponse->offre_financiere = $request->get('offre_financiere');
+        $reponse->a_propos = $request->get('a_propos');
+        $reponse->transporteur_id = $request->user()->id;
+        
+        $reponse->save();
+        
+        return redirect('/admin/chargement')
+            ->withSuccess("Votre réponse à cette demande de chargemet a été envoyée avec succès au donneur d'ordre !");
     }
 
     /**

@@ -29,5 +29,19 @@ class ChargementTableSeeder extends Seeder
             ['chargement_id' => 4, 'emballage' => 'Palette', 'nombre_unite' => 10, 'empilable' => 'O'],
             ['chargement_id' => 4, 'emballage' => 'Cartons', 'nombre_unite' => 20, 'empilable' => 'N'],
         ]);
+        
+        DB::table('chargements_reponses')->insert([
+            ['chargement_id' => 1, 'offre_financiere' => '1234.89', 'a_propos' => "C'est ok ?", 'transporteur_id' => '2'],
+            ['chargement_id' => 1, 'offre_financiere' => '100000', 'a_propos' => "C'est ok ?", 'transporteur_id' => '2'],
+            
+            ['chargement_id' => 2, 'offre_financiere' => '0.78', 'a_propos' => "C'est ok ?", 'transporteur_id' => '2'],
+            ['chargement_id' => 2, 'offre_financiere' => '123', 'a_propos' => "C'est ok ?", 'transporteur_id' => '2'],
+            
+            ['chargement_id' => 3, 'offre_financiere' => '2896', 'a_propos' => "C'est ok ?", 'transporteur_id' => '2'],
+            ['chargement_id' => 3, 'offre_financiere' => '1900', 'a_propos' => "C'est ok ?", 'transporteur_id' => '2'],
+            
+            ['chargement_id' => 4, 'offre_financiere' => '200.76', 'a_propos' => "C'est ok ?", 'transporteur_id' => '2'],
+            ['chargement_id' => 4, 'offre_financiere' => '239', 'a_propos' => "C'est ok ?", 'transporteur_id' => '2'],
+        ]);
     }
 }

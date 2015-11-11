@@ -4,7 +4,25 @@
 
 @section('content')
 <div class="row">
-
+	@if (Session::has('errors'))
+	<div class="alert alert-danger alert-dismissible fade in" role="alert">
+		<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
+		</button>
+		<ul>
+		@foreach (Session::get('errors')->all() as $error)
+			<li>{{$error}}</li>
+		@endforeach
+		</ul>
+	</div>
+	@endif
+	@if (Session::has('success'))
+	<div class="alert alert-success alert-dismissible fade in" role="alert">
+		<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
+		</button>
+		{{Session::get('success')}}
+	</div>
+	@endif
+	
 	<!-- form input mask -->
 	<div class="col-md-12 col-sm-12 col-xs-12">
 		<div class="x_panel">
@@ -97,7 +115,11 @@
 									<a href="{{url('/admin/chargement/' . $chargement->id)}}" class="btn btn-primary btn-xs"><i class="fa fa-search"></i> Consulter les réponses </a>
 								@endcan
 								@can(App\User::TRANSPORTEUR)
-									<a href="{{url('/admin/chargement/2/repondre')}}" class="btn btn-primary btn-xs"><i class="fa fa-search"></i> Répondre </a>
+									@if($chargement->reponses()->where('transporteur_id',Auth::user()->id)->count() <=0)
+										<a href="{{url('/admin/chargement/'.$chargement->id.'/repondre')}}" class="btn btn-primary btn-xs"><i class="fa fa-search"></i> Répondre </a>
+									@else
+										<a href="{{url('/admin/chargement/'.$chargement->id.'/repondre')}}" class="btn btn-primary btn-xs"><i class="fa fa-search"></i> Voir ma réponse </a>
+									@endif
 								@endcan
 							</td>
 						</tr>

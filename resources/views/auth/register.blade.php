@@ -1,6 +1,6 @@
 @extends('layouts.auth')
 
-@section('title', 'Enregistrer')
+@section('title', 'Créer votre compte uilisateur')
 
 @section('script')
 <!-- form validation -->

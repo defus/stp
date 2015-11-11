@@ -25,17 +25,16 @@ class ChargementDonneurOrdreTest extends TestCase
     
     public function testAjouterChargement(){
         
-         $this->withoutMiddleware();
-         
         $donneurOrdre = User::where('societe', 'FILER')->firstOrFail();
         
-        //$this->actingAs($donneurOrdre)
-        //    ->visit('/admin/chargement/create');
+        $this->actingAs($donneurOrdre)
+            ->visit('/admin/chargement/create');
         
         $depart_date = Carbon::now();
         $arrivee_date = Carbon::now()->addDays(10);
         
-        $data = ['depart_rue' => '1 bd hassan 2',
+        $data = ['_token' => csrf_token(),
+            'depart_rue' => '1 bd hassan 2',
             'depart_ville' => 'Rabat',
              'depart_pays' => 'Maroc',
             'depart_date' => $depart_date->format('d/m/Y'),

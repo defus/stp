@@ -23,6 +23,7 @@ $router->group([
     resource('admin/chargement', 'ChargementController');
     get('admin/chargement/upload', 'ChargementController@upload');
     get('admin/chargement/{id}/repondre', 'ChargementController@repondre');
+    post('admin/chargement/{id}/repondre', 'ChargementController@doRepondre');
     
     get('admin/user/profile', 'UserController@profile');
     get('admin/user/societe', 'UserController@societe');
