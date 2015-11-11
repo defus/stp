@@ -110,10 +110,18 @@ class ChargementController extends Controller
     {
         $chargement = Chargement::findOrFail($id);
         $owner = $chargement->owner();
+        $reponses = $chargement->reponses()->orderby('created_at', 'desc')->get();
+        $chargement_nombre = $reponses->count();
+        $reponse_rescent = $chargement->reponses()->orderby('created_at', 'DESC')->first(); 
+        $reponse_petit_prix = $chargement->reponses()->orderby('offre_financiere', 'ASC')->first();
         
         return view('admin.chargement.view')
             ->with('owner', $owner)
-            ->with('chargement', $chargement);
+            ->with('chargement', $chargement)
+            ->with('reponses', $reponses)
+            ->with('chargement_nombre', $chargement_nombre)
+            ->with('reponse_rescent', $reponse_rescent)
+            ->with('reponse_petit_prix', $reponse_petit_prix);
     }
     
     public function repondre(Request $request, $id)
@@ -136,6 +144,8 @@ class ChargementController extends Controller
         $reponse->offre_financiere = $request->get('offre_financiere');
         $reponse->a_propos = $request->get('a_propos');
         $reponse->transporteur_id = $request->user()->id;
+        $reponse->created_at = Carbon::now();
+        $reponse->updated_at = Carbon::now();
         
         $reponse->save();
         

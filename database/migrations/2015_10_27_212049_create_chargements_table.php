@@ -70,7 +70,7 @@ class CreateChargementsTable extends Migration
                 $table->integer('transporteur_id')->unsigned()->index();
                 $table->double('offre_financiere', 15, 2); 
                 $table->string('a_propos', 1000);
-                $table->nullableTimestamps();
+                $table->timestamps();
                 
                 $table->foreign('chargement_id')
                     ->references('id')

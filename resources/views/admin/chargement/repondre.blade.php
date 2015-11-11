@@ -63,9 +63,10 @@
 								<div class="form-group">
 									<label class="control-label col-md-3 col-sm-3 col-xs-3">Livraison</label>
 									<div class="col-md-6 col-sm-6 col-xs-12">
-										<p class="form-control-static">Rue : {{$chargement->depart_rue}}, 
-											<br/>Vile : {{$chargement->depart_ville}}, Pays : {{$chargement->depart_pays}}
-											<br/> Date limite de livraison : {{$chargement->depart_date}}</p>
+										<p class="form-control-static">Rue : {{$chargement->arrivee_rue}}, 
+											<br/>Vile : {{$chargement->arrivee_ville}}, 
+											<br/>Pays : {{$chargement->arrivee_pays}}
+											<br/> Date limite de livraison : {{$chargement->arrivee_date_limite}}</p>
 									</div>
 								</div>
 								

@@ -23,6 +23,14 @@ class ChargementDonneurOrdreTest extends TestCase
             ->see("Mes demandes de chargements");
     }
     
+    public function testAfficherChargement(){
+        $donneurOrdre = User::where('societe', 'FILER')->firstOrFail();
+        
+        $this->actingAs($donneurOrdre)
+            ->visit('/admin/chargement/2')
+            ->see("Consultation des réponses à la demande de chargement");
+    }
+    
     public function testAjouterChargement(){
         
         $donneurOrdre = User::where('societe', 'FILER')->firstOrFail();

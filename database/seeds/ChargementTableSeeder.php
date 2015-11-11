@@ -31,17 +31,17 @@ class ChargementTableSeeder extends Seeder
         ]);
         
         DB::table('chargements_reponses')->insert([
-            ['chargement_id' => 1, 'offre_financiere' => '1234.89', 'a_propos' => "C'est ok ?", 'transporteur_id' => '2'],
-            ['chargement_id' => 1, 'offre_financiere' => '100000', 'a_propos' => "C'est ok ?", 'transporteur_id' => '2'],
+            ['chargement_id' => 1, 'offre_financiere' => '1234.89', 'a_propos' => "C'est ok ?", 'transporteur_id' => '2', 'created_at' => \Carbon\Carbon::now(), 'updated_at' => \Carbon\Carbon::now() ],
+            ['chargement_id' => 1, 'offre_financiere' => '100000', 'a_propos' => "C'est ok ?", 'transporteur_id' => '2', 'created_at' => \Carbon\Carbon::now(), 'updated_at' => \Carbon\Carbon::now() ],
             
-            ['chargement_id' => 2, 'offre_financiere' => '0.78', 'a_propos' => "C'est ok ?", 'transporteur_id' => '2'],
-            ['chargement_id' => 2, 'offre_financiere' => '123', 'a_propos' => "C'est ok ?", 'transporteur_id' => '2'],
+            ['chargement_id' => 2, 'offre_financiere' => '0.78', 'a_propos' => "C'est ok ?", 'transporteur_id' => '2', 'created_at' => \Carbon\Carbon::now(), 'updated_at' => \Carbon\Carbon::now() ],
+            ['chargement_id' => 2, 'offre_financiere' => '123', 'a_propos' => "C'est ok ?", 'transporteur_id' => '2', 'created_at' => \Carbon\Carbon::now(), 'updated_at' => \Carbon\Carbon::now() ],
             
-            ['chargement_id' => 3, 'offre_financiere' => '2896', 'a_propos' => "C'est ok ?", 'transporteur_id' => '2'],
-            ['chargement_id' => 3, 'offre_financiere' => '1900', 'a_propos' => "C'est ok ?", 'transporteur_id' => '2'],
+            ['chargement_id' => 3, 'offre_financiere' => '2896', 'a_propos' => "C'est ok ?", 'transporteur_id' => '2', 'created_at' => \Carbon\Carbon::now(), 'updated_at' => \Carbon\Carbon::now() ],
+            ['chargement_id' => 3, 'offre_financiere' => '1900', 'a_propos' => "C'est ok ?", 'transporteur_id' => '2', 'created_at' => \Carbon\Carbon::now(), 'updated_at' => \Carbon\Carbon::now() ],
             
-            ['chargement_id' => 4, 'offre_financiere' => '200.76', 'a_propos' => "C'est ok ?", 'transporteur_id' => '2'],
-            ['chargement_id' => 4, 'offre_financiere' => '239', 'a_propos' => "C'est ok ?", 'transporteur_id' => '2'],
+            ['chargement_id' => 4, 'offre_financiere' => '200.76', 'a_propos' => "C'est ok ?", 'transporteur_id' => '2', 'created_at' => \Carbon\Carbon::now(), 'updated_at' => \Carbon\Carbon::now() ],
+            ['chargement_id' => 4, 'offre_financiere' => '239', 'a_propos' => "C'est ok ?", 'transporteur_id' => '2', 'created_at' => \Carbon\Carbon::now(), 'updated_at' => \Carbon\Carbon::now() ],
         ]);
     }
 }

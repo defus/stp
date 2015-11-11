@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title', 'Détails du chargement sélectionné')
+@section('title', "Consultation des réponses à la demande de chargement")
 
 @section('content')
 <div class="row">
@@ -9,7 +9,7 @@
 	<div class="col-md-12 col-sm-12 col-xs-12">
 		<div class="x_panel">
 			<div class="x_title">
-				<h2>Détails du chargement</h2>
+				<h2>Détails de la demande de chargement</h2>
 				<ul class="nav navbar-right panel_toolbox">
 					<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
 					</li>
@@ -24,70 +24,42 @@
 					<ul class="stats-overview">
 						<li>
 							<span class="name"> Nombre de réponses </span>
-							<span class="value text-success"> 3 </span>
+							<span class="value text-success"> {{$chargement_nombre}} </span>
 						</li>
 						<li>
-							<span class="name"> Offre la plus rescente </span>
-							<span class="value text-success"> 12 octobre 2015 </span>
+							<span class="name"> Réponse la plus rescente </span>
+							<span class="value text-success"> {{$reponse_rescent->created_at}} </span>
 						</li>
 						<li class="hidden-phone">
-							<span class="name"> Plus petit prix </span>
-							<span class="value text-success"> 120 MAD </span>
+							<span class="name"> Réponse ayant le petit prix </span>
+							<span class="value text-success"> {{$reponse_petit_prix->offre_financiere}} </span>
 						</li>
 					</ul>
 					<br />
 
 					<div>
 
-						<h4>Liste des offres reçues</h4>
+						<h4>Liste des réponses reçues</h4>
 
 						<!-- end of user messages -->
 						<ul class="messages">
+							@foreach($reponses as $reponse)
 							<li>
-								<img src="{{url('tp_back')}}/images/img.jpg" class="avatar" alt="Avatar">
+								<img class="avatar" src="{{url('/users/' . $reponse->transporteur->logo)}}" alt="Logo de la société" />
 								<div class="message_date">
-									<h3 class="date text-info">24</h3>
-									<p class="month">Mai</p>
+									<h3 class="date text-info">{{$reponse->created_at->format('d')}}</h3>
+									<p class="month">{{$reponse->created_at->format('F')}}</p>
 								</div>
 								<div class="message_wrapper">
-									<h4 class="heading">Desmond Davison</h4>
-									<p>Offre financière : 12000 MAD</p>
-									<blockquote class="message">Bonjour, je suis disponible pour travailer avec vous.</blockquote>
+									<h4 class="heading">{{ $reponse->transporteur->societe}}</h4>
+									<p>Offre financière : {{ $reponse->offre_financiere}}</p>
+									<blockquote class="message">{{ $reponse->a_propos}}</blockquote>
 									<br/>
 									<a href="#" class="btn btn-sm btn-primary">Accepter l'offre</a>
 									<br/>
 								</div>
 							</li>
-							<li>
-								<img src="{{url('tp_back')}}/images/img.jpg" class="avatar" alt="Avatar">
-								<div class="message_date">
-									<h3 class="date text-info">24</h3>
-									<p class="month">Mai</p>
-								</div>
-								<div class="message_wrapper">
-									<h4 class="heading">Desmond Davison</h4>
-									<p>Offre financière : 12000 MAD</p>
-									<blockquote class="message">Bonjour, je suis disponible pour travailer avec vous.</blockquote>
-									<br />
-									<a href="#" class="btn btn-sm btn-primary">Accepter l'offre</a>
-									<br/>
-								</div>
-							</li>
-							<li>
-								<img src="{{url('tp_back')}}/images/img.jpg" class="avatar" alt="Avatar">
-								<div class="message_date">
-									<h3 class="date text-info">24</h3>
-									<p class="month">Mai</p>
-								</div>
-								<div class="message_wrapper">
-									<h4 class="heading">Desmond Davison</h4>
-									<p>Offre financière : 12000 MAD</p>
-									<blockquote class="message">Bonjour, je suis disponible pour travailer avec vous.</blockquote>
-									<br />
-									<a href="#" class="btn btn-sm btn-primary">Accepter l'offre</a>
-									<br/>
-								</div>
-							</li>
+							@endforeach
 						</ul>
 						<!-- end of user messages -->
 
@@ -116,25 +88,35 @@
 							</ul>
 							<h5>Départ</h5>
 							<ul class="list-unstyled project_files">
-								<li><a href=""><i class="fa fa-file-word-o"></i> Rue, ville, pays</a>
+								<li><a href=""><i class="fa fa-file-word-o"></i> Rue : {{$chargement->depart_rue}}, 
+											<br/>Vile : {{$chargement->depart_ville}}, 
+											<br/>Pays : {{$chargement->depart_pays}}</a>
 								</li>
-								<li><a href=""><i class="fa fa-file-word-o"></i> date et heure de départ</a>
+								<li><a href=""><i class="fa fa-file-word-o"></i> Date de départ : {{$chargement->depart_date}}</a>
 								</li>
 							</ul>
 							<br/>
 							<h5>Livraison</h5>
 							<ul class="list-unstyled project_files">
-								<li><a href=""><i class="fa fa-file-word-o"></i> Rue, ville, pays</a>
+								<li><a href=""><i class="fa fa-file-word-o"></i> Rue : {{$chargement->arrivee_rue}}, 
+											<br/>Vile : {{$chargement->arrivee_ville}}, 
+											<br/>Pays : {{$chargement->arrivee_pays}}</a>
 								</li>
-								<li><a href=""><i class="fa fa-file-word-o"></i> date et heure limite de livraison</a>
+								<li><a href=""><i class="fa fa-file-word-o"></i> Date limite de livraison : {{$chargement->arrivee_date_limite}}</a>
 								</li>
 							</ul>
 							<br/>
-							<h5>Colis</h5>
+							<h5>Plus d'informations</h5>
 							<ul class="list-unstyled project_files">
-								<li><a href=""><i class="fa fa-file-word-o"></i> Frais de transit, Distance</a>
+								<li><a href=""><i class="fa fa-file-word-o"></i> Frais de transit : {{$chargement->frais_transit}}
+											<br/> Distance : {{$chargement->distance}} km</a>
 								</li>
-								<li><a href=""><i class="fa fa-file-word-o"></i> Type de trajet, nature de marchandise, volume</a>
+								<li><a href=""><i class="fa fa-file-word-o"></i> Type de trajet : {{$chargement->type_trajet}}
+											<br/>Nature de la marchandise : {{$chargement->nature_marchandise}}
+											<br/>Type d'assurance : {{$chargement->type_assurance}}
+											<br/>Poids : {{$chargement->poids}} Kg
+											<br/>Volume : {{$chargement->volume}} m3
+											<br/>Ce chargement contient t'il des articles dangereux ? : {{$chargement->produit_dangereux == 'N' ? 'NON' : 'OUI'}}<br/></a>
 								</li>
 							</ul>
 							<br />

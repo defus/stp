@@ -11,4 +11,8 @@ class ChargementReponse extends Model
     public function chargement(){
         return $this->belongsTo('App\Chargement', 'id', 'chargement_id');
     }
+    
+    public function transporteur(){
+        return $this->hasOne('App\User', 'id', 'transporteur_id');
+    }
 }
