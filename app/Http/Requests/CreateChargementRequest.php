@@ -23,7 +23,7 @@ class CreateChargementRequest extends Request
      */
     public function rules()
     {
-        return [
+        $rules = [
             'depart_rue' => 'required|max:255',
             'depart_ville' => 'required|max:255',
             'depart_pays' => 'required|max:255',
@@ -48,6 +48,16 @@ class CreateChargementRequest extends Request
             'type_prix' => 'required|max:50',
             'prix_fixe' => 'required|numeric',
             'info_complementaire' => 'required|max:1000',
+            'colis' => 'required',
         ];
+        
+        foreach($this->request->get('colis') as $key => $val)
+        {
+            $rules['colis.'.$key.'.emballage'] = 'required|max:50';
+             $rules['colis.'.$key.'.nombre_unite'] = 'required|integer';
+             $rules['colis.'.$key.'.empilable'] = 'required|max:1';
+        }
+        
+        return $rules;
     }
 }

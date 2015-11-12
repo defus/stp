@@ -10,6 +10,7 @@ use App\Http\Requests\CreateChargementRequest ;
 use Carbon\Carbon;
 use App\Http\Requests\RepondreChargementRequest;
 use App\ChargementReponse;
+use App\ChargementColis;
 
 class ChargementController extends Controller
 {
@@ -96,6 +97,16 @@ class ChargementController extends Controller
         $chargement->arrivee_date_limite = Carbon::createFromFormat('d/m/Y H:i:s', $request->get('arrivee_date_limite') . ' ' . $request->get('arrivee_heure_limite'));
         
         $chargement->save();
+        
+        foreach($request->get('colis') as $key => $val)
+        {
+            $colis = new ChargementColis();
+            $colis->emballage = $val['emballage'];
+            $colis->nombre_unite = $val['nombre_unite'];
+            $colis->empilable = $val['empilable'];
+            $colis->chargement_id = $chargement->id;
+            $colis->save();
+        }
         
         return response()->json(['id' => $chargement->id, 'created' => true]);
     }

@@ -22,7 +22,7 @@
 		$("#arrivee_heure_limite").inputmask();
 		
 		// Smart Wizard 	
-		$('#wizard').smartWizard({enableAllSteps:false, cycleSteps:false, labelNext:'Suivant', labelPrevious:'Précédent', labelFinish:'Terminer', onLeaveStep: leaveAStepCallback, onFinish: onFinishCallback, });
+		$('#wizard').smartWizard({enableAllSteps:false, cycleSteps:false, labelNext:'Suivant', labelPrevious:'Précédent', labelFinish:'Terminer', onLeaveStep: leaveAStepCallback, onFinish: onFinishCallback, keyNavigation:false, hideButtonsOnDisabled: true});
 
 		function leaveAStepCallback(obj, context){
 			if(context.fromStep == 1 && context.toStep == 2){
@@ -34,7 +34,7 @@
 				return validateFront($('#createChargementFormStep2'));
 			}
 			else if(context.fromStep == 3 && context.toStep == 4){
-				$('#createChargementFormStep2').parsley().validate();
+				$('#createChargementFormStep3').parsley().validate();
 				return validateFront($('#createChargementFormStep3'));
 			} 
 			return true;
@@ -87,6 +87,48 @@
 			}
 		};
 		
+		//tableau des colis
+		var colis_row_compteur=2;
+		
+		$("#add_colis_row").click(function(){
+			$('#colis_'+ colis_row_compteur).html(
+				'<td>' +
+					'<select class="form-control" name="colis['+colis_row_compteur+'][emballage]" required data-parsley-maxlength="50" data-parsley-trigger="change">' +
+						'<option value="Palette" selected>Palette</option>' +
+						'<option value="Cartons">Cartons</option>' +
+						'<option value="Caisse">Caisse</option>' +
+						'<option value="Sacs">Sacs</option>' +
+						'<option value="Barils">Barils</option>' +
+						'<option value="Vrac liquide">Vrac liquide</option>' +
+						'<option value="Vrac solide">Vrac solide</option>' +
+						'<option value="Cintre">Cintre</option>' +
+						'<option value="Autre">Autre</option>' +
+					'</select>'+
+				'</td>' +
+				'<td><input class="form-control" type="text" name="colis['+colis_row_compteur+'][nombre_unite]" value="0" required placeholder="Nombre d\'unité" data-parsley-type="integer" data-parsley-trigger="change"/></td>' +
+				'<td>' +
+					'<select class="form-control" name="colis['+colis_row_compteur+'][empilable]" required data-parsley-maxlength="1" data-parsley-trigger="change">' +
+						'<option value="N" selected>NOM</option>' +
+						'<option value="O">OUI</option>' +
+					'</select>' +
+				'</td>' +
+				'<td><a href="#" class="btn btn-warning delete_colis_row" data="'+colis_row_compteur+'"><i class="fa fa-remove"></a></td>'
+			);
+			
+			colis_row_compteur++; 
+			
+			$('#table_tbody_colis').append('<tr id="colis_'+colis_row_compteur+'"></tr>');
+			
+			return false;
+		});
+		
+		$( document ).on('click', ".delete_colis_row", function(event ){
+			event.preventDefault();
+			
+			var index = $(this).attr('data');
+			$("#colis_"+index).detach();
+			return false;
+		});
 	});
 	
 	try {
@@ -262,7 +304,7 @@
 								<label class="control-label col-md-3 col-sm-3 col-xs-12" for="rue">Frais de transit <span class="required">*</span>
 								</label>
 								<div class="col-md-6 col-sm-6 col-xs-12">
-									<select class="form-control col-md-7 col-xs-12" name="frais_transit" data-parsley-maxlength="50" data-parsley-trigger="change">
+									<select class="form-control col-md-7 col-xs-12" name="frais_transit" required data-parsley-maxlength="50" data-parsley-trigger="change">
 										<option value="Aucun" selected="selected">Aucun</option>
 										<option value="A notre charge">A notre charge</option>
 										<option value="A la charge du transporteur">A la charge du transporteur</option>
@@ -279,7 +321,7 @@
 							<div class="form-group">
 								<label for="pays" class="control-label col-md-3 col-sm-3 col-xs-12">Type de trajet <span class="required">*</span></label>
 								<div class="col-md-6 col-sm-6 col-xs-12">
-									<select class="form-control col-md-7 col-xs-12" name="type_trajet" data-parsley-maxlength="50" data-parsley-trigger="change">
+									<select class="form-control col-md-7 col-xs-12" name="type_trajet" required data-parsley-maxlength="50" data-parsley-trigger="change">
 										<option value="Aller simple" selected="selected">Aller simple</option>
 										<option value="Allez/retour">Allez/retour</option>
 									</select>
@@ -289,13 +331,13 @@
 								<label class="control-label col-md-3 col-sm-3 col-xs-12">Nature de la marchandise <span class="required">*</span>
 								</label>
 								<div class="col-md-6 col-sm-6 col-xs-12">
-									<input class="form-control col-md-7 col-xs-12" required="required" type="text"  name="nature_marchandise" value="{{old('nature_marchandise')}}" data-parsley-maxlength="255" data-parsley-trigger="change">
+									<input class="form-control col-md-7 col-xs-12" required="required" type="text"  name="nature_marchandise" value="{{old('nature_marchandise')}}" required data-parsley-maxlength="255" data-parsley-trigger="change">
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="type_assurance" class="control-label col-md-3 col-sm-3 col-xs-12">Type d'assurance requise <span class="required">*</span></label>
 								<div class="col-md-6 col-sm-6 col-xs-12">
-									<select class="form-control col-md-7 col-xs-12" name="type_assurance" data-parsley-maxlength="50" data-parsley-trigger="change">
+									<select class="form-control col-md-7 col-xs-12" name="type_assurance" required data-parsley-maxlength="50" data-parsley-trigger="change">
 										<option value="Aucune" selected="selected">Aucune</option>
 										<option value="Marchandise">Marchandise</option>
 									</select>
@@ -304,19 +346,19 @@
 							<div class="form-group">
 								<label for="heureDepartpoids" class="control-label col-md-3 col-sm-3 col-xs-12">Poids <span class="required">*</span></label>
 								<div class="col-md-6 col-sm-6 col-xs-12">
-									<input class="form-control col-md-7 col-xs-12" type="text"  name="poids" value="{{old('poids')}}" data-parsley-type="number" data-parsley-trigger="change">
+									<input class="form-control col-md-7 col-xs-12" type="text"  name="poids" value="{{old('poids')}}" required data-parsley-type="number" data-parsley-trigger="change">
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="volume" class="control-label col-md-3 col-sm-3 col-xs-12">Volume <span class="required">*</span></label>
 								<div class="col-md-6 col-sm-6 col-xs-12">
-									<input class="form-control col-md-7 col-xs-12" type="text"  name="volume" value="{{old('volume')}}" data-parsley-type="number" data-parsley-trigger="change">
+									<input class="form-control col-md-7 col-xs-12" type="text"  name="volume" value="{{old('volume')}}" required data-parsley-type="number" data-parsley-trigger="change">
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="produit_dangereux" class="control-label col-md-3 col-sm-3 col-xs-12">Ce chargement contient t'il des articles dangereux ? <span class="required">*</span></label>
 								<div class="col-md-6 col-sm-6 col-xs-12">
-									<select class="form-control col-md-7 col-xs-12" name="produit_dangereux" data-parsley-maxlength="1" data-parsley-trigger="change">
+									<select class="form-control col-md-7 col-xs-12" name="produit_dangereux" required data-parsley-maxlength="1" data-parsley-trigger="change">
 										<option value="N" selected="selected">NON</option>
 										<option value="O">OUI</option>
 									</select>
@@ -326,63 +368,55 @@
 							<span class="section">Liste de colisage</span>
 							
 							<div class="form-group">
-								<label for="heureDepart" class="control-label col-md-3 col-sm-3 col-xs-12">Emballage <span class="required">*</span></label>
-								<div class="col-md-6 col-sm-6 col-xs-12">
-									<input class="form-control col-md-7 col-xs-12" type="text" >
-								</div>
-							</div>
-							<div class="form-group">
-								<label for="heureDepart" class="control-label col-md-3 col-sm-3 col-xs-12">Nombre d'unités <span class="required">*</span></label>
-								<div class="col-md-6 col-sm-6 col-xs-12">
-									<input class="form-control col-md-7 col-xs-12" type="text" >
-								</div>
-							</div>
-							<div class="form-group">
-								<label for="heureDepart" class="control-label col-md-3 col-sm-3 col-xs-12">Empilable ? <span class="required">*</span></label>
-								<div class="col-md-6 col-sm-6 col-xs-12">
-									<input class="form-control col-md-7 col-xs-12" type="text" >
-								</div>
-							</div>
-							<div class="ln_solid"></div>
-
-							<div class="form-group">
-								<div class="col-md-9 col-md-offset-3">
-									<button class="btn btn-success">Ajouter un autre article</button>
-								</div>
-							</div>
-							
-							<div class="form-group">
 								<label class="control-label col-md-3 col-sm-3 col-xs-3">Liste de colisage</label>
 								<div class="col-md-6 col-sm-6 col-xs-12">
 									<p class="form-control-static">
-										<table class="table">
+										<table class="table table-bordered table-hover">
 											<thead>
 												<tr>
-													<th>#</th>
 													<th>Emballage</th>
 													<th>Nombre d'unités</th>
 													<th>Empilable ?</th>
+													<th>Actions</th>
 												</tr>
 											</thead>
-											<tbody>
-												<tr>
-													<th scope="row">1</th>
-													<td>Mark</td>
-													<td>1200</td>
-													<td>OUI</td>
+											<tbody id="table_tbody_colis">
+												<tr id="colis_1">
+													<td>
+														<select class="form-control" name="colis[1][emballage]" data-parsley-maxlength="50" required data-parsley-trigger="change">
+															<option value="Palette" selected>Palette</option>
+															<option value="Cartons">Cartons</option>
+															<option value="Caisse">Caisse</option>
+															<option value="Sacs">Sacs</option>
+															<option value="Barils">Barils</option>
+															<option value="Vrac liquide">Vrac liquide</option>
+															<option value="Vrac solide">Vrac solide</option>
+															<option value="Cintre">Cintre</option>
+															<option value="Autre">Autre</option>
+														</select>
+													</td>
+													<td><input class="form-control" type="text" name="colis[1][nombre_unite]" value="0" placeholder="Nombre d'unité" required data-parsley-type="integer" data-parsley-trigger="change"/></td>
+													<td>
+														<select class="form-control" name="colis[1][empilable]" required data-parsley-maxlength="50" data-parsley-trigger="change">
+															<option value="Nom" selected>NOM</option>
+															<option value="OUI">OUI</option>
+														</select>
+													</td>
+													<td><a href="#" class="btn btn-warnigng delete_colis_row" data="1"><i class="fa fa-remove"></i></a></td>
 												</tr>
-												<tr>
-													<th scope="row">2</th>
-													<td>Jacob</td>
-													<td>1230</td>
-													<td>NON</td>
-												</tr>
+												<tr id='colis_2'></tr>
 											</tbody>
 										</table>
 									</p>
 								</div>
 							</div>
-
+							
+							<div class="form-group">
+								<div class="col-md-9 col-md-offset-3">
+									<a href="#" class="btn btn-success" id="add_colis_row">Ajouter un autre article</a>
+								</div>
+							</div>
+							
 						</form>
 					</div>
 					<div id="step-4">
@@ -391,7 +425,7 @@
 								<label class="control-label col-md-3 col-sm-3 col-xs-12" for="mode_paiement">Moyen de paiement <span class="required">*</span>
 								</label>
 								<div class="col-md-6 col-sm-6 col-xs-12">
-									<select class="form-control col-md-7 col-xs-12" name="mode_paiement" data-parsley-maxlength="50" data-parsley-trigger="change">
+									<select class="form-control col-md-7 col-xs-12" name="mode_paiement" required data-parsley-maxlength="50" data-parsley-trigger="change">
 										<option value="Virement bancaire" selected="selected">Virement bancaire</option>
 										<option value="Espèce">Espèce</option>
 										<option value="Lettre de change">Lettre de change</option>
@@ -403,7 +437,7 @@
 								<label class="control-label col-md-3 col-sm-3 col-xs-12" for="delai_paiement">Délai de paiement <span class="required">*</span>
 								</label>
 								<div class="col-md-6 col-sm-6 col-xs-12">
-									<select class="form-control col-md-7 col-xs-12" name="delai_paiement" data-parsley-maxlength="50" data-parsley-trigger="change">
+									<select class="form-control col-md-7 col-xs-12" name="delai_paiement" required data-parsley-maxlength="50" data-parsley-trigger="change">
 										<option value="A la commande" selected="selected">A la commande</option>
 										<option value="Au départ">Au départ</option>
 										<option value="A la livraison">A la livraison</option>
@@ -417,7 +451,7 @@
 							<div class="form-group">
 								<label for="devise" class="control-label col-md-3 col-sm-3 col-xs-12">Devise <span class="required">*</span></label>
 								<div class="col-md-6 col-sm-6 col-xs-12">
-									<select class="form-control col-md-7 col-xs-12" name="devise" data-parsley-maxlength="50" data-parsley-trigger="change">
+									<select class="form-control col-md-7 col-xs-12" name="devise" required data-parsley-maxlength="50" data-parsley-trigger="change">
 										<option value="Dh" selected="selected">Dh</option>
 										<option value="Euro">Euro</option>
 										<option value="$">$</option>
@@ -429,7 +463,7 @@
 								<label class="control-label col-md-3 col-sm-3 col-xs-12" for="type_prix">Type de prix <span class="required">*</span>
 								</label>
 								<div class="col-md-6 col-sm-6 col-xs-12">
-									<select class="form-control col-md-7 col-xs-12" name="type_prix" data-parsley-maxlength="50" data-parsley-trigger="change">
+									<select class="form-control col-md-7 col-xs-12" name="type_prix" required data-parsley-maxlength="50" data-parsley-trigger="change">
 										<option value="Fixe" selected="selected">Fixe</option>
 										<option value="Enchères">Enchères</option>
 									</select>
@@ -445,7 +479,7 @@
 							<div class="form-group">
 								<label for="info_complementaire" class="control-label col-md-3 col-sm-3 col-xs-12">Informations complémentaires <span class="required">*</span></label>
 								<div class="col-md-6 col-sm-6 col-xs-12">
-									<textarea required="required" class="form-control col-md-7 col-xs-12"  name="info_complementaire" value="{{old('info_complementaire')}}" data-parsley-maxlength="1000" data-parsley-trigger="change"></textarea>
+									<textarea required="required" class="form-control col-md-7 col-xs-12"  name="info_complementaire" value="{{old('info_complementaire')}}" required data-parsley-maxlength="1000" data-parsley-trigger="change"></textarea>
 								</div>
 							</div>
 

@@ -65,13 +65,18 @@ class ChargementDonneurOrdreTest extends TestCase
             'devise' => 'Euro',
             'type_prix' => 'Fixe',
             'prix_fixe' => '1290.09',
-            'info_complementaire'=> "Bien prendre soin de la cargaison s'il vou plait !"];
+            'info_complementaire'=> "Bien prendre soin de la cargaison s'il vou plait !",
+            'colis' => [['emballage' => 'Cartons', 'nombre_unite' => 90, 'empilable' => 'O'], ['emballage' => 'Vrac liquide', 'nombre_unite' => 121, 'empilable' => 'N']],
+            ];
             
         $this->actingAs($donneurOrdre)
             ->post('/admin/chargement', $data, ['HTTP_X-Requested-With' => 'XMLHttpRequest'])
             ->seeJson(['created' => true, 'id' => 5]);
         
         $this->seeInDatabase('chargements', ['id' => 5, 'depart_date' => $depart_date->format('Y-m-d H:i:s'), 'arrivee_date_limite' => $arrivee_date->format('Y-m-d H:i:s'), 'owner_id' => $donneurOrdre->id, 'statut' => 'O']);
+        
+        $this->seeInDatabase('chargements_colis', ['chargement_id' => 5, 'emballage' => 'Cartons', 'nombre_unite' => '90', 'empilable' => 'O']);
+        $this->seeInDatabase('chargements_colis', ['chargement_id' => 5, 'emballage' => 'Vrac liquide', 'nombre_unite' => '121', 'empilable' => 'N']);
             
     }
     

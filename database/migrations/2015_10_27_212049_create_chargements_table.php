@@ -51,7 +51,7 @@ class CreateChargementsTable extends Migration
             Schema::create('chargements_colis', function (Blueprint $table) {
                 $table->increments('id');
                 $table->integer('chargement_id')->unsigned()->index();
-                $table->string('emballage'); //Palette,Cartons,Caisse, Sacs, Barils, Vrac liquide, Vrac solide, Cintre, Autre
+                $table->string('emballage', 50); //Palette,Cartons,Caisse, Sacs, Barils, Vrac liquide, Vrac solide, Cintre, Autre
                 $table->integer('nombre_unite');
                 $table->string('empilable', 1); //O, N
                 $table->nullableTimestamps();
