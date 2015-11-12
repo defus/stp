@@ -108,7 +108,7 @@
 				'<td><input class="form-control" type="text" name="colis['+colis_row_compteur+'][nombre_unite]" value="0" required placeholder="Nombre d\'unité" data-parsley-type="integer" data-parsley-trigger="change"/></td>' +
 				'<td>' +
 					'<select class="form-control" name="colis['+colis_row_compteur+'][empilable]" required data-parsley-maxlength="1" data-parsley-trigger="change">' +
-						'<option value="N" selected>NOM</option>' +
+						'<option value="N" selected>NON</option>' +
 						'<option value="O">OUI</option>' +
 					'</select>' +
 				'</td>' +
@@ -312,7 +312,7 @@
 								</div>
 							</div>
 							<div class="form-group">
-								<label class="control-label col-md-3 col-sm-3 col-xs-12" for="ville">Distance <span class="required">*</span>
+								<label class="control-label col-md-3 col-sm-3 col-xs-12" for="ville">Distance (Km)<span class="required">*</span>
 								</label>
 								<div class="col-md-6 col-sm-6 col-xs-12">
 									<input type="text" required="required" class="form-control col-md-7 col-xs-12" name="distance" value="{{old('distance')}}" data-parsley-type="integer" data-parsley-trigger="change">
@@ -344,13 +344,13 @@
 								</div>
 							</div>
 							<div class="form-group">
-								<label for="heureDepartpoids" class="control-label col-md-3 col-sm-3 col-xs-12">Poids <span class="required">*</span></label>
+								<label for="heureDepartpoids" class="control-label col-md-3 col-sm-3 col-xs-12">Poids (Kg)<span class="required">*</span></label>
 								<div class="col-md-6 col-sm-6 col-xs-12">
 									<input class="form-control col-md-7 col-xs-12" type="text"  name="poids" value="{{old('poids')}}" required data-parsley-type="number" data-parsley-trigger="change">
 								</div>
 							</div>
 							<div class="form-group">
-								<label for="volume" class="control-label col-md-3 col-sm-3 col-xs-12">Volume <span class="required">*</span></label>
+								<label for="volume" class="control-label col-md-3 col-sm-3 col-xs-12">Volume (m3)<span class="required">*</span></label>
 								<div class="col-md-6 col-sm-6 col-xs-12">
 									<input class="form-control col-md-7 col-xs-12" type="text"  name="volume" value="{{old('volume')}}" required data-parsley-type="number" data-parsley-trigger="change">
 								</div>
@@ -398,8 +398,8 @@
 													<td><input class="form-control" type="text" name="colis[1][nombre_unite]" value="0" placeholder="Nombre d'unité" required data-parsley-type="integer" data-parsley-trigger="change"/></td>
 													<td>
 														<select class="form-control" name="colis[1][empilable]" required data-parsley-maxlength="50" data-parsley-trigger="change">
-															<option value="Nom" selected>NOM</option>
-															<option value="OUI">OUI</option>
+															<option value="N" selected>NON</option>
+															<option value="O">OUI</option>
 														</select>
 													</td>
 													<td><a href="#" class="btn btn-warnigng delete_colis_row" data="1"><i class="fa fa-remove"></i></a></td>
