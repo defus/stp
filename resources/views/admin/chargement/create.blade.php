@@ -312,7 +312,7 @@
 								</div>
 							</div>
 							<div class="form-group">
-								<label class="control-label col-md-3 col-sm-3 col-xs-12" for="ville">Distance (Km)<span class="required">*</span>
+								<label class="control-label col-md-3 col-sm-3 col-xs-12" for="ville">Distance (Km) <span class="required">*</span>
 								</label>
 								<div class="col-md-6 col-sm-6 col-xs-12">
 									<input type="text" required="required" class="form-control col-md-7 col-xs-12" name="distance" value="{{old('distance')}}" data-parsley-type="integer" data-parsley-trigger="change">
@@ -344,13 +344,13 @@
 								</div>
 							</div>
 							<div class="form-group">
-								<label for="heureDepartpoids" class="control-label col-md-3 col-sm-3 col-xs-12">Poids (Kg)<span class="required">*</span></label>
+								<label for="heureDepartpoids" class="control-label col-md-3 col-sm-3 col-xs-12">Poids (Kg) <span class="required">*</span></label>
 								<div class="col-md-6 col-sm-6 col-xs-12">
 									<input class="form-control col-md-7 col-xs-12" type="text"  name="poids" value="{{old('poids')}}" required data-parsley-type="number" data-parsley-trigger="change">
 								</div>
 							</div>
 							<div class="form-group">
-								<label for="volume" class="control-label col-md-3 col-sm-3 col-xs-12">Volume (m3)<span class="required">*</span></label>
+								<label for="volume" class="control-label col-md-3 col-sm-3 col-xs-12">Volume (m3) <span class="required">*</span></label>
 								<div class="col-md-6 col-sm-6 col-xs-12">
 									<input class="form-control col-md-7 col-xs-12" type="text"  name="volume" value="{{old('volume')}}" required data-parsley-type="number" data-parsley-trigger="change">
 								</div>
@@ -402,7 +402,7 @@
 															<option value="O">OUI</option>
 														</select>
 													</td>
-													<td><a href="#" class="btn btn-warnigng delete_colis_row" data="1"><i class="fa fa-remove"></i></a></td>
+													<td><a href="#" class="btn btn-warning delete_colis_row" data="1"><i class="fa fa-remove"></i></a></td>
 												</tr>
 												<tr id='colis_2'></tr>
 											</tbody>
@@ -470,10 +470,10 @@
 								</div>
 							</div>
 							<div class="form-group">
-								<label class="control-label col-md-3 col-sm-3 col-xs-12" for="prix_fixe">Prix fixe <span class="required">*</span>
+								<label class="control-label col-md-3 col-sm-3 col-xs-12" for="prix_fixe">Prix fixe (si le type de prix est fixe) <span class="required">*</span>
 								</label>
 								<div class="col-md-6 col-sm-6 col-xs-12">
-									<input class="date-picker form-control col-md-7 col-xs-12" required="required" type="text" name="prix_fixe" value="{{old('prix_fixe')}}" data-parsley-type="number" data-parsley-trigger="change">
+									<input class="date-picker form-control col-md-7 col-xs-12" required="required" type="text" name="prix_fixe" value="0" data-parsley-type="number" data-parsley-trigger="change">
 								</div>
 							</div>
 							<div class="form-group">

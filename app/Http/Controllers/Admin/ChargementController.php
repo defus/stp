@@ -164,6 +164,21 @@ class ChargementController extends Controller
             ->withSuccess("Votre réponse à cette demande de chargemet a été envoyée avec succès au donneur d'ordre !");
     }
     
+    public function accepter(Request $request, $id, $reponseId){
+        $chargementReponse = ChargementReponse::findOrFail($reponseId);
+        
+        if($chargementReponse->chargement_id != $id){
+            return redirect('/admin/chargement/' . $id)
+                ->withErrors("Impossible d'accepter cette réponse car elle ne fait pas partie de la demande initialement formulée");
+        }
+        
+        $chargementReponse->statut = 'A';
+        $chargementReponse->save();
+        
+        return redirect('/admin/chargement/' . $id)
+            ->withSuccess("Votre choix de transporteur pour la demande de chargement a été enregistré avec succès ! Un mail a été envoyé au transporteur pour le notifier de votre décision d'accepter sa proposition");
+    }
+    
     public function archive(Request $request){
         $user = $request->user();
         $chargements = Chargement::where('statut', 'A')->where('owner_id', $user->id)->get();

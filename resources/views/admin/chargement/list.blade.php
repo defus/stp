@@ -101,7 +101,9 @@
 								@endforeach
 							</td>
 							@can(App\User::DONNEUR_ORDRE)
-							<td>{{$chargement->reponses()->count()}}</td>
+							<td>Reçues : {{$chargement->reponses()->count()}}
+								<br/>Acceptées : {{$chargement->reponses()->where('statut', 'A')->count()}}
+							</td>
 							<td>
 								@if($chargement->statut === 'O')
 									<button type="button" class="btn btn-warning btn-xs">En cours</button>

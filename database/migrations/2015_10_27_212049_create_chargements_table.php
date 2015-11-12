@@ -66,6 +66,7 @@ class CreateChargementsTable extends Migration
         if (!Schema::hasTable('chargements_reponses')) {
             Schema::create('chargements_reponses', function (Blueprint $table) {
                 $table->increments('id');
+                $table->string('statut', 1)->default('O');
                 $table->integer('chargement_id')->unsigned()->index();
                 $table->integer('transporteur_id')->unsigned()->index();
                 $table->double('offre_financiere', 15, 2); 

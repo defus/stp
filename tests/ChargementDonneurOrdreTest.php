@@ -91,4 +91,15 @@ class ChargementDonneurOrdreTest extends TestCase
         $this->seeInDatabase('chargements', ['id' => 2, 'statut' => 'A']);
         
     }
+    
+    public function testAccetperReponseChargement(){
+        $donneurOrdre = User::where('societe', 'FILER')->firstOrFail();
+        
+        $this->actingAs($donneurOrdre)
+            ->visit('/admin/chargement/2/accepter/3')
+            ->seePageIs('/admin/chargement/2')
+            ->see("Votre choix de transporteur pour la demande de chargement a été enregistré avec succès ! Un mail a été envoyé au transporteur pour le notifier de votre décision d'accepter sa proposition");
+            
+        $this->seeInDatabase('chargements_reponses', ['id' => 3, 'statut' => 'A']);
+    }
 }

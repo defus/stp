@@ -62,7 +62,7 @@
 						<!-- end of user messages -->
 						<ul class="messages">
 							@foreach($reponses as $reponse)
-							<li>
+							<li {{($reponse->statut == 'A') ? 'class="well"' : ''}}>
 								<img class="avatar" src="{{url('/users/' . $reponse->transporteur->logo)}}" alt="Logo de la société" />
 								<div class="message_date">
 									<h3 class="date text-info">{{$reponse->created_at->format('d')}}</h3>
@@ -70,10 +70,19 @@
 								</div>
 								<div class="message_wrapper">
 									<h4 class="heading">{{ $reponse->transporteur->societe}}</h4>
+									<p>Statut : 
+										@if($reponse->statut == 'A')
+										<a class="btn btn-success btn-xs">Acceptée</a>
+										@else
+										<a class="btn btn-warning btn-xs">Non acceptée</a>
+										@endif
+									</p>
 									<p>Offre financière : {{ $reponse->offre_financiere}}</p>
 									<blockquote class="message">{{ $reponse->a_propos}}</blockquote>
 									<br/>
-									<a href="#" class="btn btn-sm btn-primary">Accepter l'offre</a>
+									@if($reponse->statut != 'A')
+									<a href="{{url('/admin/chargement/'.$chargement->id.'/accepter/' . $reponse->id)}}" class="btn btn-sm btn-primary">Accepter l'offre</a>
+									@endif
 									<br/>
 								</div>
 							</li>
@@ -142,25 +151,19 @@
 							<table class="table">
 								<thead>
 									<tr>
-										<th>#</th>
 										<th>Emballage</th>
 										<th>Nombre d'unités</th>
 										<th>Empilable ?</th>
 									</tr>
 								</thead>
 								<tbody>
+									@foreach($chargement->colis as $colis)
 									<tr>
-										<th scope="row">1</th>
-										<td>Mark</td>
-										<td>1200</td>
-										<td>OUI</td>
+										<td>{{$colis->emballage}}</td>
+										<td>{{$colis->nombre_unite}}</td>
+										<td>{{($colis->empilable === 'O') ? 'Empilable' : 'Non empilable' }}</td>
 									</tr>
-									<tr>
-										<th scope="row">2</th>
-										<td>Jacob</td>
-										<td>1230</td>
-										<td>NON</td>
-									</tr>
+									@endforeach
 								</tbody>
 							</table>
 							

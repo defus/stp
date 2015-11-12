@@ -51,11 +51,13 @@ class CreateChargementRequest extends Request
             'colis' => 'required',
         ];
         
-        foreach($this->request->get('colis') as $key => $val)
-        {
-            $rules['colis.'.$key.'.emballage'] = 'required|max:50';
-             $rules['colis.'.$key.'.nombre_unite'] = 'required|integer';
-             $rules['colis.'.$key.'.empilable'] = 'required|max:1';
+        if($this->request->get('colis') != NULL){
+            foreach($this->request->get('colis') as $key => $val)
+            {
+                $rules['colis.'.$key.'.emballage'] = 'required|max:50';
+                $rules['colis.'.$key.'.nombre_unite'] = 'required|integer';
+                $rules['colis.'.$key.'.empilable'] = 'required|max:1';
+            }
         }
         
         return $rules;
