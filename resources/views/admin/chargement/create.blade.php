@@ -220,7 +220,7 @@
 							{!! csrf_field() !!}
 
 							<div class="form-group">
-								<label class="control-label col-md-3 col-sm-3 col-xs-12" for="depart_rue">Rue <span class="required">*</span>
+								<label class="control-label col-md-3 col-sm-3 col-xs-12" for="depart_rue">Lieu <span class="required">*</span>
 								</label>
 								<div class="col-md-6 col-sm-6 col-xs-12">
 									<input type="text" name="depart_rue" value="{{old('depart_rue')}}" required="required" class="form-control col-md-7 col-xs-12" data-parsley-maxlength="255" data-parsley-trigger="change">
@@ -236,7 +236,7 @@
 							<div class="form-group">
 								<label for="depart_pays" class="control-label col-md-3 col-sm-3 col-xs-12">Pays <span class="required">*</span></label>
 								<div class="col-md-6 col-sm-6 col-xs-12">
-									<input class="form-control col-md-7 col-xs-12" type="text" name="depart_pays" value="{{old('depart_pays')}}" required="required" data-parsley-maxlength="255" data-parsley-trigger="change">
+									<input class="form-control col-md-7 col-xs-12" type="text" name="depart_pays" value="Maroc" required="required" data-parsley-maxlength="255" data-parsley-trigger="change" disabled >
 								</div>
 							</div>
 							<div class="form-group">
@@ -261,7 +261,7 @@
 							
 
 							<div class="form-group">
-								<label class="control-label col-md-3 col-sm-3 col-xs-12" for="arrivee_rue">Rue <span class="required">*</span>
+								<label class="control-label col-md-3 col-sm-3 col-xs-12" for="arrivee_rue">Lieu <span class="required">*</span>
 								</label>
 								<div class="col-md-6 col-sm-6 col-xs-12">
 									<input type="text" required="required" class="form-control col-md-7 col-xs-12"  name="arrivee_rue" value="{{old('arrivee_rue')}}" data-parsley-maxlength="255" data-parsley-trigger="change">
@@ -277,7 +277,7 @@
 							<div class="form-group">
 								<label for="arrivee_pays" class="control-label col-md-3 col-sm-3 col-xs-12">Pays <span class="required">*</span></label>
 								<div class="col-md-6 col-sm-6 col-xs-12">
-									<input class="form-control col-md-7 col-xs-12" type="text" required="required" name="arrivee_pays" value="{{old('arrivee_pays')}}" data-parsley-maxlength="255" data-parsley-trigger="change">
+									<input class="form-control col-md-7 col-xs-12" type="text" required="required" name="arrivee_pays" value="Maroc" data-parsley-maxlength="255" data-parsley-trigger="change" disabled>
 								</div>
 							</div>
 							<div class="form-group">
@@ -312,14 +312,14 @@
 								</div>
 							</div>
 							<div class="form-group">
-								<label class="control-label col-md-3 col-sm-3 col-xs-12" for="ville">Distance (Km) <span class="required">*</span>
+								<label class="control-label col-md-3 col-sm-3 col-xs-12" for="distance">Distance (Km) <span class="required">*</span>
 								</label>
 								<div class="col-md-6 col-sm-6 col-xs-12">
 									<input type="text" required="required" class="form-control col-md-7 col-xs-12" name="distance" value="{{old('distance')}}" data-parsley-type="integer" data-parsley-trigger="change">
 								</div>
 							</div>
 							<div class="form-group">
-								<label for="pays" class="control-label col-md-3 col-sm-3 col-xs-12">Type de trajet <span class="required">*</span></label>
+								<label for="type_trajet" class="control-label col-md-3 col-sm-3 col-xs-12">Type de trajet <span class="required">*</span></label>
 								<div class="col-md-6 col-sm-6 col-xs-12">
 									<select class="form-control col-md-7 col-xs-12" name="type_trajet" required data-parsley-maxlength="50" data-parsley-trigger="change">
 										<option value="Aller simple" selected="selected">Aller simple</option>
@@ -328,7 +328,7 @@
 								</div>
 							</div>
 							<div class="form-group">
-								<label class="control-label col-md-3 col-sm-3 col-xs-12">Nature de la marchandise <span class="required">*</span>
+								<label class="control-label col-md-3 col-sm-3 col-xs-12" for="nature_marchandise">Nature de la marchandise <span class="required">*</span>
 								</label>
 								<div class="col-md-6 col-sm-6 col-xs-12">
 									<input class="form-control col-md-7 col-xs-12" required="required" type="text"  name="nature_marchandise" value="{{old('nature_marchandise')}}" required data-parsley-maxlength="255" data-parsley-trigger="change">
@@ -344,7 +344,7 @@
 								</div>
 							</div>
 							<div class="form-group">
-								<label for="heureDepartpoids" class="control-label col-md-3 col-sm-3 col-xs-12">Poids (Kg) <span class="required">*</span></label>
+								<label for="poids" class="control-label col-md-3 col-sm-3 col-xs-12">Poids (Kg) <span class="required">*</span></label>
 								<div class="col-md-6 col-sm-6 col-xs-12">
 									<input class="form-control col-md-7 col-xs-12" type="text"  name="poids" value="{{old('poids')}}" required data-parsley-type="number" data-parsley-trigger="change">
 								</div>
@@ -452,10 +452,7 @@
 								<label for="devise" class="control-label col-md-3 col-sm-3 col-xs-12">Devise <span class="required">*</span></label>
 								<div class="col-md-6 col-sm-6 col-xs-12">
 									<select class="form-control col-md-7 col-xs-12" name="devise" required data-parsley-maxlength="50" data-parsley-trigger="change">
-										<option value="Dh" selected="selected">Dh</option>
-										<option value="Euro">Euro</option>
-										<option value="$">$</option>
-										<option value="£">£</option>
+										<option value="DH" selected="selected">DH</option>
 									</select>
 								</div>
 							</div>

@@ -62,7 +62,7 @@ class ChargementDonneurOrdreTest extends TestCase
             'produit_dangereux' => 'N',
             'mode_paiement' => 'Espèce',
             'delai_paiement' => 'Au départ',
-            'devise' => 'Euro',
+            'devise' => 'DH',
             'type_prix' => 'Fixe',
             'prix_fixe' => '1290.09',
             'info_complementaire'=> "Bien prendre soin de la cargaison s'il vou plait !",

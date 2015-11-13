@@ -35,7 +35,7 @@ class CreateChargementsTable extends Migration
                 $table->string('produit_dangereux', 1)->default('N'); 
                 $table->string('mode_paiement', 50); //Virement bancaire, Espèce,Lettre de change, Chèque
                 $table->string('delai_paiement', 50); //A la commande, Au départ, A la livraison, Fin de mois, 30 jours fin de mois, 60 jours fin de mois, 90 jours fin de mois
-                $table->string('devise', 50); //Euro, Dh, $, £
+                $table->string('devise', 50); //Euro, DH, $, £
                 $table->string('type_prix', 50); //Fixe, Enchères
                 $table->double('prix_fixe', 15, 2)->nullable(); //Prix si type de prix fixe
                 $table->string('info_complementaire', 1000)->nullable();  

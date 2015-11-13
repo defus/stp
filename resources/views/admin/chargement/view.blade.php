@@ -115,7 +115,7 @@
 							</ul>
 							<h5>Départ</h5>
 							<ul class="list-unstyled project_files">
-								<li><a href=""><i class="fa fa-file-word-o"></i> Rue : {{$chargement->depart_rue}}, 
+								<li><a href=""><i class="fa fa-file-word-o"></i> Lieu : {{$chargement->depart_rue}}, 
 											<br/>Vile : {{$chargement->depart_ville}}, 
 											<br/>Pays : {{$chargement->depart_pays}}</a>
 								</li>
@@ -125,7 +125,7 @@
 							<br/>
 							<h5>Livraison</h5>
 							<ul class="list-unstyled project_files">
-								<li><a href=""><i class="fa fa-file-word-o"></i> Rue : {{$chargement->arrivee_rue}}, 
+								<li><a href=""><i class="fa fa-file-word-o"></i> Lieu : {{$chargement->arrivee_rue}}, 
 											<br/>Vile : {{$chargement->arrivee_ville}}, 
 											<br/>Pays : {{$chargement->arrivee_pays}}</a>
 								</li>

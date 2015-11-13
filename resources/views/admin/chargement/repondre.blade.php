@@ -53,7 +53,7 @@
 								<div class="form-group">
 									<label class="control-label col-md-3 col-sm-3 col-xs-3">Départ</label>
 									<div class="col-md-6 col-sm-6 col-xs-12">
-										<p class="form-control-static">Rue : {{$chargement->depart_rue}}, 
+										<p class="form-control-static">Lieu : {{$chargement->depart_rue}}, 
 											<br/>Vile : {{$chargement->depart_ville}}, 
 											<br/>Pays : {{$chargement->depart_pays}}
 											<br/> Date de départ : {{$chargement->depart_date}}</p>
@@ -63,7 +63,7 @@
 								<div class="form-group">
 									<label class="control-label col-md-3 col-sm-3 col-xs-3">Livraison</label>
 									<div class="col-md-6 col-sm-6 col-xs-12">
-										<p class="form-control-static">Rue : {{$chargement->arrivee_rue}}, 
+										<p class="form-control-static">Lieu : {{$chargement->arrivee_rue}}, 
 											<br/>Vile : {{$chargement->arrivee_ville}}, 
 											<br/>Pays : {{$chargement->arrivee_pays}}
 											<br/> Date limite de livraison : {{$chargement->arrivee_date_limite}}</p>
@@ -166,7 +166,8 @@
 							<br/>
 							<h5>Adresse</h5>
 							<ul class="list-unstyled project_files">
-								<li><a href=""><i class="fa fa-file-word-o"></i> Rue : {{$chargement->owner->rue}}, <br/>Ville : {{$chargement->owner->ville}}, <br/>Pays :{{$chargement->owner->pays}}</a>
+								<li><a href=""><i class="fa fa-file-word-o"></i> Lieu : {{$chargement->owner->rue}}, 
+								<br/>Ville : {{$chargement->owner->ville}}, <br/>Pays :{{$chargement->owner->pays}}</a>
 								</li>
 							</ul>
 							<br/>

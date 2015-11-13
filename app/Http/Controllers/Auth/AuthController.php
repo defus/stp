@@ -7,6 +7,7 @@ use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use Mail;
 
 class AuthController extends Controller
 {
@@ -63,7 +64,7 @@ class AuthController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
@@ -76,6 +77,13 @@ class AuthController extends Controller
             'pays' => '',
             'a_propos' => '',
             'logo' => 'nologo.jpg',
+            'statut' => 2,
         ]);
+        
+        Mail::send('emails.register', ['user' => $user], function ($m) use ($user) {
+            $m->to($user->email, $user->name)->subject('Veuillez confirmer votre adresse email');
+        });
+        
+        return $user;
     }
 }

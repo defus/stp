@@ -95,7 +95,7 @@
 					<span class="section">Adresse</span>
 					
 					<div class="form-group">
-						<label class="control-label col-md-3 col-sm-3 col-xs-3">Rue <span class="required">*</span></label>
+						<label class="control-label col-md-3 col-sm-3 col-xs-3">Lieu <span class="required">*</span></label>
 						<div class="col-md-6 col-sm-6 col-xs-12">
 							<input type="text" class="form-control" name="rue" value="{{$rue}}" required="" data-parsley-maxlength="255" data-parsley-trigger="change">
 							<span class="fa fa-user form-control-feedback right" aria-hidden="true"></span>
@@ -111,7 +111,7 @@
 					<div class="form-group">
 						<label class="control-label col-md-3 col-sm-3 col-xs-3">Pays <span class="required">*</span></label>
 						<div class="col-md-6 col-sm-6 col-xs-12">
-							<input type="text" class="form-control" name="pays" value="{{$pays}}" required="" data-parsley-maxlength="255" data-parsley-trigger="change">
+							<input type="text" class="form-control" name="pays" value="Maroc" required="" data-parsley-maxlength="255" data-parsley-trigger="change" disabled>
 							<span class="fa fa-user form-control-feedback right" aria-hidden="true"></span>
 						</div>
 					</div>
