@@ -117,14 +117,14 @@ class UserTest extends TestCase
             ->attach(base_path('tests/') . '/logo.png', 'logo')
             ->type('rue', 'rue')
             ->type('ville', 'ville')
-            ->type('pays', 'pays')
+            ->type('Maroc', 'pays')
             ->type('A propos', 'a_propos')
             ->press('UpdateSociete')
             ->seePageIs('/admin/user/societe')
             ->see("Mise-à-jour des informations de la société effectuées avec succès !");
         
         $this->seeInDatabase("users", ['email' => $user->email, 'societe' => "odo", 'rc' => '123456', 'logo' => $user->id . '/logo.png',
-            'rue' => 'rue', 'ville' => 'ville', 'pays' => 'pays', 'a_propos' => "A propos"]);
+            'rue' => 'rue', 'ville' => 'ville', 'pays' => 'Maroc', 'a_propos' => "A propos"]);
         
         if (!File::exists($file_moved_path)){
             $this->fail("Le fichier doit exister !");

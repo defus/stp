@@ -236,7 +236,8 @@
 							<div class="form-group">
 								<label for="depart_pays" class="control-label col-md-3 col-sm-3 col-xs-12">Pays <span class="required">*</span></label>
 								<div class="col-md-6 col-sm-6 col-xs-12">
-									<input class="form-control col-md-7 col-xs-12" type="text" name="depart_pays" value="Maroc" required="required" data-parsley-maxlength="255" data-parsley-trigger="change" disabled >
+									<input class="form-control col-md-7 col-xs-12" type="text" name="depart_pays" value="Maroc" required="required" data-parsley-maxlength="255" data-parsley-trigger="change" disabled>
+									<input type="hidden" name="depart_pays" value="Maroc" />
 								</div>
 							</div>
 							<div class="form-group">
@@ -278,6 +279,7 @@
 								<label for="arrivee_pays" class="control-label col-md-3 col-sm-3 col-xs-12">Pays <span class="required">*</span></label>
 								<div class="col-md-6 col-sm-6 col-xs-12">
 									<input class="form-control col-md-7 col-xs-12" type="text" required="required" name="arrivee_pays" value="Maroc" data-parsley-maxlength="255" data-parsley-trigger="change" disabled>
+									<input type="hidden" name="arrivee_pays" value="Maroc" />
 								</div>
 							</div>
 							<div class="form-group">
