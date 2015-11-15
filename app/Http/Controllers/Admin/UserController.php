@@ -167,7 +167,7 @@ class UserController extends Controller
     }
     
     
-    protected function desableProfile(DesableProfileRequest $request)
+    protected function disableProfile(DesableProfileRequest $request)
     {
         $user = $request->user();
         

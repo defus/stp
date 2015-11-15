@@ -74,11 +74,20 @@
 		</ul>
 	</div>
 	@endif
+	
 	@if (Session::has('success'))
 	<div class="alert alert-success alert-dismissible fade in" role="alert">
 		<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
 		</button>
 		{{Session::get('success')}}
+	</div>
+	@endif
+	
+	@if(auth()->user()->confirmed == 0)
+	<div class="alert alert-warning alert-dismissible fade in" role="alert">
+		<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
+		</button>
+		Votre email n'est pas encore confirmé ! <br/>Veuillez confirmer votre email en répondant au message que nous avons envoyé sur votre boîte email.
 	</div>
 	@endif
 	

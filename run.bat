@@ -1,1 +1,1 @@
-vendor\bin\phpunit --filter UserTest::testUpdateSociete
+vendor\bin\phpunit --filter AuthTest::testConfirmationOk

@@ -9,6 +9,7 @@ post('/auth/register', 'Auth\AuthController@postRegister');
 get('/auth/login', 'Auth\AuthController@getLogin');
 post('/auth/login', 'Auth\AuthController@postLogin');
 get('/auth/logout', 'Auth\AuthController@getLogout');
+get('/auth/confirmation/{confirmationCode}', 'Auth\AuthController@confirm');
 
 // Admin area
 get('admin', function () {
@@ -33,6 +34,6 @@ $router->group([
     post('admin/user/reset-password', 'UserController@resetPassword');
     post('admin/user/reset-email', 'UserController@resetEmail');
     post('admin/user/profile-update', 'UserController@updateProfile');
-    post('admin/user/profile-desable', 'UserController@desableProfile');
+    post('admin/user/profile-desable', 'UserController@disableProfile');
     post('admin/user/societe-update', 'UserController@updateSociete');
 });

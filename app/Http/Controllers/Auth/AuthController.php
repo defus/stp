@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Mail;
+use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
@@ -34,7 +35,7 @@ class AuthController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest', ['except' => 'getLogout']);
+        $this->middleware('guest', ['except' => ['getLogout', 'confirm']]);
     }
 
     /**
@@ -78,6 +79,7 @@ class AuthController extends Controller
             'a_propos' => '',
             'logo' => 'nologo.jpg',
             'statut' => 2,
+            'confirmation_code' => str_random(30),
         ]);
         
         Mail::send('emails.register', ['user' => $user], function ($m) use ($user) {
@@ -85,5 +87,24 @@ class AuthController extends Controller
         });
         
         return $user;
+    }
+    
+    public function confirm($confirmationCode){
+        
+        Auth::logout();
+        
+        if( $confirmationCode == NULL) {
+            return redirect('/auth/login')
+                ->withErrors("Imossible de confirmer votre compte !");
+        }
+        
+        $user = User::whereConfirmationCode($confirmationCode)->firstOrFail();
+        
+        $user->confirmed = 1;
+        $user->confirmation_code = null;
+        $user->save();
+        
+        return redirect('/auth/login')
+            ->withSuccess("Vous avez validé votre compte avec succès !");
     }
 }

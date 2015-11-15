@@ -11,7 +11,7 @@ class HomeController extends Controller
     
     public function __construct()
     {
-        $this->middleware('guest', ['except' => 'getContact']);
+        $this->middleware('guest', ['except' => ['getContact', 'confirm']]);
     }
     
     public function index()
@@ -22,5 +22,7 @@ class HomeController extends Controller
     public function getContact(){
         
     }
+    
+    
 
 }
