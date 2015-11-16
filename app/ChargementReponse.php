@@ -9,7 +9,7 @@ class ChargementReponse extends Model
     protected $table = 'chargements_reponses';
     
     public function chargement(){
-        return $this->belongsTo('App\Chargement', 'id', 'chargement_id');
+        return $this->hasOne('App\Chargement', 'id', 'chargement_id');
     }
     
     public function transporteur(){

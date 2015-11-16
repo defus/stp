@@ -12,6 +12,9 @@ use App\Http\Requests\UpdateProfileRequest;
 use App\Http\Requests\DesableProfileRequest;
 use App\Http\Requests\UpdateSocieteRequest;
 use Illuminate\Support\Facades\Auth;
+use App\User;
+use App\Chargement;
+use App\ChargementReponse;
 
 class UserController extends Controller
 {
@@ -22,7 +25,10 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $users = User::whereStatut(1)->get();
+        
+        return view('admin.user.list')
+            ->with('users', $users);
     }
 
     /**
@@ -52,9 +58,16 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request, $id)
     {
-        //
+        $user = User::findOrFail($id);
+        $chargements = Chargement::whereOwnerId($user->id)->orderBy('created_at', 'desc')->get();
+        $reponses = ChargementReponse::whereTransporteurId($user->id)->orderBy('created_at', 'desc')->get();
+        
+        return view('admin.user.view')
+            ->with('user', $user)
+            ->with('chargements', $chargements)
+            ->with('reponses', $reponses);
     }
 
     /**

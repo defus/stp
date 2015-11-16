@@ -63,13 +63,13 @@
 						<ul class="messages">
 							@foreach($reponses as $reponse)
 							<li {{($reponse->statut == 'A') ? 'class="well"' : ''}}>
-								<img class="avatar" src="{{url('/users/' . $reponse->transporteur->logo)}}" alt="Logo de la société" />
+								<a href="{{url('/admin/user/' . $reponse->transporteur->id)}}"><img class="avatar" src="{{url('/users/' . $reponse->transporteur->logo)}}" alt="Logo de la société" /></a>
 								<div class="message_date">
 									<h3 class="date text-info">{{$reponse->created_at->format('d')}}</h3>
 									<p class="month">{{$reponse->created_at->format('F')}}</p>
 								</div>
 								<div class="message_wrapper">
-									<h4 class="heading">{{ $reponse->transporteur->societe}}</h4>
+									<h4 class="heading"><a href="{{url('/admin/user/' . $reponse->transporteur->id)}}">{{ $reponse->transporteur->societe}}</a></h4>
 									<p>Statut : 
 										@if($reponse->statut == 'A')
 										<a class="btn btn-success btn-xs">Acceptée</a>

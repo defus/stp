@@ -10,6 +10,26 @@ class UserTest extends TestCase
     use DatabaseMigrationsRefresh;
     use DatabaseTransactions;
 
+    public function testListUserOk(){
+        $user = factory(App\User::class)->create();
+        
+        $this->actingAs($user)
+            ->visit('/admin/user')
+            ->see("Consultation des transporteurs et donneurs d'ordres enregistrés dans la plateforme");
+            
+    }
+    
+    public function testViewUserOk(){
+        
+        $user = factory(App\User::class)->create();
+        
+        $this->actingAs($user)
+            ->visit('/admin/user/1')
+            ->see("Profil du donneur d'ordre ou du transporteur sélectionné")
+            ->see("Rapport utilisateur <small>Rapport d'activité</small>");
+        
+    }
+    
     /**
      * Changement du mot de passe et reconnection avec le nouveau mot de passe ok
      *

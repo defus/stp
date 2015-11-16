@@ -39,7 +39,7 @@ class CreateChargementsTable extends Migration
                 $table->string('type_prix', 50); //Fixe, Enchères
                 $table->double('prix_fixe', 15, 2)->nullable(); //Prix si type de prix fixe
                 $table->string('info_complementaire', 1000)->nullable();  
-                $table->nullableTimestamps();
+                $table->timestamps();
                 
                 $table->foreign('owner_id')
                     ->references('id')

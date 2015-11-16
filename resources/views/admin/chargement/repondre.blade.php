@@ -154,11 +154,10 @@
 						</div>
 						<div class="panel-body">
 							
-							<h5>Société</h5>
 							<ul class="list-unstyled project_files">
-								<li><a href=""><img src="{{url('/users/' . $chargement->owner->logo)}}" alt="Logo de la société" style="width:56px;height:56px;"/></a>
+								<li><a href="{{url('/admin/user/' . $chargement->owner->id)}}"><img src="{{url('/users/' . $chargement->owner->logo)}}" alt="Logo de la société" style="width:56px;height:56px;"/></a>
 								</li>
-								<li><a href=""><i class="fa fa-file-word-o"></i> Societé : {{$chargement->owner->societe}}</a>
+								<li><a href="{{url('/admin/user/' . $chargement->owner->id)}}"><i class="fa fa-file-word-o"></i> Societé : {{$chargement->owner->societe}}</a>
 								</li>
 								<li><a href=""><i class="fa fa-file-word-o"></i> Régistre de commerce : {{$chargement->owner->rc}}</a>
 								</li>

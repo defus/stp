@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Carbon\Carbon;
 
 class UserTableSeeder extends Seeder
 {
@@ -24,6 +25,8 @@ class UserTableSeeder extends Seeder
             'pays' => 'Maroc',
             'a_propos' => 'Maz',
             'logo' => 'nologo.jpg',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
         ]);
         
         //Transporteur CTM
@@ -40,6 +43,8 @@ class UserTableSeeder extends Seeder
             'pays' => 'Maroc',
             'a_propos' => "Transporteur dans tout le Maroc et à l'international",
             'logo' => '2/logo.jpg',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
         ]);
         
         //Donneur d'ordre'
@@ -56,6 +61,8 @@ class UserTableSeeder extends Seeder
             'pays' => 'Maroc',
             'a_propos' => "Société de production de fils alimentaire",
             'logo' => '3/logo.jpg',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
         ]);
         
         
