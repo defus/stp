@@ -41,19 +41,8 @@
             <p class="animated fadeInRightBig">Transportez moins cher, plus rapidement, n'importe où</p>
           </div>
         </div>
-        <div class="item" style="background-image: url({{url('tp_front')}}/images/slider/camions.jpg)">
-          <div class="caption">
-            <h1 class="animated fadeInLeftBig">Dites hello à <span>Shared Carrier Plateform</span></h1>
-            <a class="btn btn-start animated fadeInUpBig" href="{{url('/auth/register')}}">Créez un compte, C'est gratuit !</a>
-            <a class="btn btn-start animated fadeInUpBig" href="{{url('/auth/login')}}">Connexion</a>
-            <br/><br/>
-            <p class="animated fadeInRightBig">Marché où vous recevez des offres pour vos chargements de la part d’un grand nombre de transporteurs évalués</p>
-          </div>
-        </div>
       </div>
-      <a class="left-control" href="#home-slider" data-slide="prev"><i class="fa fa-angle-left"></i></a>
-      <a class="right-control" href="#home-slider" data-slide="next"><i class="fa fa-angle-right"></i></a>
-
+      
       <a id="tohash" href="#services"><i class="fa fa-angle-down"></i></a>
 
     </div><!--/#home-slider-->
@@ -72,14 +61,11 @@
         </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav navbar-right">                 
-            <li class="scroll active"><a href="#home">Accueil</a></li>
-            <li class="scroll"><a href="#services">Service</a></li> 
-            <li class="scroll"><a href="#about-us">A propos de nous</a></li>                     
+            <li class="scroll active"><a href="#home">Accéder au service</a></li>
+            <li class="scroll"><a href="#services">Bénéfices et avantages</a></li> 
             <li class="scroll"><a href="#portfolio">Capture écrans</a></li>
-            <li class="scroll"><a href="#team">Equipe</a></li>
-            <li class="scroll"><a href="#pricing">Prix</a></li>
-            <li class="scroll"><a href="#blog">Blog</a></li>
-            <li class="scroll"><a href="#contact">Contact</a></li>       
+            <li class="scroll"><a href="#team">Qui sommes-nous ?</a></li>
+            <li class="scroll"><a href="#contact">Contactez-nous</a></li>       
           </ul>
         </div>
       </div>
@@ -90,7 +76,7 @@
       <div class="heading wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
         <div class="row">
           <div class="text-center col-sm-8 col-sm-offset-2">
-            <h2>Nous Services</h2>
+            <h2>Bénéfices et avantages</h2>
             <p>Pourquoi utiliser nos services</p>
           </div>
         </div> 
@@ -128,48 +114,7 @@
       </div>
     </div>
   </section><!--/#services-->
-  <section id="about-us" class="parallax">
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-6">
-          <div class="about-info wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
-            <h2>A propos de nous</h2>
-            <p>Nous sommes une société qui met en relation des transporteurs avec des sociétés désirant faire transporter leurs marchandises. </p>
-            <p>Nous disposons d'un solide réseau de partenaires dans tout le Maroc. Cela fait de nous le partenaire idéal pour optimiser vos transactions de transport de marchandises.</p>
-          </div>
-        </div>
-        <div class="col-sm-6">
-          <div class="our-skills wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="300ms">
-            <div class="single-skill wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="300ms">
-              <p class="lead">Satisfaction de nos utilisateurs</p>
-              <div class="progress">
-                <div class="progress-bar progress-bar-primary six-sec-ease-in-out" role="progressbar"  aria-valuetransitiongoal="95">95%</div>
-              </div>
-            </div>
-            <div class="single-skill wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="400ms">
-              <p class="lead">Taux d'utilisateur des transporteurs enregistrés chez nous</p>
-              <div class="progress">
-                <div class="progress-bar progress-bar-primary six-sec-ease-in-out" role="progressbar"  aria-valuetransitiongoal="75">75%</div>
-              </div>
-            </div>
-            <div class="single-skill wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="500ms">
-              <p class="lead">Taux de satisfaction des manufacturies</p>
-              <div class="progress">
-                <div class="progress-bar progress-bar-primary six-sec-ease-in-out" role="progressbar"  aria-valuetransitiongoal="60">60%</div>
-              </div>
-            </div>
-            <div class="single-skill wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
-              <p class="lead">Taux de fréquentation de la plateforme</p>
-              <div class="progress">
-                <div class="progress-bar progress-bar-primary six-sec-ease-in-out" role="progressbar"  aria-valuetransitiongoal="85">85%</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section><!--/#about-us-->
-
+  
   <section id="portfolio">
     <div class="container">
       <div class="row">
@@ -361,7 +306,7 @@
     <div class="container">
       <div class="row">
         <div class="heading text-center col-sm-8 col-sm-offset-2 wow fadeInUp" data-wow-duration="1200ms" data-wow-delay="300ms">
-          <h2>L'équipe</h2>
+          <h2>Qui sommes-nous ?</h2>
           <p>La plateforme Shared Carrier Plateform gérée par une équipe pluri disciplinaire, complémentaire permettant de vous offrir un service précis par rapport à vos besoins</p>
         </div>
       </div>
@@ -455,214 +400,6 @@
       </div>            
     </div>
   </section><!--/#team-->
-
-  <section id="features" class="parallax">
-    <div class="container">
-      <div class="row count">
-        <div class="col-sm-3 col-xs-6 wow fadeInLeft" data-wow-duration="1000ms" data-wow-delay="300ms">
-          <i class="fa fa-user"></i>
-          <h3 class="timer">4000</h3>
-          <p>Clients contents</p>
-        </div>
-        <div class="col-sm-3 col-xs-6 wow fadeInLeft" data-wow-duration="1000ms" data-wow-delay="500ms">
-          <i class="fa fa-desktop"></i>
-          <h3 class="timer">200</h3>                    
-          <p>Transporteurs enregistrés</p>
-        </div> 
-        <div class="col-sm-3 col-xs-6 wow fadeInLeft" data-wow-duration="1000ms" data-wow-delay="700ms">
-          <i class="fa fa-trophy"></i>
-          <h3 class="timer">10</h3>                    
-          <p>AWARDS GAGNES</p>
-        </div> 
-        <div class="col-sm-3 col-xs-6 wow fadeInLeft" data-wow-duration="1000ms" data-wow-delay="900ms">
-          <i class="fa fa-comment-o"></i>                    
-          <h3>24/7</h3>
-          <p>Support rapide</p>
-        </div>                 
-      </div>
-    </div>
-  </section><!--/#features-->
-
-  <section id="pricing">
-    <div class="container">
-      <div class="row">
-        <div class="heading text-center col-sm-8 col-sm-offset-2 wow fadeInUp" data-wow-duration="1200ms" data-wow-delay="300ms">
-          <h2>Table des prix</h2>
-          <p>Bien que l'utilisation de la lateforme soit gratuite, un certain nombre de service premiums sont offerts contre rénumération</p>
-        </div>
-      </div>
-      <div class="pricing-table">
-        <div class="row">
-          <div class="col-sm-4">
-            <div class="single-table wow flipInY" data-wow-duration="1000ms" data-wow-delay="300ms">
-              <h3>Basique</h3>
-              <div class="price">
-                Gratuit                          
-              </div>
-              <ul>
-                <li>Installation immédiate</li>
-                <li>1 transporteur consulté par jour</li>
-              </ul>
-              <a href="{{url('/auth/register')}}" class="btn btn-lg btn-primary">Inscrivez-vous</a>
-            </div>
-          </div>
-          <div class="col-sm-4">
-            <div class="single-table wow flipInY" data-wow-duration="1000ms" data-wow-delay="500ms">
-              <h3>Standard</h3>
-              <div class="price">
-                MAD 190<span>/Mois</span>                                
-              </div>
-              <ul>
-                <li>Installation gratuite</li>
-                <li>10 transporteurs consultés par jour</li>
-              </ul>
-              <a href="{{url('/auth/register')}}" class="btn btn-lg btn-primary">Inscrivez-vous</a>
-            </div>
-          </div>
-          <div class="col-sm-4">
-            <div class="single-table wow flipInY" data-wow-duration="1000ms" data-wow-delay="1100ms">
-              <h3>Professionnel</h3>
-              <div class="price">
-                MAD 490<span>/Mois</span>                    
-              </div>
-              <ul>
-                <li>Installation gratuite</li>
-                <li>Transporteurs consultés illimités par jour</li>
-              </ul>
-              <a href="{{url('/auth/register')}}" class="btn btn-lg btn-primary">Inscrivez-vous</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section><!--/#pricing-->
-
-  <section id="twitter" class="parallax">
-    <div>
-      <a class="twitter-left-control" href="#twitter-carousel" role="button" data-slide="prev"><i class="fa fa-angle-left"></i></a>
-      <a class="twitter-right-control" href="#twitter-carousel" role="button" data-slide="next"><i class="fa fa-angle-right"></i></a>
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-8 col-sm-offset-2">
-            <div class="twitter-icon text-center">
-              <i class="fa fa-twitter"></i>
-              <h4>Themeum</h4>
-            </div>
-            <div id="twitter-carousel" class="carousel slide" data-ride="carousel">
-              <div class="carousel-inner">
-                <div class="item active wow fadeIn" data-wow-duration="1000ms" data-wow-delay="300ms">
-                  <p>Introducing Shortcode generator for Helix V2 based templates <a href="#"><span>#helixframework #joomla</span> http://bit.ly/1qlgwav</a></p>
-                </div>
-                <div class="item">
-                  <p>Introducing Shortcode generator for Helix V2 based templates <a href="#"><span>#helixframework #joomla</span> http://bit.ly/1qlgwav</a></p>
-                </div>
-                <div class="item">                                
-                  <p>Introducing Shortcode generator for Helix V2 based templates <a href="#"><span>#helixframework #joomla</span> http://bit.ly/1qlgwav</a></p>
-                </div>
-              </div>                        
-            </div>                    
-          </div>
-        </div>
-      </div>
-    </div>
-  </section><!--/#twitter-->
-
-  <section id="blog">
-    <div class="container">
-      <div class="row">
-        <div class="heading text-center col-sm-8 col-sm-offset-2 wow fadeInUp" data-wow-duration="1200ms" data-wow-delay="300ms">
-          <h2>Blog Posts</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam</p>
-        </div>
-      </div>
-      <div class="blog-posts">
-        <div class="row">
-          <div class="col-sm-4 wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="400ms">
-            <div class="post-thumb">
-              <a href="#"><img class="img-responsive" src="{{url('tp_front')}}/images/blog/1.jpg" alt=""></a> 
-              <div class="post-meta">
-                <span><i class="fa fa-comments-o"></i> 3 Comments</span>
-                <span><i class="fa fa-heart"></i> 0 Likes</span> 
-              </div>
-              <div class="post-icon">
-                <i class="fa fa-pencil"></i>
-              </div>
-            </div>
-            <div class="entry-header">
-              <h3><a href="#">Lorem ipsum dolor sit amet consectetur adipisicing elit</a></h3>
-              <span class="date">June 26, 2014</span>
-              <span class="cetagory">in <strong>Photography</strong></span>
-            </div>
-            <div class="entry-content">
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-            </div>
-          </div>
-          <div class="col-sm-4 wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="600ms">
-            <div class="post-thumb">
-              <div id="post-carousel"  class="carousel slide" data-ride="carousel">
-                <ol class="carousel-indicators">
-                  <li data-target="#post-carousel" data-slide-to="0" class="active"></li>
-                  <li data-target="#post-carousel" data-slide-to="1"></li>
-                  <li data-target="#post-carousel" data-slide-to="2"></li>
-                </ol>
-                <div class="carousel-inner">
-                  <div class="item active">
-                    <a href="#"><img class="img-responsive" src="{{url('tp_front')}}/images/blog/2.jpg" alt=""></a>
-                  </div>
-                  <div class="item">
-                    <a href="#"><img class="img-responsive" src="{{url('tp_front')}}/images/blog/1.jpg" alt=""></a>
-                  </div>
-                  <div class="item">
-                    <a href="#"><img class="img-responsive" src="{{url('tp_front')}}/images/blog/3.jpg" alt=""></a>
-                  </div>
-                </div>                               
-                <a class="blog-left-control" href="#post-carousel" role="button" data-slide="prev"><i class="fa fa-angle-left"></i></a>
-                <a class="blog-right-control" href="#post-carousel" role="button" data-slide="next"><i class="fa fa-angle-right"></i></a>
-              </div>                            
-              <div class="post-meta">
-                <span><i class="fa fa-comments-o"></i> 3 Comments</span>
-                <span><i class="fa fa-heart"></i> 0 Likes</span> 
-              </div>
-              <div class="post-icon">
-                <i class="fa fa-picture-o"></i>
-              </div>
-            </div>
-            <div class="entry-header">
-              <h3><a href="#">Lorem ipsum dolor sit amet consectetur adipisicing elit</a></h3>
-              <span class="date">June 26, 2014</span>
-              <span class="cetagory">in <strong>Photography</strong></span>
-            </div>
-            <div class="entry-content">
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-            </div>
-          </div>
-          <div class="col-sm-4 wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="800ms">
-            <div class="post-thumb">
-              <a href="#"><img class="img-responsive" src="{{url('tp_front')}}/images/blog/3.jpg" alt=""></a>
-              <div class="post-meta">
-                <span><i class="fa fa-comments-o"></i> 3 Comments</span>
-                <span><i class="fa fa-heart"></i> 0 Likes</span> 
-              </div>
-              <div class="post-icon">
-                <i class="fa fa-video-camera"></i>
-              </div>
-            </div>
-            <div class="entry-header">
-              <h3><a href="#">Lorem ipsum dolor sit amet consectetur adipisicing elit</a></h3>
-              <span class="date">June 26, 2014</span>
-              <span class="cetagory">in <strong>Photography</strong></span>
-            </div>
-            <div class="entry-content">
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-            </div>
-          </div>                    
-        </div>
-        <div class="load-more wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="500ms">
-          <a href="#" class="btn-loadmore"><i class="fa fa-repeat"></i> Load More</a>
-        </div>                
-      </div>
-    </div>
-  </section><!--/#blog-->
 
   <section id="contact">
     <div id="google-map" class="wow fadeIn" data-latitude="52.365629" data-longitude="4.871331" data-wow-duration="1000ms" data-wow-delay="400ms"></div>

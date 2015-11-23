@@ -1,3 +1,3 @@
 @extends('layouts.public')
 
-@section('title', 'Accueil')
+@section('title', 'Accéder au service')
