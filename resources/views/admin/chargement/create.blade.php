@@ -33,20 +33,14 @@
 				$('#createChargementFormStep2').parsley().validate();
 				return validateFront($('#createChargementFormStep2'));
 			}
-			else if(context.fromStep == 3 && context.toStep == 4){
-				$('#createChargementFormStep3').parsley().validate();
-				return validateFront($('#createChargementFormStep3'));
-			} 
 			return true;
 		}
 	
 		function onFinishCallback(objs, context){
-			$('#createChargementFormStep4').parsley().validate();
-			if(validateFront($('#createChargementFormStep4'))){
+			$('#createChargementFormStep2').parsley().validate();
+			if(validateFront($('#createChargementFormStep2'))){
 				var f_step1_data = $('#createChargementFormStep1').serialize();
 				var f_step2_data = $('#createChargementFormStep2').serialize();
-				var f_step3_data = $('#createChargementFormStep3').serialize();
-				var f_step4_data = $('#createChargementFormStep4').serialize();
 				
 				swal({   title: "Ajouter une demande de chargement",   text: "Créer la demande de chargement ?",   type: "info",   showCancelButton: true,   closeOnConfirm: false,   showLoaderOnConfirm: true, cancelButtonText : "Annuler", confirmButtonText : "Créer la demande"}, 
 					function(){   
@@ -54,7 +48,7 @@
 							url : '{{url('/admin/chargement')}}',
 							dataType : 'json',
 							type : 'post',
-							data : f_step1_data + '&' + f_step2_data + '&' + f_step3_data + '&' + f_step4_data ,
+							data : f_step1_data + '&' + f_step2_data ,
 							success : function(data) {
 								swal({title: "Ajouter une demande de chargement",   text: "Création effectuée avec succès !",   type: "success"},function(){ 
 									window.location = "{{url('/admin/chargement')}}/" + data.id;
@@ -175,50 +169,28 @@
 				<br />
 				
 				<!-- Smart Wizard -->
-				<p>Remplissez toutes les étapes de ce formulaire pour enregistrer un nouveau chargement.</p>
+				<p>Remplissez toutes les étapes de ce formulaire pour enregistrer une nouvelle demande de chargement.</p>
 				<div id="wizard" class="form_wizard wizard_horizontal">
 					<ul class="wizard_steps">
 						<li>
 							<a href="#step-1">
 								<span class="step_no">1</span>
-								<span class="step_descr">
-						Etape 1<br />
-						<small>Départ</small>
-					</span>
+								<span class="step_descr">Etape 1<br /><small>Itinéraire</small></span>
 							</a>
 						</li>
 						<li>
 							<a href="#step-2">
 								<span class="step_no">2</span>
-								<span class="step_descr">
-						Etape 2<br />
-						<small>Arrivée</small>
-					</span>
-							</a>
-						</li>
-						<li>
-							<a href="#step-3">
-								<span class="step_no">3</span>
-								<span class="step_descr">
-						Etape 3<br />
-						<small>Détails et colisage</small>
-					</span>
-							</a>
-						</li>
-						<li>
-							<a href="#step-4">
-								<span class="step_no">4</span>
-								<span class="step_descr">
-						Etape 4<br />
-						<small>Paiement</small>
-					</span>
+								<span class="step_descr">Etape 2<br /><small>Description de la marchandise</small></span>
 							</a>
 						</li>
 					</ul>
 					<div id="step-1">
 						<form class="form-horizontal form-label-left" data-parsley-validate id="createChargementFormStep1">
 							{!! csrf_field() !!}
-
+							
+							<span class="section">Lieu de chargement</span>
+							
 							<div class="form-group">
 								<label class="control-label col-md-3 col-sm-3 col-xs-12" for="depart_rue">Lieu <span class="required">*</span>
 								</label>
@@ -233,13 +205,7 @@
 									<input type="text" name="depart_ville" value="{{old('depart_ville')}}" required="required" class="form-control col-md-7 col-xs-12" data-parsley-maxlength="255" data-parsley-trigger="change">
 								</div>
 							</div>
-							<div class="form-group">
-								<label for="depart_pays" class="control-label col-md-3 col-sm-3 col-xs-12">Pays <span class="required">*</span></label>
-								<div class="col-md-6 col-sm-6 col-xs-12">
-									<input class="form-control col-md-7 col-xs-12" type="text" name="depart_pays" value="Maroc" required="required" data-parsley-maxlength="255" data-parsley-trigger="change" disabled>
-									<input type="hidden" name="depart_pays" value="Maroc" />
-								</div>
-							</div>
+							<input type="hidden" name="depart_pays" value="Maroc" />
 							<div class="form-group">
 								<label class="control-label col-md-3 col-sm-3 col-xs-12">Date de départ <span class="required">*</span>
 								</label>
@@ -253,13 +219,8 @@
 									<input class="form-control col-md-7 col-xs-12" required="required" type="text" id="depart_heure" name="depart_heure" value="{{old('depart_heure')}}" data-inputmask="'mask': '99:99:99'"  data-parsley-pattern="([01]?[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]" data-parsley-trigger="change">
 								</div>
 							</div>
-
-						</form>
-
-					</div>
-					<div id="step-2">
-						<form class="form-horizontal form-label-left" data-parsley-validate id="createChargementFormStep2">
 							
+							<span class="section">Lieu de dépôt</span>
 
 							<div class="form-group">
 								<label class="control-label col-md-3 col-sm-3 col-xs-12" for="arrivee_rue">Lieu <span class="required">*</span>
@@ -275,13 +236,7 @@
 									<input type="text" required="required" class="form-control col-md-7 col-xs-12" name="arrivee_ville" value="{{old('arrivee_ville')}}" data-parsley-maxlength="255" data-parsley-trigger="change">
 								</div>
 							</div>
-							<div class="form-group">
-								<label for="arrivee_pays" class="control-label col-md-3 col-sm-3 col-xs-12">Pays <span class="required">*</span></label>
-								<div class="col-md-6 col-sm-6 col-xs-12">
-									<input class="form-control col-md-7 col-xs-12" type="text" required="required" name="arrivee_pays" value="Maroc" data-parsley-maxlength="255" data-parsley-trigger="change" disabled>
-									<input type="hidden" name="arrivee_pays" value="Maroc" />
-								</div>
-							</div>
+							<input type="hidden" name="arrivee_pays" value="Maroc" />
 							<div class="form-group">
 								<label for="arrivee_date_limite" class="control-label col-md-3 col-sm-3 col-xs-12">Date limite de livraison <span class="required">*</span>
 								</label>
@@ -298,10 +253,11 @@
 
 						</form>
 					</div>
-					<div id="step-3">
-						<form class="form-horizontal form-label-left" data-parsley-validate id="createChargementFormStep3">
-							
-
+					<div id="step-2">
+						
+						<span class="section">Description</span>
+						
+						<form class="form-horizontal form-label-left" data-parsley-validate id="createChargementFormStep2">
 							<div class="form-group">
 								<label class="control-label col-md-3 col-sm-3 col-xs-12" for="rue">Frais de transit <span class="required">*</span>
 								</label>
@@ -419,10 +375,8 @@
 								</div>
 							</div>
 							
-						</form>
-					</div>
-					<div id="step-4">
-						<form class="form-horizontal form-label-left" data-parsley-validate id="createChargementFormStep4">
+							<span class="section">Paiement</span>
+							
 							<div class="form-group">
 								<label class="control-label col-md-3 col-sm-3 col-xs-12" for="mode_paiement">Moyen de paiement <span class="required">*</span>
 								</label>
