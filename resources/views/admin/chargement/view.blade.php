@@ -135,37 +135,17 @@
 							<br/>
 							<h5>Plus d'informations</h5>
 							<ul class="list-unstyled project_files">
-								<li><a href=""><i class="fa fa-file-word-o"></i> Frais de transit : {{$chargement->frais_transit}}
-											<br/> Distance : {{$chargement->distance}} km</a>
+								<li><a href=""><i class="fa fa-file-word-o"></i> Distance : {{$chargement->distance}} km</a>
 								</li>
 								<li><a href=""><i class="fa fa-file-word-o"></i> Type de trajet : {{$chargement->type_trajet}}
 											<br/>Nature de la marchandise : {{$chargement->nature_marchandise}}
-											<br/>Type d'assurance : {{$chargement->type_assurance}}
 											<br/>Poids : {{$chargement->poids}} Kg
-											<br/>Volume : {{$chargement->volume}} m3
-											<br/>Ce chargement contient t'il des articles dangereux ? : {{$chargement->produit_dangereux == 'N' ? 'NON' : 'OUI'}}<br/></a>
+											<br/>Type de véhicule : {{$chargement->type_vehicule}}
+											<br/>Nombre de voyages : {{$chargement->nombre_voyage}}<br/></a>
 								</li>
 							</ul>
 							<br />
-							<h5>Liste de colisage</h5>
-							<table class="table">
-								<thead>
-									<tr>
-										<th>Emballage</th>
-										<th>Nombre d'unités</th>
-										<th>Empilable ?</th>
-									</tr>
-								</thead>
-								<tbody>
-									@foreach($chargement->colis as $colis)
-									<tr>
-										<td>{{$colis->emballage}}</td>
-										<td>{{$colis->nombre_unite}}</td>
-										<td>{{($colis->empilable === 'O') ? 'Empilable' : 'Non empilable' }}</td>
-									</tr>
-									@endforeach
-								</tbody>
-							</table>
+							
 							
 						</div>
 

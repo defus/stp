@@ -46,12 +46,12 @@ class ChargementDonneurOrdreTest extends TestCase
             'depart_ville' => 'Rabat',
              'depart_pays' => 'Maroc',
             'depart_date' => $depart_date->format('d/m/Y'),
-            'depart_heure' => $depart_date->format('H:i:s'),
+            'depart_heure' => $depart_date->format('H:i'),
             'arrivee_rue' => '1 bd roudani',
             'arrivee_ville' => 'Rabat',
             'arrivee_pays' => 'Maroc',
             'arrivee_date_limite' => $arrivee_date->format('d/m/Y'),
-            'arrivee_heure_limite' => $arrivee_date->format('H:i:s'),
+            'arrivee_heure_limite' => $arrivee_date->format('H:i'),
             'frais_transit' => 'Aucun',
             'distance' => '100',
             'type_trajet' => 'Aller simple',
@@ -66,17 +66,16 @@ class ChargementDonneurOrdreTest extends TestCase
             'type_prix' => 'Fixe',
             'prix_fixe' => '1290.09',
             'info_complementaire'=> "Bien prendre soin de la cargaison s'il vou plait !",
-            'colis' => [['emballage' => 'Cartons', 'nombre_unite' => 90, 'empilable' => 'O'], ['emballage' => 'Vrac liquide', 'nombre_unite' => 121, 'empilable' => 'N']],
+            'type_vehicule' => 'Camion',
+            'nombre_voyage' => 2,
             ];
             
         $this->actingAs($donneurOrdre)
             ->post('/admin/chargement', $data, ['HTTP_X-Requested-With' => 'XMLHttpRequest'])
             ->seeJson(['created' => true, 'id' => 5]);
         
-        $this->seeInDatabase('chargements', ['id' => 5, 'depart_date' => $depart_date->format('Y-m-d H:i:s'), 'arrivee_date_limite' => $arrivee_date->format('Y-m-d H:i:s'), 'owner_id' => $donneurOrdre->id, 'statut' => 'O']);
+        $this->seeInDatabase('chargements', ['id' => 5, 'depart_date' => $depart_date->format('Y-m-d H:i:00'), 'arrivee_date_limite' => $arrivee_date->format('Y-m-d H:i:00'), 'owner_id' => $donneurOrdre->id, 'statut' => 'O', 'type_vehicule' => 'Camion', 'nombre_voyage' => 2,]);
         
-        $this->seeInDatabase('chargements_colis', ['chargement_id' => 5, 'emballage' => 'Cartons', 'nombre_unite' => '90', 'empilable' => 'O']);
-        $this->seeInDatabase('chargements_colis', ['chargement_id' => 5, 'emballage' => 'Vrac liquide', 'nombre_unite' => '121', 'empilable' => 'N']);
             
     }
     

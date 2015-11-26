@@ -55,10 +55,9 @@
 							@can(App\User::TRANSPORTEUR)
 								<th style="width: 10%">Société</th>
 							@endcan
-							<th style="width: 10%">Départ</th>
-							<th style="width: 10%">Arrivée</th>
-							<th style="width: 20%">Autres informations</th>
-							<th style="width: 20%">Colisage</th>
+							<th style="width: 15%">Départ</th>
+							<th style="width: 15%">Arrivée</th>
+							<th style="width: 30%">Chargement</th>
 							@can(App\User::DONNEUR_ORDRE)
 								<th style="width: 10%">Nombre de réponses</th>
 								<th>Status</th>
@@ -83,7 +82,7 @@
 									<br/>{{$chargement->depart_pays}}
 								</b></a>
 								<br />
-								<small>Heure de départ : {{$chargement->depart_date}}</small>
+								<small>Date de départ : {{$chargement->depart_date}}</small>
 							</td>
 							<td>
 								<a><b>{{$chargement->arrivee_rue}}
@@ -91,22 +90,16 @@
 									<br/>{{$chargement->arrivee_pays}}
 								</b></a>
 								<br />
-								<small>Heure limite d'arrivée : {{$chargement->arrivee_date_limite}}</small>
+								<small>Date limite d'arrivée : {{$chargement->arrivee_date_limite}}</small>
 							</td>
 							<td>
 								<a><b>Distance :</b> {{$chargement->distance}} Km 
-									<br/><b>Poids :</b> {{$chargement->poids}} Kg 
-									<br/><b>Volume :</b> {{$chargement->volume}} m3 </a>
+									<br/><b>Poids :</b> {{$chargement->poids}} Kg  </a>
 								<br />
-								<small><b>Frais de transit :</b> {{$chargement->frais_transit . ' ' . $chargement->devise}}
-									<br/><b>Type de trajet :</b> {{$chargement->type_trajet}}
+								<small><b>Type de trajet :</b> {{$chargement->type_trajet}}
 									<br/><b>Nature de la marchandise :</b> {{$chargement->nature_marchandise}} 
-									<br/><b>Type d'assurance :</b> {{$chargement->type_assurance}}</small>
-							</td>
-							<td>
-								@foreach($chargement->colis as $colis)
-									<a>{{$colis->nombre_unite}} x {{$colis->emballage}} ({{($colis->empilable === 'O') ? 'Empilable' : 'Non empilable' }})</a><br/>
-								@endforeach
+									<br/><b>Type de véhicule :</b> {{$chargement->type_vehicule}} 
+									<br/><b>Nombre de voyages :</b> {{$chargement->nombre_voyage}} </small>
 							</td>
 							@can(App\User::DONNEUR_ORDRE)
 							<td>Reçues : {{$chargement->reponses()->count()}}

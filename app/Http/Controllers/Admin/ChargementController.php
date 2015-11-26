@@ -39,6 +39,8 @@ class ChargementController extends Controller
         'devise' => '',
         'type_prix' => '',
         'prix_fixe' => '',
+        'type_vehicule' => '',
+        'nombre_voyage' => 0,
         'info_complementaire'=> ''];
     
     /**
@@ -93,19 +95,21 @@ class ChargementController extends Controller
         
         $chargement->owner_id = $request->user()->id;
         $chargement->statut = 'O';
-        $chargement->depart_date = Carbon::createFromFormat('d/m/Y H:i:s', $request->get('depart_date') . ' ' . $request->get('depart_heure'));
-        $chargement->arrivee_date_limite = Carbon::createFromFormat('d/m/Y H:i:s', $request->get('arrivee_date_limite') . ' ' . $request->get('arrivee_heure_limite'));
+        $chargement->depart_date = Carbon::createFromFormat('d/m/Y H:i', $request->get('depart_date') . ' ' . $request->get('depart_heure'));
+        $chargement->arrivee_date_limite = Carbon::createFromFormat('d/m/Y H:i', $request->get('arrivee_date_limite') . ' ' . $request->get('arrivee_heure_limite'));
         
         $chargement->save();
         
-        foreach($request->get('colis') as $key => $val)
-        {
-            $colis = new ChargementColis();
-            $colis->emballage = $val['emballage'];
-            $colis->nombre_unite = $val['nombre_unite'];
-            $colis->empilable = $val['empilable'];
-            $colis->chargement_id = $chargement->id;
-            $colis->save();
+        if($request->get('colis') != NULL){
+            foreach($request->get('colis') as $key => $val)
+            {
+                $colis = new ChargementColis();
+                $colis->emballage = $val['emballage'];
+                $colis->nombre_unite = $val['nombre_unite'];
+                $colis->empilable = $val['empilable'];
+                $colis->chargement_id = $chargement->id;
+                $colis->save();
+            }
         }
         
         return response()->json(['id' => $chargement->id, 'created' => true]);

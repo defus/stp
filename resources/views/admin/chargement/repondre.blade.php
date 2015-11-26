@@ -49,7 +49,7 @@
 						<span class="section">Détails de la demande</span>
 						
 						<div class="row">
-							<div class="col-md-6 col-sm-12 col-xs-12">
+							<div class="col-md-12 col-sm-12 col-xs-12">
 								<div class="form-group">
 									<label class="control-label col-md-3 col-sm-3 col-xs-3">Départ</label>
 									<div class="col-md-6 col-sm-6 col-xs-12">
@@ -71,47 +71,20 @@
 								</div>
 								
 								<div class="form-group">
-									<label class="control-label col-md-3 col-sm-3 col-xs-3">Plus d'informations</label>
+									<label class="control-label col-md-3 col-sm-3 col-xs-3">Chargement</label>
 									<div class="col-md-6 col-sm-6 col-xs-12">
-										<p class="form-control-static">Frais de transit : {{$chargement->frais_transit}}
-											<br/> Distance : {{$chargement->distance}} km
+										<p class="form-control-static">Distance : {{$chargement->distance}} km
 											<br/>Type de trajet : {{$chargement->type_trajet}}
 											<br/>Nature de la marchandise : {{$chargement->nature_marchandise}}
 											<br/>Type d'assurance : {{$chargement->type_assurance}}
 											<br/>Poids : {{$chargement->poids}} Kg
-											<br/>Volume : {{$chargement->volume}} m3
-											<br/>Ce chargement contient t'il des articles dangereux ? : {{$chargement->produit_dangereux == 'N' ? 'NON' : 'OUI'}}<br/></p>
+											<br/>Type de véhicule : {{$chargement->type_vehicule}}
+											<br/>Nombre de voyages : {{$chargement->nombre_voyage}}<br/></p>
 									</div>
 								</div>
 							
 							</div>
-							<div class="col-md-6 col-sm-12 col-xs-12">    
-								<div class="form-group">
-									<label>Liste de colisage</label>
-									<div class="col-md-12 col-sm-12 col-xs-12">
-										<p class="form-control-static">
-											<table class="table">
-												<thead>
-													<tr>
-														<th>Emballage</th>
-														<th>Nombre d'unités</th>
-														<th>Empilable ?</th>
-													</tr>
-												</thead>
-												<tbody>
-													@foreach($chargement->colis as $colis)
-													<tr>
-														<td>{{$colis->emballage}}</td>
-														<td>{{$colis->nombre_unite}}</td>
-														<td>{{($colis->empilable === 'O') ? 'Empilable' : 'Non empilable' }}</td>
-													</tr>
-													@endforeach
-												</tbody>
-											</table>
-										</p>
-									</div>
-								</div>
-							</div>
+							
 						</div>
 						
 						<span class="section">Informations de la réponse</span>

@@ -202,7 +202,64 @@
 								<label class="control-label col-md-3 col-sm-3 col-xs-12" for="depart_ville">Ville <span class="required">*</span>
 								</label>
 								<div class="col-md-6 col-sm-6 col-xs-12">
-									<input type="text" name="depart_ville" value="{{old('depart_ville')}}" required="required" class="form-control col-md-7 col-xs-12" data-parsley-maxlength="255" data-parsley-trigger="change">
+									<select name="depart_ville" value="{{old('depart_ville')}}" required="required" class="form-control col-md-7 col-xs-12" data-parsley-maxlength="255" data-parsley-trigger="change">
+										<option value="AL HAJEB">AL HAJEB</option>
+										<option value="AGADIR">AGADIR</option>
+										<option value="AL HOCEIMA">AL HOCEIMA</option>
+										<option value="ASSA ZAG">ASSA ZAG</option>
+										<option value="	AZILAL">AZILAL</option>
+										<option value="BENI MELLAL">BENI MELLAL</option>
+										<option value="BENSLIMANE">BENSLIMANE</option>
+										<option value="BOUJDOUR">BOUJDOUR</option>
+										<option value="BOULEMANE">BOULEMANE</option>
+										<option value="BERRECHID">BERRECHID</option>
+										<option value="CASABLANCA">CASABLANCA</option>
+										<option value="CHEFCHAOUEN">CHEFCHAOUEN</option>
+										<option value="CHTOUKA AIT BAHA">CHTOUKA AIT BAHA</option>
+										<option value="CHICHAOUA">CHICHAOUA</option>
+										<option value="DAKHLA">DAKHLA</option>
+										<option value="EL JADIDA">EL JADIDA</option>
+										<option value="EL KELAA DES SRAGHNAS">EL KELAA DES SRAGHNAS</option>
+										<option value="ERRACHIDIA">ERRACHIDIA</option>
+										<option value="ESSAOUIRA">ESSAOUIRA</option>
+										<option value="ES SEMARA">ES SEMARA</option>
+										<option value="FES">FES</option>
+										<option value="FIGUIG">FIGUIG</option>
+										<option value="GUELMIM">GUELMIM</option>
+										<option value="IFRANE">IFRANE</option>
+										<option value="KASBAT TADLA">Kasbat Tadla</option>
+										<option value="KENITRA">KENITRA</option>
+										<option value="KHEMISSET">KHEMISSET</option>
+										<option value="KHENIFRA">KHENIFRA</option>
+										<option value="KHOURIBGA">KHOURIBGA</option>
+										<option value="LAAYOUNE">LAAYOUNE</option>
+										<option value="LARACHE">LARACHE</option>
+										<option value="MARRAKECH">MARRAKECH</option>
+										<option value="MEKNES">MEKNES</option>
+										<option value="MOHAMMADIA">MOHAMMADIA</option>
+										<option value="NADOR">NADOR</option>
+										<option value="NOUACEUR">NOUACEUR</option>
+										<option value="OUARZAZATE">OUARZAZATE</option>
+										<option value="OUJDA">OUJDA</option>
+										<option value="OUED EDDAHAB">OUED EDDAHAB</option>
+										<option value="RABAT" selected>RABAT</option>
+										<option value="SAFI">SAFI</option>
+										<option value="SALE">SALE</option>
+										<option value="SKHIRAT">SKHIRAT</option>
+										<option value="SEFROU">SEFROU</option>
+										<option value="SETTAT">SETTAT</option>
+										<option value="SIDI IFNI">Sidi Ifni</option>
+										<option value="SIDI KACEM">SIDI KACEM</option>
+										<option value="TANGER">TANGER</option>
+										<option value="TAN TAN">TAN TAN</option>
+										<option value="TAOUNAT">TAOUNAT</option>
+										<option value="TATA">TATA</option>
+										<option value="TAZA">TAZA</option>
+										<option value="TAROUDANT">TAROUDANT</option>
+										<option value="TETOUAN">TETOUAN</option>
+										<option value="TEMARA">TEMARA</option>
+										<option value="TIZNIT">TIZNIT</option>
+									</select>
 								</div>
 							</div>
 							<input type="hidden" name="depart_pays" value="Maroc" />
@@ -214,9 +271,9 @@
 								</div>
 							</div>
 							<div class="form-group">
-								<label for="depart_heure" class="control-label col-md-3 col-sm-3 col-xs-12">Heure de départ <span class="required">*</span></label>
+								<label for="depart_heure" class="control-label col-md-3 col-sm-3 col-xs-12">Heure de départ</label>
 								<div class="col-md-6 col-sm-6 col-xs-12">
-									<input class="form-control col-md-7 col-xs-12" required="required" type="text" id="depart_heure" name="depart_heure" value="{{old('depart_heure')}}" data-inputmask="'mask': '99:99:99'"  data-parsley-pattern="([01]?[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]" data-parsley-trigger="change">
+									<input class="form-control col-md-7 col-xs-12" type="text" id="depart_heure" name="depart_heure" value="12:00" data-inputmask="'mask': '99:99'"  data-parsley-pattern="([01]?[0-9]|2[0-3]):[0-5][0-9]" data-parsley-trigger="change">
 								</div>
 							</div>
 							
@@ -233,7 +290,64 @@
 								<label class="control-label col-md-3 col-sm-3 col-xs-12" for="arrivee_ville">Ville <span class="required">*</span>
 								</label>
 								<div class="col-md-6 col-sm-6 col-xs-12">
-									<input type="text" required="required" class="form-control col-md-7 col-xs-12" name="arrivee_ville" value="{{old('arrivee_ville')}}" data-parsley-maxlength="255" data-parsley-trigger="change">
+									<select name="arrivee_ville" value="{{old('arrivee_ville')}}" required="required" class="form-control col-md-7 col-xs-12" data-parsley-maxlength="255" data-parsley-trigger="change">
+										<option value="AL HAJEB">AL HAJEB</option>
+										<option value="AGADIR">AGADIR</option>
+										<option value="AL HOCEIMA">AL HOCEIMA</option>
+										<option value="ASSA ZAG">ASSA ZAG</option>
+										<option value="	AZILAL">AZILAL</option>
+										<option value="BENI MELLAL">BENI MELLAL</option>
+										<option value="BENSLIMANE">BENSLIMANE</option>
+										<option value="BOUJDOUR">BOUJDOUR</option>
+										<option value="BOULEMANE">BOULEMANE</option>
+										<option value="BERRECHID">BERRECHID</option>
+										<option value="CASABLANCA" selected>CASABLANCA</option>
+										<option value="CHEFCHAOUEN">CHEFCHAOUEN</option>
+										<option value="CHTOUKA AIT BAHA">CHTOUKA AIT BAHA</option>
+										<option value="CHICHAOUA">CHICHAOUA</option>
+										<option value="DAKHLA">DAKHLA</option>
+										<option value="EL JADIDA">EL JADIDA</option>
+										<option value="EL KELAA DES SRAGHNAS">EL KELAA DES SRAGHNAS</option>
+										<option value="ERRACHIDIA">ERRACHIDIA</option>
+										<option value="ESSAOUIRA">ESSAOUIRA</option>
+										<option value="ES SEMARA">ES SEMARA</option>
+										<option value="FES">FES</option>
+										<option value="FIGUIG">FIGUIG</option>
+										<option value="GUELMIM">GUELMIM</option>
+										<option value="IFRANE">IFRANE</option>
+										<option value="KASBAT TADLA">Kasbat Tadla</option>
+										<option value="KENITRA">KENITRA</option>
+										<option value="KHEMISSET">KHEMISSET</option>
+										<option value="KHENIFRA">KHENIFRA</option>
+										<option value="KHOURIBGA">KHOURIBGA</option>
+										<option value="LAAYOUNE">LAAYOUNE</option>
+										<option value="LARACHE">LARACHE</option>
+										<option value="MARRAKECH">MARRAKECH</option>
+										<option value="MEKNES">MEKNES</option>
+										<option value="MOHAMMADIA">MOHAMMADIA</option>
+										<option value="NADOR">NADOR</option>
+										<option value="NOUACEUR">NOUACEUR</option>
+										<option value="OUARZAZATE">OUARZAZATE</option>
+										<option value="OUJDA">OUJDA</option>
+										<option value="OUED EDDAHAB">OUED EDDAHAB</option>
+										<option value="RABAT">RABAT</option>
+										<option value="SAFI">SAFI</option>
+										<option value="SALE">SALE</option>
+										<option value="SKHIRAT">SKHIRAT</option>
+										<option value="SEFROU">SEFROU</option>
+										<option value="SETTAT">SETTAT</option>
+										<option value="SIDI IFNI">Sidi Ifni</option>
+										<option value="SIDI KACEM">SIDI KACEM</option>
+										<option value="TANGER">TANGER</option>
+										<option value="TAN TAN">TAN TAN</option>
+										<option value="TAOUNAT">TAOUNAT</option>
+										<option value="TATA">TATA</option>
+										<option value="TAZA">TAZA</option>
+										<option value="TAROUDANT">TAROUDANT</option>
+										<option value="TETOUAN">TETOUAN</option>
+										<option value="TEMARA">TEMARA</option>
+										<option value="TIZNIT">TIZNIT</option>
+									</select>
 								</div>
 							</div>
 							<input type="hidden" name="arrivee_pays" value="Maroc" />
@@ -245,9 +359,9 @@
 								</div>
 							</div>
 							<div class="form-group">
-								<label for="arrivee_heure_limite" class="control-label col-md-3 col-sm-3 col-xs-12">Heure limite de livraison (heure locale) <span class="required">*</span></label>
+								<label for="arrivee_heure_limite" class="control-label col-md-3 col-sm-3 col-xs-12">Heure limite de livraison</label>
 								<div class="col-md-6 col-sm-6 col-xs-12">
-									<input class="form-control col-md-7 col-xs-12" type="text" required="required" id="arrivee_heure_limite" name="arrivee_heure_limite" value="{{old('arrivee_heure_limite')}}" data-inputmask="'mask': '99:99:99'"  data-parsley-pattern="([01]?[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]" data-parsley-trigger="change">
+									<input class="form-control col-md-7 col-xs-12" type="text" id="arrivee_heure_limite" name="arrivee_heure_limite" value="12:00" data-inputmask="'mask': '99:99'"  data-parsley-pattern="([01]?[0-9]|2[0-3]):[0-5][0-9]" data-parsley-trigger="change">
 								</div>
 							</div>
 
@@ -255,20 +369,10 @@
 					</div>
 					<div id="step-2">
 						
-						<span class="section">Description</span>
+						<span class="section">Chargement</span>
 						
 						<form class="form-horizontal form-label-left" data-parsley-validate id="createChargementFormStep2">
-							<div class="form-group">
-								<label class="control-label col-md-3 col-sm-3 col-xs-12" for="rue">Frais de transit <span class="required">*</span>
-								</label>
-								<div class="col-md-6 col-sm-6 col-xs-12">
-									<select class="form-control col-md-7 col-xs-12" name="frais_transit" required data-parsley-maxlength="50" data-parsley-trigger="change">
-										<option value="Aucun" selected="selected">Aucun</option>
-										<option value="A notre charge">A notre charge</option>
-										<option value="A la charge du transporteur">A la charge du transporteur</option>
-									</select>
-								</div>
-							</div>
+							<input type="hidden" name="frais_transit" value="Aucun" />
 							<div class="form-group">
 								<label class="control-label col-md-3 col-sm-3 col-xs-12" for="distance">Distance (Km) <span class="required">*</span>
 								</label>
@@ -292,86 +396,34 @@
 									<input class="form-control col-md-7 col-xs-12" required="required" type="text"  name="nature_marchandise" value="{{old('nature_marchandise')}}" required data-parsley-maxlength="255" data-parsley-trigger="change">
 								</div>
 							</div>
-							<div class="form-group">
-								<label for="type_assurance" class="control-label col-md-3 col-sm-3 col-xs-12">Type d'assurance requise <span class="required">*</span></label>
-								<div class="col-md-6 col-sm-6 col-xs-12">
-									<select class="form-control col-md-7 col-xs-12" name="type_assurance" required data-parsley-maxlength="50" data-parsley-trigger="change">
-										<option value="Aucune" selected="selected">Aucune</option>
-										<option value="Marchandise">Marchandise</option>
-									</select>
-								</div>
-							</div>
+							<input type="hidden" name="type_assurance" value="Aucune" />
 							<div class="form-group">
 								<label for="poids" class="control-label col-md-3 col-sm-3 col-xs-12">Poids (Kg) <span class="required">*</span></label>
 								<div class="col-md-6 col-sm-6 col-xs-12">
 									<input class="form-control col-md-7 col-xs-12" type="text"  name="poids" value="{{old('poids')}}" required data-parsley-type="number" data-parsley-trigger="change">
 								</div>
 							</div>
+							<input type="hidden" name="volume" value="0" />
+							<input type="hidden" name="produit_dangereux" value="N" />
 							<div class="form-group">
-								<label for="volume" class="control-label col-md-3 col-sm-3 col-xs-12">Volume (m3) <span class="required">*</span></label>
+								<label class="control-label col-md-3 col-sm-3 col-xs-12" for="type_vehicule">Type de véhicule <span class="required">*</span>
+								</label>
 								<div class="col-md-6 col-sm-6 col-xs-12">
-									<input class="form-control col-md-7 col-xs-12" type="text"  name="volume" value="{{old('volume')}}" required data-parsley-type="number" data-parsley-trigger="change">
-								</div>
-							</div>
-							<div class="form-group">
-								<label for="produit_dangereux" class="control-label col-md-3 col-sm-3 col-xs-12">Ce chargement contient t'il des articles dangereux ? <span class="required">*</span></label>
-								<div class="col-md-6 col-sm-6 col-xs-12">
-									<select class="form-control col-md-7 col-xs-12" name="produit_dangereux" required data-parsley-maxlength="1" data-parsley-trigger="change">
-										<option value="N" selected="selected">NON</option>
-										<option value="O">OUI</option>
+									<select class="form-control col-md-7 col-xs-12" name="type_vehicule" required data-parsley-maxlength="50" data-parsley-trigger="change">
+										<option value="Autobus">Autobus</option>
+										<option value="Autocar">Autocar</option>
+										<option value="Automobile">Automobile</option>
+										<option value="Camion">Camion</option>
+										<option value="Camionnette">Camionnette</option>
+										<option value="Voiture">Voiture</option>
+										<option value="Autre" selected="selected">Autre</option>
 									</select>
 								</div>
 							</div>
-							
-							<span class="section">Liste de colisage</span>
-							
 							<div class="form-group">
-								<label class="control-label col-md-3 col-sm-3 col-xs-3">Liste de colisage</label>
+								<label for="nombre_voyage" class="control-label col-md-3 col-sm-3 col-xs-12">Nombre de voyages <span class="required">*</span></label>
 								<div class="col-md-6 col-sm-6 col-xs-12">
-									<p class="form-control-static">
-										<table class="table table-bordered table-hover">
-											<thead>
-												<tr>
-													<th>Emballage</th>
-													<th>Nombre d'unités</th>
-													<th>Empilable ?</th>
-													<th>Actions</th>
-												</tr>
-											</thead>
-											<tbody id="table_tbody_colis">
-												<tr id="colis_1">
-													<td>
-														<select class="form-control" name="colis[1][emballage]" data-parsley-maxlength="50" required data-parsley-trigger="change">
-															<option value="Palette" selected>Palette</option>
-															<option value="Cartons">Cartons</option>
-															<option value="Caisse">Caisse</option>
-															<option value="Sacs">Sacs</option>
-															<option value="Barils">Barils</option>
-															<option value="Vrac liquide">Vrac liquide</option>
-															<option value="Vrac solide">Vrac solide</option>
-															<option value="Cintre">Cintre</option>
-															<option value="Autre">Autre</option>
-														</select>
-													</td>
-													<td><input class="form-control" type="text" name="colis[1][nombre_unite]" value="0" placeholder="Nombre d'unité" required data-parsley-type="integer" data-parsley-trigger="change"/></td>
-													<td>
-														<select class="form-control" name="colis[1][empilable]" required data-parsley-maxlength="50" data-parsley-trigger="change">
-															<option value="N" selected>NON</option>
-															<option value="O">OUI</option>
-														</select>
-													</td>
-													<td><a href="#" class="btn btn-warning delete_colis_row" data="1"><i class="fa fa-remove"></i></a></td>
-												</tr>
-												<tr id='colis_2'></tr>
-											</tbody>
-										</table>
-									</p>
-								</div>
-							</div>
-							
-							<div class="form-group">
-								<div class="col-md-9 col-md-offset-3">
-									<a href="#" class="btn btn-success" id="add_colis_row">Ajouter un autre article</a>
+									<input class="form-control col-md-7 col-xs-12" type="text"  name="nombre_voyage" value="{{old('nombre_voyage')}}" required data-parsley-type="integer" data-parsley-trigger="change">
 								</div>
 							</div>
 							
@@ -430,9 +482,9 @@
 								</div>
 							</div>
 							<div class="form-group">
-								<label for="info_complementaire" class="control-label col-md-3 col-sm-3 col-xs-12">Informations complémentaires <span class="required">*</span></label>
+								<label for="info_complementaire" class="control-label col-md-3 col-sm-3 col-xs-12">Informations complémentaires</label>
 								<div class="col-md-6 col-sm-6 col-xs-12">
-									<textarea required="required" class="form-control col-md-7 col-xs-12"  name="info_complementaire" value="{{old('info_complementaire')}}" required data-parsley-maxlength="1000" data-parsley-trigger="change"></textarea>
+									<textarea class="form-control col-md-7 col-xs-12"  name="info_complementaire" value="{{old('info_complementaire')}}" data-parsley-maxlength="1000" data-parsley-trigger="change"></textarea>
 								</div>
 							</div>
 

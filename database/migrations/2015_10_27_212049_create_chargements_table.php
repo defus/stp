@@ -39,6 +39,8 @@ class CreateChargementsTable extends Migration
                 $table->string('type_prix', 50); //Fixe, Enchères
                 $table->double('prix_fixe', 15, 2)->nullable(); //Prix si type de prix fixe
                 $table->string('info_complementaire', 1000)->nullable();  
+                $table->string('type_vehicule', 50); //Autobus, Autocar, Automobile, Camion, Camionnette, Voiture, Autre
+                $table->integer('nombre_voyage');
                 $table->timestamps();
                 
                 $table->foreign('owner_id')
