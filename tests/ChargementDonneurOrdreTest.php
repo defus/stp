@@ -65,7 +65,7 @@ class ChargementDonneurOrdreTest extends TestCase
             'devise' => 'DH',
             'type_prix' => 'Fixe',
             'prix_fixe' => '1290.09',
-            'info_complementaire'=> "Bien prendre soin de la cargaison s'il vou plait !",
+            //'info_complementaire'=> "Bien prendre soin de la cargaison s'il vou plait !",
             'type_vehicule' => 'Camion',
             'nombre_voyage' => 2,
             ];

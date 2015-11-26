@@ -47,7 +47,7 @@ class CreateChargementRequest extends Request
             'devise' => 'required|max:50',
             'type_prix' => 'required|max:50',
             'prix_fixe' => 'required|numeric',
-            'info_complementaire' => 'required|max:1000',
+            'info_complementaire' => 'max:1000',
             'type_vehicule' => 'required|max:50',
             'nombre_voyage' => 'required|numeric',
         ];
