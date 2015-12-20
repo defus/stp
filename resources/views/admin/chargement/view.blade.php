@@ -49,8 +49,8 @@
 							<span class="value text-success"> {{($reponse_rescent != NULL) ? $reponse_rescent->created_at : "N/A"}} </span>
 						</li>
 						<li class="hidden-phone">
-							<span class="name"> Réponse ayant le petit prix </span>
-							<span class="value text-success"> {{($reponse_petit_prix != NULL) ? $reponse_petit_prix->offre_financiere : "N/A"}} </span>
+							<span class="name"> Nombre de vues </span>
+							<span class="value text-success"> {{$chargement->nombre_vue}} </span>
 						</li>
 					</ul>
 					<br />
@@ -110,8 +110,8 @@
 							</div>
 							<h5>Statut</h5>
 							<ul class="list-unstyled project_files">
-								<li><button type="button" class="btn btn-warning btn-xs">En cours</button>
-								</li>
+								<li><button type="button" class="btn btn-warning btn-xs">En cours</button></li>
+								<li>Nombre de vues : {{$chargement->nombre_vue}}</li>
 							</ul>
 							<h5>Départ</h5>
 							<ul class="list-unstyled project_files">
@@ -133,7 +133,7 @@
 								</li>
 							</ul>
 							<br/>
-							<h5>Plus d'informations</h5>
+							<h5>Marchandise</h5>
 							<ul class="list-unstyled project_files">
 								<li><a href=""><i class="fa fa-file-word-o"></i> Distance : {{$chargement->distance}} km</a>
 								</li>
@@ -145,7 +145,19 @@
 								</li>
 							</ul>
 							<br />
-							
+							<h5>Paiement</h5>
+							<ul class="list-unstyled project_files">
+								<li><a href=""><i class="fa fa-file-word-o"></i> Moyen de paiement : {{$chargement->mode_paiement}}</a>
+								</li>
+								<li><a href=""><i class="fa fa-file-word-o"></i> Délai de paiement : {{$chargement->delai_paiement}}
+											<br/>Type de prix : {{$chargement->type_prix}}
+											<br/>Prix fixe : {{$chargement->prix_fixe}} {{$chargement->devise}}</a>
+								</li>
+							</ul>
+							<br />
+							<h5>Informations complémentaires</h5>
+							<p>{{$chargement->info_complementaire}}</p>
+							<br/>
 							
 						</div>
 

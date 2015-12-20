@@ -104,6 +104,7 @@
 							@can(App\User::DONNEUR_ORDRE)
 							<td>Reçues : {{$chargement->reponses()->count()}}
 								<br/>Acceptées : {{$chargement->reponses()->where('statut', 'A')->count()}}
+								<br/>Nombre de vues : {{$chargement->nombre_vue}}
 							</td>
 							<td>
 								@if($chargement->statut === 'O')

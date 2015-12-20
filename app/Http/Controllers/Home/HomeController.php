@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Home;
 
 use Illuminate\Http\Request;
 use App\Http\Requests;
+use App\Http\Requests\ContactUsRequest;
 use App\Http\Controllers\Controller;
+use Mail;
 
 class HomeController extends Controller
 {
@@ -21,6 +23,21 @@ class HomeController extends Controller
     
     public function getContact(){
         
+    }
+    
+    public function contactUs(ContactUsRequest $request){
+        $message = [
+            'name' => $request->nom,
+            'email' => $request->email,
+            'sujet' => $request->sujet,
+            'message' => $request->message,
+        ];
+        
+        Mail::send('emails.contact_us', ['data' => $message], function ($m) use ($message) {
+            $m->to("defolandry@yahoo.fr", "Landry DEFO")->subject('Message envoyé par le formulaire de contact de TransPlateformCom');
+        });
+        
+        return ["resultat" => "ok"];
     }
     
     

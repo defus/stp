@@ -430,11 +430,11 @@
 							<span class="section">Paiement</span>
 							
 							<div class="form-group">
-								<label class="control-label col-md-3 col-sm-3 col-xs-12" for="mode_paiement">Moyen de paiement <span class="required">*</span>
-								</label>
+								<label class="control-label col-md-3 col-sm-3 col-xs-12" for="mode_paiement">Moyen de paiement								</label>
 								<div class="col-md-6 col-sm-6 col-xs-12">
-									<select class="form-control col-md-7 col-xs-12" name="mode_paiement" required data-parsley-maxlength="50" data-parsley-trigger="change">
-										<option value="Virement bancaire" selected="selected">Virement bancaire</option>
+									<select class="form-control col-md-7 col-xs-12" name="mode_paiement" data-parsley-maxlength="50" data-parsley-trigger="change">
+										<option value="" selected="selected">Aucun</option>
+										<option value="Virement bancaire">Virement bancaire</option>
 										<option value="Espèce">Espèce</option>
 										<option value="Lettre de change">Lettre de change</option>
 										<option value="Chèque">Chèque</option>
@@ -445,8 +445,9 @@
 								<label class="control-label col-md-3 col-sm-3 col-xs-12" for="delai_paiement">Délai de paiement <span class="required">*</span>
 								</label>
 								<div class="col-md-6 col-sm-6 col-xs-12">
-									<select class="form-control col-md-7 col-xs-12" name="delai_paiement" required data-parsley-maxlength="50" data-parsley-trigger="change">
-										<option value="A la commande" selected="selected">A la commande</option>
+									<select class="form-control col-md-7 col-xs-12" name="delai_paiement" data-parsley-maxlength="50" data-parsley-trigger="change">
+										<option value="" selected="selected">Aucun</option>
+										<option value="A la commande">A la commande</option>
 										<option value="Au départ">Au départ</option>
 										<option value="A la livraison">A la livraison</option>
 										<option value="Fin de mois">Fin de mois</option>

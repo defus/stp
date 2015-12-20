@@ -142,6 +142,9 @@ class ChargementController extends Controller
     public function repondre(Request $request, $id)
     {
         $chargement = Chargement::findOrFail($id);
+        $chargement->nombre_vue = $chargement->nombre_vue + 1;
+        $chargement->save();
+        
         $owner = $chargement->owner();
         $reponse = $chargement->reponses()
             ->where('transporteur_id', $request->user()->id)

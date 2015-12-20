@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title', "Aide sur l'application STP")
+@section('title', "Aide sur l'application Transplateform.com")
 
 @section('content')
 
@@ -9,7 +9,7 @@
 	<div class="col-md-12">
 		<div class="x_panel">
 			<div class="x_title">
-				<h2> Aide STP<small>Accueil</small></h2>
+				<h2> Aide Transplateform.com<small>Accueil</small></h2>
 				<ul class="nav navbar-right panel_toolbox">
 					<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
 					</li>
@@ -69,7 +69,7 @@
 									<p class="date"> 10 Octobre 2015</p>
 								</div>
 								<div class="col-md-12">
-									<h4> Tutorial : Comment utiliser l'application STP ?</h4>
+									<h4> Tutorial : Comment utiliser l'application Transplateform.com ?</h4>
 								</div>
 							</div>
 							<div class="sender-info">

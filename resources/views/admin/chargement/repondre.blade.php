@@ -82,12 +82,29 @@
 											<br/>Nombre de voyages : {{$chargement->nombre_voyage}}<br/></p>
 									</div>
 								</div>
+								
+								<div class="form-group">
+									<label class="control-label col-md-3 col-sm-3 col-xs-3">Paiement</label>
+									<div class="col-md-6 col-sm-6 col-xs-12">
+										<p class="form-control-static">Moyen de paiement : {{$chargement->mode_paiement}}
+											<br/>Délai de paiement : {{$chargement->delai_paiement}}
+											<br/>Type de prix : {{$chargement->type_prix}}
+											<br/>Prix fixe : {{$chargement->prix_fixe}} {{$chargement->devise}}<br/></p>
+									</div>
+								</div>
+								
+								<div class="form-group">
+									<label class="control-label col-md-3 col-sm-3 col-xs-3">Informations complémentaires</label>
+									<div class="col-md-6 col-sm-6 col-xs-12">
+										<p class="form-control-static">{{$chargement->info_complementaire}}<br/></p>
+									</div>
+								</div>
 							
 							</div>
 							
 						</div>
 						
-						<span class="section">Informations de la réponse</span>
+						<span class="section">Votre offre</span>
 						
 						<div class="form-group">
 							<label class="control-label col-md-3 col-sm-3 col-xs-3">Offre financière</label>
@@ -97,7 +114,7 @@
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="control-label col-md-3 col-sm-3 col-xs-3">A propos</label>
+							<label class="control-label col-md-3 col-sm-3 col-xs-3">Commentaires et clarifications </label>
 							<div class="col-md-6 col-sm-6 col-xs-12">
 								<textarea id="textarea" required="required" name="a_propos" class="form-control col-md-7 col-xs-12" data-parsley-maxlength="1000" data-parsley-trigger="change">{{$reponse_a_propos}}</textarea>
 							</div>
@@ -122,7 +139,7 @@
 					<section class="panel">
 
 						<div class="x_title">
-							<h2>Donneur d'ordre</h2>
+							<h2>Informations du donneur d'ordre</h2>
 							<div class="clearfix"></div>
 						</div>
 						<div class="panel-body">

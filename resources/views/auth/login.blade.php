@@ -79,8 +79,8 @@
 				<div class="clearfix"></div>
 				<br />
 				<div>
-					<a href="{{url('/')}}"><h1><i class="fa fa-truck" style="font-size: 26px;"></i> Shared Carrier Plateform</h1></a>
-					<p>©2015 Tous droits reservés. Shared Carrier Plateform. Conditions d'utilisation</p>
+					<a href="{{url('/')}}"><h1><i class="fa fa-truck" style="font-size: 26px;"></i> Transplateform.com</h1></a>
+					<p>©2015 Tous droits reservés. Transplateform.com. Conditions d'utilisation</p>
 				</div>
 			</div>
 		</form>

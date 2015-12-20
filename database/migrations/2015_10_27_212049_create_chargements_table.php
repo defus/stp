@@ -16,6 +16,7 @@ class CreateChargementsTable extends Migration
             Schema::create('chargements', function (Blueprint $table) {
                 $table->increments('id');
                 $table->string('statut', 1)->defaut('O');
+                $table->integer('nombre_vue')->defaut(0)->nullable();
                 $table->integer('owner_id')->unsigned()->index();
                 $table->string('depart_rue', 255);
                 $table->string('depart_ville', 255);

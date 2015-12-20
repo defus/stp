@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>@yield('title') | Shared Carrier Plateform</title>
+    <title>@yield('title') | Transplateform.com</title>
 
     <!-- Bootstrap core CSS -->
 
@@ -57,7 +57,7 @@
                 <div class="left_col scroll-view">
 
                     <div class="navbar nav_title" style="border: 0;">
-                        <a href="{{url('/')}}" class="site_title"><span>SCP</span></a>
+                        <a href="{{url('/')}}" class="site_title"><span>Transplateform.com</span></a>
                     </div>
                     <div class="clearfix"></div>
 
@@ -240,19 +240,8 @@
                     <div class="page-title">
                         <div class="title_left">
                             <h3>
-                    @yield('title')
-                </h3>
-                        </div>
-
-                        <div class="title_right">
-                            <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
-                                <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Rechercher ...">
-                                    <span class="input-group-btn">
-                            <button class="btn btn-default" type="button">Go!</button>
-                        </span>
-                                </div>
-                            </div>
+                                @yield('title')
+                            </h3>
                         </div>
                     </div>
                     <div class="clearfix"></div>
@@ -264,7 +253,7 @@
                 <footer>
                     <div class="">
                         <p class="pull-right">Réseau de transporteurs. |
-                            <span class="lead"> <i class="fa fa-truck"></i> Shared Carrier Plateform</span>
+                            <span class="lead"> <i class="fa fa-truck"></i> Transplateform.com</span>
                         </p>
                     </div>
                     <div class="clearfix"></div>

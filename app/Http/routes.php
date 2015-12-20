@@ -2,6 +2,7 @@
 
 // Accueil
 get('/', 'Home\HomeController@index');
+post('/contact', 'Home\HomeController@contactUs');
 
 // Authentication
 get('/auth/register', 'Auth\AuthController@getRegister');
