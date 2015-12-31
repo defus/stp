@@ -137,7 +137,7 @@
                 <table>
                     <tr>
                         <td align="center">
-                            <img src="https://example.com/images/logo.png" alt="transplateform.com"/>
+                            <img src="https://example.com/images/logo.png" alt="transplateforme.com"/>
                         </td>
                     </tr>
                     <!-- Email content goes here .. -->

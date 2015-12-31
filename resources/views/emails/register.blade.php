@@ -7,6 +7,6 @@
 	<p>Pour confirmer votre adresse email, veuillez cliquer sur le lien ci-dessous :</p>
 	<a href="{{url('/auth/confirmation/' . $user->confirmation_code)}}" alt="Lien de confirmation d'inscription'">{{url('/auth/confirmation/' . $user->confirmation_code)}}</a>
 	<br/><br/>
-	<p>Merci encore une fois pour votre inscription sur Transplateform.com.</p>
+	<p>Merci encore une fois pour votre inscription sur Transplateforme.com.</p>
 	<p- L'équipe</p> 
 @endsection

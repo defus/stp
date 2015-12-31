@@ -1,6 +1,6 @@
 @extends('layouts.emails')
 
-@section('titre', "Mail d'un contact de la plateforme TransPlateform.Com")
+@section('titre', "Mail d'un contact de la plateforme TransPlateforme.Com")
 
 @section('content')
 	<h1>Le contact {{$data['name']}}, d'email {{$data['email']}} vous a contacter.</h1>

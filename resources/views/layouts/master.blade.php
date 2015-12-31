@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>@yield('title') | Transplateform.com</title>
+    <title>@yield('title') | Transplateforme.com</title>
 
     <!-- Bootstrap core CSS -->
 
@@ -57,7 +57,7 @@
                 <div class="left_col scroll-view">
 
                     <div class="navbar nav_title" style="border: 0;">
-                        <a href="{{url('/')}}" class="site_title"><span>Transplateform.com</span></a>
+                        <a href="{{url('/')}}" class="site_title"><span>Transplateforme.com</span></a>
                     </div>
                     <div class="clearfix"></div>
 
@@ -253,7 +253,7 @@
                 <footer>
                     <div class="">
                         <p class="pull-right">Réseau de transporteurs. |
-                            <span class="lead"> <i class="fa fa-truck"></i> Transplateform.com</span>
+                            <span class="lead"> <i class="fa fa-truck"></i> Transplateforme.com</span>
                         </p>
                     </div>
                     <div class="clearfix"></div>

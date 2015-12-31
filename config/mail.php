@@ -54,7 +54,7 @@ return [
     |
     */
 
-    'from' => ['address' => 'noreply@transplateform.com', 'name' => 'transplateform.com'],
+    'from' => ['address' => 'noreply@transplateforme.com', 'name' => 'transplateforme.com'],
 
     /*
     |--------------------------------------------------------------------------
