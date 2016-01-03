@@ -96,7 +96,16 @@ class ChargementController extends Controller
         $chargement->owner_id = $request->user()->id;
         $chargement->statut = 'O';
         $chargement->depart_date = Carbon::createFromFormat('d/m/Y H:i', $request->get('depart_date') . ' ' . $request->get('depart_heure'));
-        $chargement->arrivee_date_limite = Carbon::createFromFormat('d/m/Y H:i', $request->get('arrivee_date_limite') . ' ' . $request->get('arrivee_heure_limite'));
+        if(!empty($request->get('arrivee_date_limite'))){
+            if(empty($request->get('arrivee_heure_limite'))){
+                $arrivee_heure_limite = '00:00';
+            }else{
+                $arrivee_heure_limite = $request->get('arrivee_heure_limite');
+            }
+            $chargement->arrivee_date_limite = Carbon::createFromFormat('d/m/Y H:i', $request->get('arrivee_date_limite') . ' ' . $arrivee_heure_limite);
+        }else{
+            $chargement->arrivee_date_limite = null;
+        }
         
         $chargement->save();
         

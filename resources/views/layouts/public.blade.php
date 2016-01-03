@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="">
   <meta name="author" content="">
-  <title>@yield('title') | Transplateform.com</title>
+  <title>@yield('title') | TransPlateforme.com</title>
   <link href="{{url('tp_front/css/bootstrap.min.css')}}" rel="stylesheet">
   <link href="{{url('tp_front/css/animate.min.css')}}" rel="stylesheet">
   <link href="{{url('tp_front/css/font-awesome.min.css')}}" rel="stylesheet">
@@ -34,7 +34,7 @@
       <div class="carousel-inner">
         <div class="item active" style="background-image: url({{url('tp_front')}}/images/slider/transport-routier.jpg)">
           <div class="caption">
-            <h1 class="animated fadeInLeftBig">Bienvenue à <span>Transplateform.com</span></h1>
+            <h1 class="animated fadeInLeftBig">Bienvenue à <span>Transplateforme.com</span></h1>
             <p><small>La plateforme de mutualisation du transport professionnel</small></p>
             <a class="btn btn-start animated fadeInUpBig" href="{{url('/auth/register')}}">Créez un compte, C'est gratuit !</a>
             <a class="btn btn-start animated fadeInUpBig" href="{{url('/auth/login')}}">Connexion</a>
@@ -120,7 +120,7 @@
         <div class="row">
           <div class="heading text-center col-sm-8 col-sm-offset-2 wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
             <h2>Nous contacter</h2>
-            <p>Ce formulaire de contact vous permet d'avoir plus d'informations sur le service que nous proposons ou de prendre contact avec nous</p>
+            <p>Ce formulaire de contact vous permet d'avoir plus d'informations sur le service que nous proposons ; ou de prendre contact avec nous</p>
           </div>
         </div>
         <div class="contact-form wow fadeIn" data-wow-duration="1000ms" data-wow-delay="600ms">
@@ -154,13 +154,13 @@
             </div>
             <div class="col-sm-6">
               <div class="contact-info wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
-                <p>Service commercial de Transplateform.com.</p>
+                <p>Service commercial de TransPlateforme.com.</p>
                 <ul class="address">
                   <li><i class="fa fa-map-marker"></i> <span> Adresse :</span> Appt x, imm n, Agdal, Rabat, Maroc </li>
-                  <li><i class="fa fa-envelope"></i> <span> Email:</span><a href="mailto:contact@transplateform.com"> contact@transplateform.com</a></li>
+                  <li><i class="fa fa-envelope"></i> <span> Email:</span><a href="mailto:contact@transplateforme.com"> contact@transplateforme.com</a></li>
                   <li><i class="fa fa-phone"></i> <span> Fixe :</span> +212 5 xx xx xx  </li>
                   <li><i class="fa fa-phone"></i> <span> Fax :</span> +212 5 xx xx xx  </li>
-                  <li><i class="fa fa-globe"></i> <span> Site Web:</span> <a href="www.transplateform.com">www.transplateform.com</a></li>
+                  <li><i class="fa fa-globe"></i> <span> Site Web:</span> <a href="www.transplateforme.com">www.transplateforme.com</a></li>
                 </ul>
               </div>                            
             </div>
@@ -173,7 +173,7 @@
     <div class="footer-top wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
       <div class="container text-center">
         <div class="footer-logo">
-          <a href="{{url('/')}}"><h1 style="color:white;"><i class="fa fa-truck"></i> Transplateform.com</h1></a>
+          <a href="{{url('/')}}"><h1 style="color:white;"><i class="fa fa-truck"></i> TransPlateforme.com</h1></a>
         </div>
         <div class="social-icons">
           <ul>
@@ -191,10 +191,10 @@
       <div class="container">
         <div class="row">
           <div class="col-sm-6">
-            <p>&copy; 2015 Transplateform.com.</p>
+            <p>&copy; 2015 Transplateforme.com.</p>
           </div>
           <div class="col-sm-6">
-            <p class="pull-right">Conçu par <a href="#">Transplateform.com</a></p>
+            <p class="pull-right">Conçu par <a href="#">Transplateforme.com</a></p>
           </div>
         </div>
       </div>

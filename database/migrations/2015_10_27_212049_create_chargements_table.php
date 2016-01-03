@@ -25,7 +25,7 @@ class CreateChargementsTable extends Migration
                 $table->string('arrivee_rue', 255);
                 $table->string('arrivee_ville', 255);
                 $table->string('arrivee_pays', 255);
-                $table->dateTime('arrivee_date_limite');
+                $table->dateTime('arrivee_date_limite')->nullable();
                 $table->string('frais_transit', 50); //Aucun, A notre charge, A la charge du transporteur
                 $table->integer('distance'); //km
                 $table->string('type_trajet', 50);  //Aller simple, Allez/retour

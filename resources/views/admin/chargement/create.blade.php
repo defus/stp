@@ -352,16 +352,16 @@
 							</div>
 							<input type="hidden" name="arrivee_pays" value="Maroc" />
 							<div class="form-group">
-								<label for="arrivee_date_limite" class="control-label col-md-3 col-sm-3 col-xs-12">Date limite de livraison <span class="required">*</span>
+								<label for="arrivee_date_limite" class="control-label col-md-3 col-sm-3 col-xs-12">Date limite de livraison
 								</label>
 								<div class="col-md-6 col-sm-6 col-xs-12">
-									<input class="date-picker form-control col-md-7 col-xs-12" required="required" type="text" id="arrivee_date_limite" name="arrivee_date_limite" value="{{old('arrivee_date_limite')}}" data-inputmask="'mask': '99/99/9999'" data-parsley-pattern="(((0[1-9]|[12]\d|3[01])\/(0[13578]|1[02])\/((19|[2-9]\d)\d{2}))|((0[1-9]|[12]\d|30)\/(0[13456789]|1[012])\/((19|[2-9]\d)\d{2}))|((0[1-9]|1\d|2[0-8])\/02\/((19|[2-9]\d)\d{2}))|(29\/02\/((1[6-9]|[2-9]\d)(0[48]|[2468][048]|[13579][26])|((16|[2468][048]|[3579][26])00))))" data-parsley-trigger="change">
+									<input class="date-picker form-control col-md-7 col-xs-12" type="text" id="arrivee_date_limite" name="arrivee_date_limite" value="{{old('arrivee_date_limite')}}" data-inputmask="'mask': '99/99/9999'" data-parsley-pattern="(((0[1-9]|[12]\d|3[01])\/(0[13578]|1[02])\/((19|[2-9]\d)\d{2}))|((0[1-9]|[12]\d|30)\/(0[13456789]|1[012])\/((19|[2-9]\d)\d{2}))|((0[1-9]|1\d|2[0-8])\/02\/((19|[2-9]\d)\d{2}))|(29\/02\/((1[6-9]|[2-9]\d)(0[48]|[2468][048]|[13579][26])|((16|[2468][048]|[3579][26])00))))" data-parsley-trigger="change">
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="arrivee_heure_limite" class="control-label col-md-3 col-sm-3 col-xs-12">Heure limite de livraison</label>
 								<div class="col-md-6 col-sm-6 col-xs-12">
-									<input class="form-control col-md-7 col-xs-12" type="text" id="arrivee_heure_limite" name="arrivee_heure_limite" value="12:00" data-inputmask="'mask': '99:99'"  data-parsley-pattern="([01]?[0-9]|2[0-3]):[0-5][0-9]" data-parsley-trigger="change">
+									<input class="form-control col-md-7 col-xs-12" type="text" id="arrivee_heure_limite" name="arrivee_heure_limite" data-inputmask="'mask': '99:99'"  data-parsley-pattern="([01]?[0-9]|2[0-3]):[0-5][0-9]" data-parsley-trigger="change">
 								</div>
 							</div>
 
