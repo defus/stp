@@ -57,7 +57,7 @@ class ChargementController extends Controller
             $chargements = Chargement::where('statut', 'O')->where('owner_id', $user->id)->get();
             $titre = "Mes demandes de chargements";
         }else if($user->isTransporteur()){
-            $chargements = Chargement::where('statut', 'O')->get();
+            $chargements = Chargement::where('statut', 'O')->whereDate('arrivee_date_limite', '>=', \Carbon\Carbon::now())->get();
             $titre = "Demandes de chargements émises par les donneurs d'ordre";
         }else{
             return redirect('/admin/user/societe')
@@ -96,6 +96,7 @@ class ChargementController extends Controller
         $chargement->owner_id = $request->user()->id;
         $chargement->statut = 'O';
         $chargement->depart_date = Carbon::createFromFormat('d/m/Y H:i', $request->get('depart_date') . ' ' . $request->get('depart_heure'));
+        $chargement->depart_date_fin = Carbon::createFromFormat('d/m/Y H:i', $request->get('depart_date_fin') . ' ' . $request->get('depart_heure_fin'));
         if(!empty($request->get('arrivee_date_limite'))){
             if(empty($request->get('arrivee_heure_limite'))){
                 $arrivee_heure_limite = '00:00';

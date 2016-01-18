@@ -4,6 +4,7 @@
 
 @section('style')
 <link rel="stylesheet" type="text/css" href="{{url('tp_back')}}/js/sweetalert/dist/sweetalert.css">
+<link rel="stylesheet" type="text/css" href="{{url('tp_back')}}/css/select/select2.min.css">
 @endsection
 
 @section('script')
@@ -11,6 +12,7 @@
 <script type="text/javascript"  src="{{url('tp_back')}}/js/sweetalert/dist/sweetalert.min.js"></script> 
 <!-- input mask -->
 <script src="{{url('tp_back')}}/js/input_mask/jquery.inputmask.js"></script>
+<script src="{{url('tp_back')}}/js/select/select2.full.js"></script>
 <!-- form wizard -->
 <script type="text/javascript" src="{{url('tp_back')}}/js/wizard/jquery.smartWizard.js"></script>
 <script type="text/javascript">
@@ -18,8 +20,11 @@
 		//input mask
 		$("#depart_date").inputmask();
 		$("#depart_heure").inputmask();
+		$("#depart_date_fin").inputmask();
+		$("#depart_heure_fin").inputmask();
 		$("#arrivee_date_limite").inputmask();
 		$("#arrivee_heure_limite").inputmask();
+		$("#type_vehicule").select2({tags: true});
 		
 		// Smart Wizard 	
 		$('#wizard').smartWizard({enableAllSteps:false, cycleSteps:false, labelNext:'Suivant', labelPrevious:'Précédent', labelFinish:'Terminer', onLeaveStep: leaveAStepCallback, onFinish: onFinishCallback, keyNavigation:false, hideButtonsOnDisabled: true});
@@ -267,13 +272,16 @@
 								<label class="control-label col-md-3 col-sm-3 col-xs-12">Date de départ <span class="required">*</span>
 								</label>
 								<div class="col-md-6 col-sm-6 col-xs-12">
-									<input class="date-picker form-control col-md-7 col-xs-12" required="required" type="text" id="depart_date" name="depart_date" value="{{old('depart_date')}}" data-inputmask="'mask': '99/99/9999'" data-parsley-pattern="(((0[1-9]|[12]\d|3[01])\/(0[13578]|1[02])\/((19|[2-9]\d)\d{2}))|((0[1-9]|[12]\d|30)\/(0[13456789]|1[012])\/((19|[2-9]\d)\d{2}))|((0[1-9]|1\d|2[0-8])\/02\/((19|[2-9]\d)\d{2}))|(29\/02\/((1[6-9]|[2-9]\d)(0[48]|[2468][048]|[13579][26])|((16|[2468][048]|[3579][26])00))))" data-parsley-trigger="change">
-								</div>
-							</div>
-							<div class="form-group">
-								<label for="depart_heure" class="control-label col-md-3 col-sm-3 col-xs-12">Heure de départ</label>
-								<div class="col-md-6 col-sm-6 col-xs-12">
-									<input class="form-control col-md-7 col-xs-12" type="text" id="depart_heure" name="depart_heure" value="12:00" data-inputmask="'mask': '99:99'"  data-parsley-pattern="([01]?[0-9]|2[0-3]):[0-5][0-9]" data-parsley-trigger="change">
+									<div class="row">
+										<div class="col-md-6">
+											Entre : <input class="date-picker form-control col-md-3 col-xs-3" required="required" type="text" id="depart_date" name="depart_date" value="{{old('depart_date')}}" data-inputmask="'mask': '99/99/9999'" data-parsley-pattern="(((0[1-9]|[12]\d|3[01])\/(0[13578]|1[02])\/((19|[2-9]\d)\d{2}))|((0[1-9]|[12]\d|30)\/(0[13456789]|1[012])\/((19|[2-9]\d)\d{2}))|((0[1-9]|1\d|2[0-8])\/02\/((19|[2-9]\d)\d{2}))|(29\/02\/((1[6-9]|[2-9]\d)(0[48]|[2468][048]|[13579][26])|((16|[2468][048]|[3579][26])00))))" data-parsley-trigger="change">
+											<input class="form-control col-md-3 col-xs-3" type="text" id="depart_heure" name="depart_heure" value="12:00" data-inputmask="'mask': '99:99'"  data-parsley-pattern="([01]?[0-9]|2[0-3]):[0-5][0-9]" data-parsley-trigger="change">
+										</div>
+										<div class="col-md-6">
+											Et : <input class="date-picker form-control col-md-3 col-xs-3" required="required" type="text" id="depart_date_fin" name="depart_date_fin" value="{{old('depart_date_fin')}}" data-inputmask="'mask': '99/99/9999'" data-parsley-pattern="(((0[1-9]|[12]\d|3[01])\/(0[13578]|1[02])\/((19|[2-9]\d)\d{2}))|((0[1-9]|[12]\d|30)\/(0[13456789]|1[012])\/((19|[2-9]\d)\d{2}))|((0[1-9]|1\d|2[0-8])\/02\/((19|[2-9]\d)\d{2}))|(29\/02\/((1[6-9]|[2-9]\d)(0[48]|[2468][048]|[13579][26])|((16|[2468][048]|[3579][26])00))))" data-parsley-trigger="change">
+											<input class="form-control col-md-3 col-xs-3" type="text" id="depart_heure_fin" name="depart_heure_fin" value="12:00" data-inputmask="'mask': '99:99'"  data-parsley-pattern="([01]?[0-9]|2[0-3]):[0-5][0-9]" data-parsley-trigger="change">
+										</div>
+									</div>
 								</div>
 							</div>
 							
@@ -409,7 +417,7 @@
 								<label class="control-label col-md-3 col-sm-3 col-xs-12" for="type_vehicule">Type de véhicule <span class="required">*</span>
 								</label>
 								<div class="col-md-6 col-sm-6 col-xs-12">
-									<select class="form-control col-md-7 col-xs-12" name="type_vehicule" required data-parsley-maxlength="50" data-parsley-trigger="change">
+									<select class="form-control col-md-7 col-xs-12" name="type_vehicule" required data-parsley-maxlength="50" data-parsley-trigger="change" id="type_vehicule">
 										<option value="Autobus">Autobus</option>
 										<option value="Autocar">Autocar</option>
 										<option value="Automobile">Automobile</option>

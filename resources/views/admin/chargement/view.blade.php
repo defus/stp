@@ -119,7 +119,7 @@
 											<br/>Vile : {{$chargement->depart_ville}}, 
 											<br/>Pays : {{$chargement->depart_pays}}</a>
 								</li>
-								<li><a href=""><i class="fa fa-file-word-o"></i> Date de départ : {{$chargement->depart_date}}</a>
+								<li><a href=""><i class="fa fa-file-word-o"></i> Date de départ : Entre {{$chargement->depart_date}} et {{$chargement->depart_date_fin}}</a>
 								</li>
 							</ul>
 							<br/>

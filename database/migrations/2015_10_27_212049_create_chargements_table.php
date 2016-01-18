@@ -22,6 +22,7 @@ class CreateChargementsTable extends Migration
                 $table->string('depart_ville', 255);
                 $table->string('depart_pays', 255);
                 $table->dateTime('depart_date');
+                $table->dateTime('depart_date_fin');
                 $table->string('arrivee_rue', 255);
                 $table->string('arrivee_ville', 255);
                 $table->string('arrivee_pays', 255);

@@ -5,11 +5,11 @@
  
 12.   Les bornes de l’interval date de chargement peu etre le meme jour
 13.   Les dates depart et arriver peut etre le meme jour
-14.   Liste des type camions peut supporter la saisie libre en plus de proposition
+ok 14.   Liste des type camions peut supporter la saisie libre en plus de proposition
 -          La liste des type de camion s’allimentera dans le temps après allimentation et aprs notre validation
-15.   Après dépassement du délai de livraison la demande doit disparaitre des offres et doit être archivée
-16.   Supprimer les champs « rechercher » en haut
-17.   Liste des demandes : revoir la colonne du tableau
+ok 15.   Après dépassement du délai de livraison la demande doit disparaitre des offres et doit être archivée
+ok 16.   Supprimer les champs « rechercher » en haut
+ok 17.   Liste des demandes : revoir la colonne du tableau
 -          Donneur d’odre
 -          Interval chargement
 -          Lieu de chargement (adresse+ville) ville qui sera objet de recherche

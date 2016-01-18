@@ -56,7 +56,7 @@
 										<p class="form-control-static">Lieu : {{$chargement->depart_rue}}, 
 											<br/>Vile : {{$chargement->depart_ville}}, 
 											<br/>Pays : {{$chargement->depart_pays}}
-											<br/> Date de départ : {{$chargement->depart_date}}</p>
+											<br/> Date de départ : Entre {{$chargement->depart_date}} et {{$chargement->depart_date_fin}}</p>
 									</div>
 								</div>
 								

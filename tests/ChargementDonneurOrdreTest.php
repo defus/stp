@@ -47,6 +47,8 @@ class ChargementDonneurOrdreTest extends TestCase
              'depart_pays' => 'Maroc',
             'depart_date' => $depart_date->format('d/m/Y'),
             'depart_heure' => $depart_date->format('H:i'),
+            'depart_date_fin' => $depart_date->format('d/m/Y'),
+            'depart_heure_fin' => $depart_date->format('H:i'),
             'arrivee_rue' => '1 bd roudani',
             'arrivee_ville' => 'Rabat',
             'arrivee_pays' => 'Maroc',
@@ -74,7 +76,7 @@ class ChargementDonneurOrdreTest extends TestCase
             ->post('/admin/chargement', $data, ['HTTP_X-Requested-With' => 'XMLHttpRequest'])
             ->seeJson(['created' => true, 'id' => 5]);
         
-        $this->seeInDatabase('chargements', ['id' => 5, 'depart_date' => $depart_date->format('Y-m-d H:i:00'), 'arrivee_date_limite' => null, 'owner_id' => $donneurOrdre->id, 'statut' => 'O', 'type_vehicule' => 'Camion', 'nombre_voyage' => 2,]);
+        $this->seeInDatabase('chargements', ['id' => 5, 'depart_date' => $depart_date->format('Y-m-d H:i:00'), 'depart_date_fin' => $depart_date->format('Y-m-d H:i:00'),'arrivee_date_limite' => null, 'owner_id' => $donneurOrdre->id, 'statut' => 'O', 'type_vehicule' => 'Camion', 'nombre_voyage' => 2,]);
         
             
     }

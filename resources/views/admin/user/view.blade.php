@@ -116,7 +116,7 @@
 										</div>
 										<div class="message_wrapper">
 											<h4 class="heading"> Demande de chargement</h4>
-											<blockquote class="message">Du {{$chargement->depart_date}} au {{$chargement->arrivee_date_limite}}</blockquote>
+											<blockquote class="message">Date entre le {{$chargement->depart_date}} et le {{$chargement->depart_date_fin}} au {{$chargement->arrivee_date_limite}}</blockquote>
 											<br />
 											<p class="url">
 												<span class="fs1 text-info" aria-hidden="true" data-icon=""></span>
@@ -146,7 +146,7 @@
 										</div>
 										<div class="message_wrapper">
 											<h4 class="heading"> Réponse à une demande de chargement</h4>
-											<blockquote class="message">Du {{$reponse->chargement->depart_date}} au {{$reponse->chargement->arrivee_date_limite}}</blockquote>
+											<blockquote class="message">Date entre le {{$reponse->chargement->depart_date}} et le {{$reponse->chargement->depart_date_fin}} au {{$reponse->chargement->arrivee_date_limite}}</blockquote>
 											<br />
 											<p class="url">
 												<span class="fs1 text-info" aria-hidden="true" data-icon=""></span>
