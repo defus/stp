@@ -1,1 +1,2 @@
-vendor\bin\phpunit --filter ChargementDonneurOrdreTest::testAjouterChargement
+REM vendor\bin\phpunit --filter ChargementDonneurOrdreTest::testAjouterChargementDateErreur
+vendor\bin\phpunit --filter ChargementDonneurOrdreTest
