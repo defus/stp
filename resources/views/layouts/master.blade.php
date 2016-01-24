@@ -101,7 +101,9 @@
                                         <li><a href="{{url('/admin/chargement/archive')}}"> Demandes de chargement archivées</a>
                                         </li>
                                         @endcan
-                                        <li><a href="{{url('/admin/user')}}">Transporteurs / Donneurs d'ordre</a>
+                                        <li><a href="{{url('/admin/user/transporteurs')}}">Transporteurs</a>
+                                        </li>
+                                        <li><a href="{{url('/admin/user/donneursordre')}}">Donneurs d'ordre</a>
                                         </li>
                                         @can(App\User::ADMIN)
                                         <li><a href="{{url('/admin/chargement')}}"> Statistiques</a>

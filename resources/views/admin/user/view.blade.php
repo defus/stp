@@ -27,7 +27,7 @@
 	<div class="col-md-12 col-sm-12 col-xs-12">
 		<div class="x_panel">
 			<div class="x_title">
-				<h2>Rapport utilisateur <small>Rapport d'activité</small></h2>
+				<h2>Utilisateur <small>Détails de l'utilisateur</small></h2>
 				<ul class="nav navbar-right panel_toolbox">
 					<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
 					</li>
@@ -79,7 +79,7 @@
 
 					<div class="profile_title">
 						<div class="col-md-12">
-							<h2>Rapport de l'activité de l'utilisateur</h2>
+							<h2>Informations détaillées de l'utilisateur</h2>
 						</div>
 					</div>
 					
@@ -87,81 +87,11 @@
 						<ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
 							<li role="presentation" class="active"><a href="#tab_content3" role="tab" id="profile-tab2" data-toggle="tab" aria-expanded="true">A propos</a>
 							</li>
-							@if(count($chargements) > 0)
-							<li role="presentation" class=""><a href="#tab_content1" id="home-tab" role="tab" data-toggle="tab" aria-expanded="false">Demandes de chargement réscents</a>
-							</li>
-							@endif
-							@if(count($reponses) > 0)
-							<li role="presentation" class=""><a href="#tab_content2" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">Réponses réscentes</a>
-							</li>
-							@endif
-							
 						</ul>
 						<div id="myTabContent" class="tab-content">
 							<div role="tabpanel" class="tab-pane fade active in" id="tab_content3" aria-labelledby="profile-tab">
 								<p>{{$user->a_propos}} </p>
 							</div>
-							
-							@if(count($chargements) > 0)
-							<div role="tabpanel" class="tab-pane fade" id="tab_content1" aria-labelledby="home-tab">
-
-								<!-- start recent activity -->
-								<ul class="messages">
-									@foreach($chargements as $chargement)
-									<li>
-										<img src="{{url('/users/' . $user->logo)}}" class="avatar" alt="Avatar">
-										<div class="message_date">
-											<h3 class="date text-info">{{$chargement->created_at->format('d')}}</h3>
-											<p class="month">{{$chargement->created_at->format('F')}}</p>
-										</div>
-										<div class="message_wrapper">
-											<h4 class="heading"> Demande de chargement</h4>
-											<blockquote class="message">Date entre le {{$chargement->depart_date}} et le {{$chargement->depart_date_fin}} au {{$chargement->arrivee_date_limite}}</blockquote>
-											<br />
-											<p class="url">
-												<span class="fs1 text-info" aria-hidden="true" data-icon=""></span>
-												<a href="#"><i class="fa fa-map-marker"></i> <b>Départ :</b> {{$chargement->depart_rue}}, {{$chargement->depart_ville}}, {{$chargement->depart_pays}} </a><br/>
-												<span class="fs1 text-info" aria-hidden="true" data-icon=""></span>
-												<a href="#"><i class="fa fa-map-marker"></i> <b>Arrivée :</b> {{$chargement->arrivee_rue}}, {{$chargement->arrivee_ville}}, {{$chargement->arrivee_pays}} </a>
-											</p>
-										</div>
-									</li>
-									@endforeach
-								</ul>
-								<!-- end recent activity -->
-
-							</div>
-							@endif
-							@if(count($reponses) > 0)
-							<div role="tabpanel" class="tab-pane fade" id="tab_content2" aria-labelledby="profile-tab">
-
-								<!-- start recent activity -->
-								<ul class="messages">
-									@foreach($reponses as $reponse)
-									<li>
-										<img src="{{url('/users/' . $user->logo)}}" class="avatar" alt="Avatar">
-										<div class="message_date">
-											<h3 class="date text-info">{{$reponse->created_at->format('d')}}</h3>
-											<p class="month">{{$reponse->created_at->format('F')}}</p>
-										</div>
-										<div class="message_wrapper">
-											<h4 class="heading"> Réponse à une demande de chargement</h4>
-											<blockquote class="message">Date entre le {{$reponse->chargement->depart_date}} et le {{$reponse->chargement->depart_date_fin}} au {{$reponse->chargement->arrivee_date_limite}}</blockquote>
-											<br />
-											<p class="url">
-												<span class="fs1 text-info" aria-hidden="true" data-icon=""></span>
-												<a href="#"><i class="fa fa-map-marker"></i> <b>Départ :</b> {{$reponse->chargement->depart_rue}}, {{$reponse->chargement->depart_ville}}, {{$reponse->chargement->depart_pays}} </a><br/>
-												<span class="fs1 text-info" aria-hidden="true" data-icon=""></span>
-												<a href="#"><i class="fa fa-map-marker"></i> <b>Arrivée :</b> {{$reponse->chargement->arrivee_rue}}, {{$reponse->chargement->arrivee_ville}}, {{$reponse->chargement->arrivee_pays}} </a>
-											</p>
-										</div>
-									</li>
-									@endforeach
-								</ul>
-								<!-- end recent activity -->
-
-							</div>
-							@endif
 							
 						</div>
 					</div>

@@ -1,6 +1,13 @@
 @extends('layouts.master')
 
-@section('title', "Consultation des transporteurs et donneurs d'ordres enregistrés dans la plateforme")
+@section('title')
+    @if ($typeListe == 'donneursordre')
+        Consultation des donneurs d'ordres enregistrés dans la plateforme
+    @endif
+    @if ($typeListe == 'transporteurs')
+        Consultation des transporteurs enregistrés dans la plateforme
+    @endif
+@endsection
 
 @section('content')
 <div class="row">

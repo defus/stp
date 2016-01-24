@@ -34,7 +34,10 @@ class HomeController extends Controller
         ];
         
         Mail::send('emails.contact_us', ['data' => $message], function ($m) use ($message) {
-            $m->to("defolandry@yahoo.fr", "Landry DEFO")->subject('Message envoyé par le formulaire de contact de TransPlateformCom');
+            $m->to("defolandry@yahoo.fr", "Landry DEFO")
+                ->to('m.arahou@gmail.com', "M'hamed Arahou")
+                ->to('hassanaslimani@gmail.com', "Hassan Aslimani")
+                ->subject('Message envoyé par le formulaire de contact de TransPlateforme.Com');
         });
         
         return ["resultat" => "ok"];

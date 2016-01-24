@@ -31,6 +31,24 @@ class UserController extends Controller
             ->with('users', $users);
     }
 
+    public function transporteurs()
+    {
+        $users = User::whereStatut(1)->where('c_type', 'T')->get();
+        
+        return view('admin.user.list')
+            ->with('users', $users)
+            ->with('typeListe', 'transporteurs');
+    }
+    
+    public function donneursordre()
+    {
+        $users = User::whereStatut(1)->where('c_type', 'O')->get();
+        
+        return view('admin.user.list')
+            ->with('users', $users)
+            ->with('typeListe', 'donneursordre');
+    }
+    
     /**
      * Show the form for creating a new resource.
      *

@@ -81,66 +81,8 @@
 								</div>
 							</div>
 							<div class="view-mail">
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p>
-								<p>Riusmod tempor incididunt ut labor erem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-								<p>Modesed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-							</div>
-							<div class="attachment">
-								<p>
-									<span><i class="fa fa-paperclip"></i> 3 attachments — </span>
-									<a href="#">Download all attachments</a> |
-									<a href="#">View all images</a>
-								</p>
-								<ul>
-									<li>
-										<a href="#" class="atch-thumb">
-											<img src="{{url('/tp_back')}}/images/1.png" alt="img" />
-										</a>
-
-										<div class="file-name">
-											image-name.jpg
-										</div>
-										<span>12KB</span>
-
-
-										<div class="links">
-											<a href="#">View</a> -
-											<a href="#">Download</a>
-										</div>
-									</li>
-
-									<li>
-										<a href="#" class="atch-thumb">
-											<img src="{{url('/tp_back')}}/images/1.png" alt="img" />
-										</a>
-
-										<div class="file-name">
-											img_name.jpg
-										</div>
-										<span>40KB</span>
-
-										<div class="links">
-											<a href="#">View</a> -
-											<a href="#">Download</a>
-										</div>
-									</li>
-									<li>
-										<a href="#" class="atch-thumb">
-											<img src="{{url('/tp_back')}}/images/1.png" alt="img" />
-										</a>
-
-										<div class="file-name">
-											img_name.jpg
-										</div>
-										<span>30KB</span>
-
-										<div class="links">
-											<a href="#">View</a> -
-											<a href="#">Download</a>
-										</div>
-									</li>
-
-								</ul>
+								<p>Notre équipe de communication est actuellement en train de rédiger l'aide de l'application. </p>
+								<p>Vous pouvez nous contacter via le formulaire de contact se trouvant sur la page d'accueil de l'application si vous avez des difficultés sur certaines fonctionnalités de l'application.</p>
 							</div>
 							<div class="compose-btn pull-left">
 								<button title="" data-placement="top" data-toggle="tooltip" type="button" data-original-title="Imprimer" class="btn  btn-sm tooltips"><i class="fa fa-print"></i> </button>

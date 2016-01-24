@@ -10,12 +10,21 @@ class UserTest extends TestCase
     use DatabaseMigrationsRefresh;
     use DatabaseTransactions;
 
-    public function testListUserOk(){
+    public function testListTransporteursOk(){
         $user = factory(App\User::class)->create();
         
         $this->actingAs($user)
-            ->visit('/admin/user')
-            ->see("Consultation des transporteurs et donneurs d'ordres enregistrés dans la plateforme");
+            ->visit('/admin/user/transporteurs')
+            ->see("Consultation des transporteurs enregistrés dans la plateforme");
+            
+    }
+    
+    public function testListDonneursOrdresOk(){
+        $user = factory(App\User::class)->create();
+        
+        $this->actingAs($user)
+            ->visit('/admin/user/donneursordre')
+            ->see("Consultation des donneurs d'ordres enregistrés dans la plateforme");
             
     }
     
@@ -25,8 +34,7 @@ class UserTest extends TestCase
         
         $this->actingAs($user)
             ->visit('/admin/user/1')
-            ->see("Profil du donneur d'ordre ou du transporteur sélectionné")
-            ->see("Rapport utilisateur <small>Rapport d'activité</small>");
+            ->see("A propos");
         
     }
     

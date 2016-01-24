@@ -37,5 +37,8 @@ $router->group([
     post('admin/user/profile-update', 'UserController@updateProfile');
     post('admin/user/profile-desable', 'UserController@disableProfile');
     post('admin/user/societe-update', 'UserController@updateSociete');
+    get('admin/user/donneursordre', 'UserController@donneursordre');
+    get('admin/user/transporteurs', 'UserController@transporteurs');
     resource('admin/user', 'UserController');
+    
 });
