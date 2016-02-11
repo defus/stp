@@ -22,6 +22,7 @@ $router->group([
 ], function () {
     resource('admin/help', 'HelpController');
     
+    get('admin/chargement/deleteall', 'ChargementController@deleteAll');
     get('admin/chargement/archive', 'ChargementController@archive');
     get('admin/chargement/{id}/accepter/{reponseId}', 'ChargementController@accepter');
     resource('admin/chargement', 'ChargementController');

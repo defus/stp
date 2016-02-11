@@ -11,5 +11,5 @@
 	<p>Le messgae est :</p>
 	<p><small>{{$data['message']}}</small></p>
 	<br/><br/>
-	<p- L'équipe</p> 
+	<p>L'équipe Transplateforme.com</p> 
 @endsection

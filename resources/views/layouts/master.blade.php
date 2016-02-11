@@ -169,12 +169,12 @@
                                 <ul class="dropdown-menu dropdown-usermenu animated fadeInDown pull-right">
                                     <li><a href="{{url('/admin/user/profile')}}">  Paramètres du compte</a>
                                     </li>
-                                    <li>
+                                    <!--li>
                                         <a href="{{url('/admin/user/societe')}}">
                                             <span class="badge bg-red pull-right">50%</span>
                                             <span>Paramètres société</span>
                                         </a>
-                                    </li>
+                                    </li-->
                                     <li>
                                         <a href="{{url('/admin/help')}}">Aide</a>
                                     </li>
@@ -184,10 +184,10 @@
                             </li>
 
                             <li role="presentation" class="dropdown">
-                                <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
+                                <!--a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
                                     <i class="fa fa-envelope-o"></i>
                                     <span class="badge bg-green">2</span>
-                                </a>
+                                </a-->
                                 <ul id="menu1" class="dropdown-menu list-unstyled msg_list animated fadeInDown" role="menu">
                                     <li>
                                         <a>

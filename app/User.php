@@ -66,6 +66,6 @@ class User extends Model implements AuthenticatableContract,
     }
     
     public function isAdmin(){
-        return false;
+        return $this->c_type === 'A';
     }
 }

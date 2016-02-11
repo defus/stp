@@ -158,7 +158,7 @@
                 <ul class="address">
                   <li><i class="fa fa-map-marker"></i> <span> Adresse :</span> Appt x, imm n, Agdal, Rabat, Maroc </li>
                   <li><i class="fa fa-envelope"></i> <span> Email:</span><a href="mailto:contact@transplateforme.com"> contact@transplateforme.com</a></li>
-                  <li><i class="fa fa-phone"></i> <span> Fixe :</span> +212 5 xx xx xx  </li>
+                  <li><i class="fa fa-phone"></i> <span> Fixe :</span> +212 697 970 604  </li>
                   <li><i class="fa fa-phone"></i> <span> Fax :</span> +212 5 xx xx xx  </li>
                   <li><i class="fa fa-globe"></i> <span> Site Web:</span> <a href="www.transplateforme.com">www.transplateforme.com</a></li>
                 </ul>

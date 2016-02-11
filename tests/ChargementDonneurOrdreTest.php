@@ -55,7 +55,7 @@ class ChargementDonneurOrdreTest extends TestCase
             //'arrivee_date_limite' => $arrivee_date->format('d/m/Y'),
             //'arrivee_heure_limite' => $arrivee_date->format('H:i'),
             'frais_transit' => 'Aucun',
-            'distance' => '100',
+            //'distance' => '100',
             'type_trajet' => 'Aller simple',
             'nature_marchandise' => 'Banane',
             'type_assurance' => 'Marchandise',

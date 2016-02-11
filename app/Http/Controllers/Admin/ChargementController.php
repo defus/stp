@@ -6,11 +6,14 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Chargement;
+use App\User;
 use App\Http\Requests\CreateChargementRequest ;
 use Carbon\Carbon;
 use App\Http\Requests\RepondreChargementRequest;
 use App\ChargementReponse;
 use App\ChargementColis;
+use Mail;
+use DB;
 
 class ChargementController extends Controller
 {
@@ -74,8 +77,14 @@ class ChargementController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
+        $user = $request->user();
+        
+        if($user->isTransporteur()){
+            return redirect('/admin/chargement')
+                ->withErrors("Impossible de créer des chargements. Vous n'êtes pas un utilisateur de type donneur d'ordre. Veuillez nous contacter");
+        }
         return view('admin.chargement.create');
     }
 
@@ -87,6 +96,13 @@ class ChargementController extends Controller
      */
     public function store(CreateChargementRequest $request)
     {
+        $user = $request->user();
+        
+        if($user->isTransporteur()){
+            return redirect('/admin/chargement')
+                ->withErrors("Impossible de créer des chargements. Vous n'êtes pas un utilisateur de type donneur d'ordre. Veuillez nous contacter");
+        }
+        
         $chargement = new Chargement();
         
         foreach (array_keys($this->fields) as $field) {
@@ -122,6 +138,16 @@ class ChargementController extends Controller
             }
         }
         
+        // Envoyer le mail à tous les transporteurs
+        $users = User::whereStatut(1)->where('c_type', 'T')->get();
+        foreach($users as $user){
+            Mail::send('emails.chargement_post', ['user' => $user, 'chargement' => $chargement], function ($m) use ($user) {
+                $m->to($user->email, $user->name)
+                    ->bcc("defolandry@yahoo.fr", "Landry DEFO")
+                    ->subject("Nouvelle demande de chargement ajoutée par un donneur d'ordre");
+            });    
+        }
+        
         return response()->json(['id' => $chargement->id, 'created' => true]);
     }
 
@@ -131,10 +157,17 @@ class ChargementController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request, $id)
     {
+        $user = $request->user();
+        
         $chargement = Chargement::findOrFail($id);
-        $owner = $chargement->owner();
+        $owner = $chargement->owner()->firstOrFail();
+        
+        if($user->isTransporteur() || $owner->id !== $user->id){
+            return redirect('/admin/chargement/'.  $id . "/repondre");
+        }
+        
         $reponses = $chargement->reponses()->orderby('created_at', 'desc')->get();
         $chargement_nombre = $reponses->count();
         $reponse_rescent = $chargement->reponses()->orderby('created_at', 'DESC')->first(); 
@@ -177,12 +210,30 @@ class ChargementController extends Controller
         
         $reponse->save();
         
+        // Envoyer le mail au donneur d'ordre
+        $chargement = Chargement::findOrFail($id);
+        $user = $chargement->owner()->first();
+        Mail::send('emails.chargement_reponse', 
+            ['user' => $user, 'reponse' => $reponse, 'chargement' => $chargement], 
+            function ($m) use ($user) {
+                $m->to($user->email, $user->name)
+                    ->bcc("defolandry@yahoo.fr", "Landry DEFO")
+                    ->subject("Nouvelle réponsé à votre demande de chargement ajoutée par un transporteur");
+            }
+        );    
+        
         return redirect('/admin/chargement')
             ->withSuccess("Votre réponse à cette demande de chargemet a été envoyée avec succès au donneur d'ordre !");
     }
     
     public function accepter(Request $request, $id, $reponseId){
+        $user = $request->user();
+        
         $chargementReponse = ChargementReponse::findOrFail($reponseId);
+        
+        if($user->isTransporteur() || $chargementReponse->chargement()->firstOrFail()->owner()->firstOrFail()->id !== $user->id){
+            return redirect('/admin/chargement/'.  $id . "/repondre");
+        }
         
         if($chargementReponse->chargement_id != $id){
             return redirect('/admin/chargement/' . $id)
@@ -191,6 +242,15 @@ class ChargementController extends Controller
         
         $chargementReponse->statut = 'A';
         $chargementReponse->save();
+        
+        Mail::send('emails.chargement_accepter', 
+            ['user' => $user, 'reponse' => $chargementReponse, 'chargement' => $chargementReponse->chargement->firstOrFail()], 
+            function ($m) use ($user) {
+                $m->to($user->email, $user->name)
+                    ->bcc("defolandry@yahoo.fr", "Landry DEFO")
+                    ->subject("Votre réponse à la demande de chargement a été acceptée par le donneur d'ordre");
+            }
+        );  
         
         return redirect('/admin/chargement/' . $id)
             ->withSuccess("Votre choix de transporteur pour la demande de chargement a été enregistré avec succès ! Un mail a été envoyé au transporteur pour le notifier de votre décision d'accepter sa proposition");
@@ -204,6 +264,19 @@ class ChargementController extends Controller
         return view('admin.chargement.list')
             ->with('chargements', $chargements)
             ->with('titre', $titre);
+    }
+    
+    public function deleteAll(Request $request){
+        if($request->user()->isAdmin()){
+            DB::table('chargements_reponses')->delete();
+            DB::table('chargements_colis')->delete();
+            DB::table('chargements')->delete();
+            
+            return redirect('/admin/chargement/')
+                ->withSuccess("Base de données réinitialisée");
+        }
+        
+        return redirect('/admin/chargement/');
     }
     
     public function doArchive(Request $request, $id){

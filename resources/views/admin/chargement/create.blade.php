@@ -382,10 +382,10 @@
 						<form class="form-horizontal form-label-left" data-parsley-validate id="createChargementFormStep2">
 							<input type="hidden" name="frais_transit" value="Aucun" />
 							<div class="form-group">
-								<label class="control-label col-md-3 col-sm-3 col-xs-12" for="distance">Distance (Km) <span class="required">*</span>
+								<label class="control-label col-md-3 col-sm-3 col-xs-12" for="distance">Distance (Km)
 								</label>
 								<div class="col-md-6 col-sm-6 col-xs-12">
-									<input type="text" required="required" class="form-control col-md-7 col-xs-12" name="distance" value="{{old('distance')}}" data-parsley-type="integer" data-parsley-trigger="change" placeholder="00">
+									<input type="text" class="form-control col-md-7 col-xs-12" name="distance" value="{{old('distance')}}" data-parsley-type="integer" data-parsley-trigger="change">
 								</div>
 							</div>
 							<div class="form-group">
@@ -417,7 +417,7 @@
 								<label class="control-label col-md-3 col-sm-3 col-xs-12" for="type_vehicule">Type de véhicule <span class="required">*</span>
 								</label>
 								<div class="col-md-6 col-sm-6 col-xs-12">
-									<select class="form-control col-md-7 col-xs-12" name="type_vehicule" required data-parsley-maxlength="50" data-parsley-trigger="change" id="type_vehicule">
+									<!--<select class="form-control col-md-7 col-xs-12" name="type_vehicule" required data-parsley-maxlength="50" data-parsley-trigger="change" id="type_vehicule">
 										<option value="Autobus">Autobus</option>
 										<option value="Autocar">Autocar</option>
 										<option value="Automobile">Automobile</option>
@@ -425,7 +425,8 @@
 										<option value="Camionnette">Camionnette</option>
 										<option value="Voiture">Voiture</option>
 										<option value="Autre" selected="selected">Autre</option>
-									</select>
+									</select>-->
+                                    <input class="form-control col-md-7 col-xs-12" type="text"  name="type_vehicule" value="{{old('type_vehicule')}}" required data-parsley-maxlength="50" data-parsley-trigger="change">
 								</div>
 							</div>
 							<div class="form-group">

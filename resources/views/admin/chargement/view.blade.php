@@ -77,7 +77,7 @@
 										<a class="btn btn-warning btn-xs">Non acceptée</a>
 										@endif
 									</p>
-									<p>Offre financière : {{ $reponse->offre_financiere}}</p>
+									<p>Offre financière Unitaire (DH HT) : {{ $reponse->offre_financiere}}</p>
 									<blockquote class="message">{{ $reponse->a_propos}}</blockquote>
 									<br/>
 									@if($reponse->statut != 'A')

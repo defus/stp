@@ -8,5 +8,5 @@
 	<a href="{{url('/auth/confirmation/' . $user->confirmation_code)}}" alt="Lien de confirmation d'inscription'">{{url('/auth/confirmation/' . $user->confirmation_code)}}</a>
 	<br/><br/>
 	<p>Merci encore une fois pour votre inscription sur Transplateforme.com.</p>
-	<p- L'équipe</p> 
+	<p>L'équipe Transplateforme.com</p> 
 @endsection

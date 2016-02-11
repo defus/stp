@@ -60,7 +60,7 @@ class CreateChargementRequest extends Request
             'arrivee_date_limite' => 'date_format:d/m/Y|after_date_equal:depart_date_fin',
             'arrivee_heure_limite' => 'date_format:"H:i"',
             'frais_transit' => 'required|max:255',
-            'distance' => 'required|integer',
+            'distance' => 'integer',
             'type_trajet' => 'required|max:50',
             'nature_marchandise' => 'required|max:255',
             'type_assurance' => 'required|max:50',
